@@ -32,7 +32,7 @@ M(P+Q) &= MP + MQ\\
 \subsubsection{}
 \begin{align*}
 M(PQ) &= (MP)Q\\
-&= (PM)Q & P \in \beta
+&= (PM)Q & P \in \beta\\
 &=P(MQ)\\
 &= P(QM) & Q \in \beta\\
 &= (PQ)M\\
@@ -43,7 +43,7 @@ M(PQ) &= (MP)Q\\
 \newcommand{\pqrs}{\begin{pmatrix}p&q&\\r&s\end{pmatrix}}
 \begin{align*}
 M\pqrs &= \pqrs M\\
-\implies \betamat\pqrs &= \pqrs\betamat
+\implies \betamat\pqrs &= \pqrs\betamat\\
 \implies
 \begin{pmatrix}
 p+r&q+s\\r&s
@@ -178,7 +178,7 @@ If $d | n$, then we can prime factorize each integer
 d &= p_0^{\alpha_0}\cdots p_k^{\alpha_k}\\
 n &= p_0^{\beta_0}\cdots p_k^{\beta_k}
 \end{align*}
-such that $\alpha_i < \beta_i$ for all $i$. Then
+such that $\alpha_i \leq \beta_i$ for all $i$. Then
 \begin{align*}
 \phi(d) &= p_0^{\alpha_0-1}(p_0-1)\cdots p_k^{\alpha_k-1}(p_k-1)\\
 \phi(n) &= p_0^{\beta_0-1}(p_0-1)\cdots p_k^{\beta_k-1}(p_k-1)
@@ -301,7 +301,7 @@ ac + nd &= 1\\
 \bar{a} &\in \ints/n\ints\\
 \iff \exists c: \bar{a}\bar{c} &= 1\\
 \iff \exists c: ac &\equiv 1 \pmod{n}\\
-\iff a,n \text{ relatively prime} & \text{from the last two exercises}
+\iff a,n & \text{ relatively prime} & \text{from the last two exercises}
 \end{align*}
 Not doing manual verification
 \subsubsection{}
