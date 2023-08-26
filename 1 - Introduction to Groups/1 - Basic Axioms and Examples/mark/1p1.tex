@@ -1,0 +1,250 @@
+\documentclass{article}
+
+\usepackage[letterpaper, margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{hhline}
+\usepackage[shortlabels]{enumitem}
+\setcounter{section}{-1}
+
+\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\comps}{\mathbb{C}}
+\newcommand{\set}[1]{ \{ #1 \} }
+\newcommand{\mult}{\star}
+\newcommand{\abs}[1]{| #1 |}
+\newcommand{\inv}[1]{ {#1}^{-1} }
+
+
+\setlength\parindent{0pt}
+%\allowdisplaybreaks
+
+\title{TITLE}
+\begin{document}
+
+\vspace{-5em}
+
+\section{Introduction to  Groups}
+\subsection{Basic Axioms and Examples, 1-18}
+\subsubsection{}
+\begin{enumerate}[(a)]
+\item Yes: Subtraction in $\ints$ is associative
+\item Yes. Note:
+\begin{align}
+(a \mult b) \mult c &= (a+b+ab)\mult c\\
+&= (a+b+ab) + c + (a+b+ab)c\\
+&= a+b+ab+c+ac+bc+abc \label{eq1p1}
+\end{align}
+And
+\begin{align}
+a \mult (b \mult c) &= a\mult (b+c+bc)\\
+&= a + (b+c+bc) + a(b+c+bc)\\
+&= a+b+c+bc+ab+ac+abc \label{eq1p2}
+\end{align}
+Equations \eqref{eq1p1} and \eqref{eq1p2} are clearly equal from commutativity of addition in $\reals$.
+\item No. Note:
+\begin{align}
+	a\mult(b\mult c) &= (\frac{a+b}{5})\mult c\\
+&= \frac{ \frac{a+b}{5} + c}{5}\\
+&= \frac{a+b}{25} + \frac{c}{5}\\
+&= \frac{a+b+5c}{25} \label{eq1p3}
+\end{align}
+But
+\begin{align}
+	a\mult(b\mult c) &= a\mult (\frac{b+c}{5})\\
+&= \frac{a+\frac{b+c}{5}}{5}\\
+&= \frac{a}{5} + \frac{b+c}{25}\\
+&= \frac{5a+b+c}{25} \label{eq1p4}
+\end{align}
+Equations \eqref{eq1p3} and \eqref{eq1p4} are clearly not equal in general (e.g. set $a=0,b=0,c=1$)
+\item Yes, this is associative. It is just unreduced addition in $\rats$
+\item No:
+\begin{align*}
+(a \mult b) \mult c &= (\frac{a}{b})\mult c\\
+&= \frac{ \frac{a}{b} }{c}\\ 
+&= \frac{a}{bc}
+\end{align*}
+But
+\begin{align*}
+a \mult (b\mult c) &= a \mult \frac{b}{c}\\
+&= \frac{a}{ \frac{b}{c} } \\
+&= \frac{ac}{b}
+\end{align*}
+Set $a=1,b=1,c=2$ to see they are not equal
+\end{enumerate}
+\subsubsection{}
+\begin{enumerate}[(a)]
+\item No. As mentioned in the text, subtraction on $\ints$ is not commutative
+\item Yes:
+\begin{align*}
+a\mult b &= a+b+ab\\
+&= b + a +ba\\
+&= b\mult a
+\end{align*}
+\item Yes:
+\begin{align*}
+a\mult b &= \frac{a+b}{5}\\
+&= \frac{b+a}{5}\\
+&= b\mult a
+\end{align*}
+\item Yes. Again, this is just unreduced addition in $\rats$. 
+\item No. $a \mult b = \frac{a}{b}$ but $b \mult a = \frac{b}{a}$.
+\end{enumerate}
+\subsubsection{}
+\begin{align*}
+(\bar k + \bar l) + \bar m 
+&= \bar{k+l} + \bar m\\
+&= \bar{(k+l)+m}\\
+&= \bar{k+(l+m)}\\
+&= \bar k + \bar{l+m}\\
+&= \bar k + (\bar l + \bar m)
+\end{align*}
+\subsubsection{}
+\begin{align*}
+(\bar k \cdot \bar l) \bar m 
+&= \bar{kl} \cdot \bar m\\
+&= \bar{(kl)m}\\
+&= \bar{k(lm)}\\
+&= \bar k \cdot \bar{lm}\\
+&= \bar k \cdot (\bar l  \bar m)
+\end{align*}
+\subsubsection{}
+The element $\bar 0$ doesn't have an inverse.
+\subsubsection{}
+In each of these, I will denote the set in question by $G$
+\begin{enumerate}[(a)]
+\item Yes. The three group properties are all inherited from $\rats$ (the identity and the inverses are clearly in $G$), so we just have to verify that $G$ is closed under addition. Given $\frac{a}{b}$, $\frac{c}{d} \in G$, we have
+\begin{equation*}
+\frac{a}{b} + \frac{c}{d} = \frac{ad+bc}{bd}
+\end{equation*}
+Since $b,d$ are odd, $bd$ is also odd. And since $bd$ is odd, no even number divides it. Hence, reducing the fraction maintins oddness of the denominator, and the result is still in $G$
+
+\item No. This set isn't closed under addition: $\frac{1}{2} + \frac{3}{2} = \frac{4}{2} = \frac{2}{1}$
+
+\item No: $\frac{2}{3} + \frac{2}{3} = \frac{4}{3}$ and $\abs{\frac{4}{3}} > 1$
+
+\item No: $\frac{5}{3} - \frac{4}{3} = \frac{1}{3}$ and $\abs{\frac{1}{3}} < 1$
+
+\item Yes. This is the set 
+\begin{equation*}
+G = \ints \cup \set{\frac{r}{2} | r \in \ints}
+\end{equation*}
+This set is clearly closed under addition. Associativity is inherited from $\rats$. The identity $\frac{0}{2}$ is in $G$. The inverse $\frac{-r}{2}$ of $\frac{r}{2}$ is in $G$. 
+
+\item No. The set isn't closed under addition. $\frac{3}{2} + \frac{2}{3} = \frac{9}{6} + \frac{4}{6} = \frac{13}{6}$ which is not under $G$.
+\end{enumerate}
+\subsubsection{}
+\begin{itemize}
+\item The set $G$ is clearly closed under the operation, since we always cut off the ones place and use nonnegative numbers.
+\item The operation is associative. Adding two real numbers and cutting off the ones place, then adding another one and cutting off the ones place, is the same as adding them all and THEN cutting off the ones place
+\item The identity is $0$
+\item The inverse of $x$ is $1-x$
+\end{itemize}
+\subsubsection{}
+\begin{enumerate}[(a)]
+\item If $z,c \in \comps$, then $\exists n,m \in \ints^+$ s.t. $z^n,c^m=1$.
+And 
+\begin{align*}
+(zc)^{nm} &= z^{nm}c^{nm}\\
+&= (z^n)^m(c^m)^n\\
+&= 1^m 1^n\\
+&= 1
+\end{align*}
+Hence, $zc \in \comps$, so $G$ is closed under complex multiplication. Associativity is inherited from associativity of complex multiplication. The identity $1^1$ i in $G$. And given $z \in G$ with $z^n =1$, $n \in \ints^+$, we have $(\frac{1}{z})^n = \frac{1^n}{z^n} = \frac{1}{1} = 1$, so the inverse of $z$ is in $G$.
+\item No identity element. $0 \notin G$
+\end{enumerate}
+\subsubsection{}
+\begin{enumerate}[(a)]
+
+\item Note $(a + b\sqrt{2}) + (c+d\sqrt{2}) = (a+c) + (b+d)\sqrt{2} \in G$. So $G$ is closed under the operation. Associativity follows from associativity of addition in $\reals$. The identity is $0 = 0 + 0\sqrt{2}$. And the inverse of $a+b\sqrt{2}$ is $-a -b\sqrt{2}$.
+
+\item Set $G' = G - \set{0}$. Note that
+\begin{align*}
+(a+b\sqrt{2})(c+d\sqrt 2) &= ac + (ad+bc)\sqrt 2 + 2bd\\
+&= (ac + 2bd) + (ad+bc)\sqrt 2\\
+&\in G
+\end{align*}
+And since in $\reals$, $xy = 0 \implies x = 0 \mbox{ or } y=0$, the result is in fact in $G-\set{0} = G'$. Hence, $G'$ is closed under multiplication. Associativity is inherited from the reals, the identity is $1 + 0\sqrt 2 = 1$, and the following demonstrates that the inverse is in $G'$:
+\begin{align*}
+\frac{1}{a+b\sqrt 2} &= \frac{a-b\sqrt 2}{(a+b\sqrt 2)(a-b\sqrt 2)}\\
+&= \frac{a-b\sqrt 2}{a^2-2b^2}\\
+&= \frac{a}{a^2-2b^2} + \frac{-b}{a^2-2b^2}\sqrt{2}
+\end{align*}
+\end{enumerate}
+\subsubsection{}
+NO SHIT. Transposing the matrix is equivalent to reversing the order of operations, and the upper triangle remains the same since the matrix is symmetric.
+\subsubsection{}\label{ex11}
+Process: $|\bar r| = \frac{l}{r}$ where $l = \mbox{lcm}(r,12)$. $l$ itself can be calculated by $gl = 12r$, where $g=\mbox{gcd}(r,12)$. Given that, we have,
+\begin{align*}
+\abs{\bar 0 } &= 0\\
+\abs{\bar 1 } &= 12\\
+\abs{\bar 2 } &= 6\\
+\abs{\bar 3 } &= 4\\
+\abs{\bar 4 } &= 3\\
+\abs{\bar 5 } &= 12\\
+\abs{\bar 6 } &= 2\\
+\abs{\bar 7 } &= 12\\
+\abs{\bar 8 } &= 3\\
+\abs{\bar 9 } &= 4\\
+\abs{\bar 10 } &= 6\\
+\abs{\bar 11 } &= 12\\
+\end{align*}
+\subsubsection{}
+Noting that $5^2 = 12\cdot 2 + 1$, $7^2 = 12\cdot 4+1$, $13 = 12+1$, we have
+\begin{align*}
+\abs{\bar 1 } &= 1\\
+\abs{\bar -1 } &= 2\\
+\abs{\bar 5 } &= 2\\
+\abs{\bar 7 } &= 2\\
+\abs{\bar -7 } &= 2\\
+\abs{\bar 13 } &= 1
+\end{align*}
+\subsubsection{}
+Same process as in \ref{ex11}, yielding
+\begin{align*}
+\abs{\bar 1 } &= 36\\
+\abs{\bar 2 } &= 18\\
+\abs{\bar 6 } &= 6\\
+\abs{\bar 9 } &= 4\\
+\abs{\bar 10 } &= 18\\
+\abs{\bar 12 } &= 3\\
+\abs{\bar -1 } &= 36\\
+\abs{\bar -10 } &= 18\\
+\abs{\bar -18 } &= 2\\
+\end{align*}
+\subsubsection{}
+Note that $5^3 = 36\cdot 4 + 1$, $13^3 = 36\cdot 61 + 1$, $17^2 = 36\cdot 8 +1 $. Then
+\begin{align*}
+\abs{\bar 1 } &= 1\\
+\abs{\bar -1 } &= 2\\
+\abs{\bar 5 } &= 3\\
+\abs{\bar 13 } &= 3\\
+\abs{\bar -13 } &= 3\\
+\abs{\bar 17 } &= 2\\
+\end{align*}
+\subsubsection{}
+Using generalized associativity,
+\begin{align*}
+(a_1a_2\cdots a_{n-1}a_n)(\inv{a_n}\inv{a_{n-1}}\cdots \inv{a_1})
+&= a_1a_2\cdots a_{n-1}(a_n\inv{a_n})\inv{a_{n-1}}\cdots \inv{a_1}\\
+&= a_1a_2\cdots a_{n-1}(1)\inv{a_{n-1}}\cdots \inv{a_1}\\
+&= a_1a_2\cdots a_{n-1}\inv{a_{n-1}}\cdots \inv{a_1}
+\end{align*}
+Et cetera. You could make this an "inductive" proof but it's not necessary.
+\subsubsection{}
+NOOOOOOOOOOO SHIIIIIIIIIIIIIIIIIIIIIIIT
+\subsubsection{}
+\begin{align*}
+\abs{x} &= n\\
+\implies x^n &= 1\\
+\implies x^n\inv{x} &= 1\cdot\inv{x}\\
+\implies x^{n-1}x\inv{x} &= \inv{x}\\
+\implies x^{n-1}\cdot 1 &= \inv{x}\\
+\implies x^{n-1} &= \inv{x}
+\end{align*}
+\subsubsection{}
+The proof is in the very formulation of the exercise llololololol
+\end{document}
