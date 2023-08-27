@@ -140,19 +140,19 @@ a\star (b\star c) &= a\star \frac{b}{c} = \frac{a}{\frac{b}{c}} = \frac{ac}{b}
 Since $a,b\in\bbq$, both $\frac{a}{a^2-2b^2}$ and $\frac{(-b)}{a^2-2b^2}$ are also in $\bbq$, so the inverse is in $G$.
 \end{enumerate}
 \item Label the elements of $G$ as $i_1, i_2, \ldots, i_{\abs{G}}$, and denote the matrix of the multiplication as $M$ (so the product $i_j\cdot i_k$ is in $M_{jk}$). If $G$ is abelian then $i_j i_k$ = $i_k i_j$ for all $j,k$, which means $M_{jk} = M_{kj}$ for all $j,k$. Likewise if $M_{jk} = M_{kj}$ for all $j,k$, then $i_j i_k$ = $i_k i_j$ for all $j,k$.
-\item This question asks to find the smalled $k$ such that $ka \equiv 1\md{12}$. This is only possible if $(a,12)=1$; otherwise the order is infinite.\begin{enumerate}
-\item[$\bar{0}$]: the order is infinite since $0+0=0$ no matter how hard you try
-\item[$\bar{1}$]: order 1
-\item[$\bar{2}$]: infinite
-\item[$\bar{3}$]: infinite
-\item[$\bar{4}$]: infinite
-\item[$\bar{5}$]: $5+5 = 10 \rightarrow 10+5 = 3 \rightarrow 3+5 = 8 \rightarrow 8+5=1$ so the order is 5
-\item[$\bar{6}$]: infinite
-\item[$\bar{7}$]: not typing this out but the order is 7 since $49 \equiv 1$
-\item[$\bar{8}$]: infinite
-\item[$\bar{9}$]: infinite
-\item[$\bar{10}$]: infinite
-\item[$\bar{11}$]: definitely not typing this out but the order is 11 since $121 \equiv 1$
+\item This question asks to find the smallest $k$ such that $ka \equiv 0\md{12}$. Then $ka = \text{lcm}(a,12)$. From the relation $\text{lcm}(a,b) \cdot (a,b) = ab$, we see $k = \frac{\text{lcm}(a,12)}{a} = \frac{12}{(a,12)}$.\begin{enumerate}
+\item[$\bar{0}$]: order 1 (identity)
+\item[$\bar{1}$]: order 12
+\item[$\bar{2}$]: order 6
+\item[$\bar{3}$]: order 4
+\item[$\bar{4}$]: order 3
+\item[$\bar{5}$]: order 12
+\item[$\bar{6}$]: order 2
+\item[$\bar{7}$]: order 12
+\item[$\bar{8}$]: order 3
+\item[$\bar{9}$]: order 4
+\item[$\bar{10}$]: order 6
+\item[$\bar{11}$]: order 12
 \end{enumerate}
 \item \begin{enumerate}
 \item[$\bar{1}$]: order 1
@@ -162,16 +162,16 @@ Since $a,b\in\bbq$, both $\frac{a}{a^2-2b^2}$ and $\frac{(-b)}{a^2-2b^2}$ are al
 \item[$-\bar{7}$]: $-7 \equiv 5$; order 2
 \item[$\bar{13}$]: $13 \equiv 1$; order 1
 \end{enumerate}
-\item Again, the order is infinite exactly when $(a,36) \neq 1$.\begin{enumerate}
+\item Again, the order is $\frac{36}{(a,36)}$, unless of course $a=1$.\begin{enumerate}
 \item[$\bar{1}$]: order 1
-\item[$\bar{2}$]: infinite
-\item[$\bar{6}$]: infinite
-\item[$\bar{9}$]: infinite
-\item[$\bar{10}$]: infinite
-\item[$\bar{12}$]: infinite
-\item[$-\bar{1}$]: $1 \equiv -35$ so we need to add $-1$ to itself 35 times to reach the identity; order is 35
-\item[$-\bar{10}$]: $-10 \equiv 26$; infinite
-\item[$-\bar{18}$]: $-18 \equiv 18$; infinite
+\item[$\bar{2}$]: order 18
+\item[$\bar{6}$]: order 6
+\item[$\bar{9}$]: order 4
+\item[$\bar{10}$]: order 18
+\item[$\bar{12}$]: order 3
+\item[$-\bar{1}$]: $-1 \equiv 35$ so $(35,36) = 1$; order 36
+\item[$-\bar{10}$]: $-10 \equiv 26$ so $(26,36) = 2$; order 18
+\item[$-\bar{18}$]: $-18 \equiv 18$ so $(18,36) = 18$; order 2
 \end{enumerate}
 \item \begin{enumerate}
 \item[$\bar{1}$]: order 1
