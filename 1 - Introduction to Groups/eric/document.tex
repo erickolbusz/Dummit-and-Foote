@@ -1,0 +1,205 @@
+\documentclass[]{article}
+
+\usepackage[letterpaper, margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{hhline}
+\usepackage{hyperref}
+
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\md}{\,\text{mod}\,}
+\newcommand{\bbz}{\mathbb{Z}}
+\newcommand{\bbq}{\mathbb{Q}}
+\newcommand{\bbr}{\mathbb{R}}
+\newcommand{\bbc}{\mathbb{C}}
+
+\setlength\parindent{0pt}
+%\allowdisplaybreaks
+
+\usepackage{graphicx}
+\usepackage{listings}
+
+\graphicspath{ {./py/img/} }
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{orange},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+
+
+
+\title{Introduction to Groups}
+\author{}
+\date{}
+\begin{document}
+
+\maketitle
+\vspace{-5em}
+
+
+
+\section*{\underline{1.1: Basic Axioms and Examples}}
+\subsection*{\underline{Exercises}}
+\begin{enumerate}
+\item \begin{enumerate}
+\item no: $a-(b-c) = a-b+c \neq (a-b)-c$
+\item yes: \begin{align}
+(a\star b)\star c &= (a + b + ab)\star c = a + b + ab + c + (a+b+ab)c = a + b + c + ab + ac + bc + abc \\
+a \star (b\star c) &= a\star (b + c + bc) = a + b + c + bc + a(b + c + bc) = a + b + c + bc + ab + ac + abc
+\end{align}
+\item no: \begin{align}
+(a\star b)\star c &= \frac{a+b}{5}\star c = \frac{\frac{a+b}{5} + c}{5} = \frac{a+b+5c}{25} \\
+a \star (b\star c) &= a\star \frac{b+c}{5} = \frac{a + \frac{b+c}{5}}{5} = \frac{5a+b+c}{25}
+\end{align}
+\item yes: \begin{align}
+((a,b)\star (c,d))\star (e,f) &= (ad+bc,bd)\star (e,f) = ((ad+bc)\cdot f + bd\cdot e, bd\cdot f) = (adf+bcf+bde, bdf) \\
+(a,b)\star((c,d)\star (e,f)) &= (a,b)\star (cf+de,df) = (a\cdot df + b\cdot (cf+de), b\cdot df) = (adf + bcf + bde,bdf)
+\end{align}
+\item no: \begin{align}
+(a\star b)\star c &= \frac{a}{b}\star c = \frac{a}{bc} \\
+a\star (b\star c) &= a\star \frac{b}{c} = \frac{a}{\frac{b}{c}} = \frac{ac}{b}
+\end{align}
+\end{enumerate}
+\item \begin{enumerate}
+\item no: $a\star b = a - b \neq b - a = b\star a$
+\item yes: $a\star b = a + b + ab = b + a + ba = b\star a$
+\item yes: $a\star b = \frac{a+b}{5} = \frac{b+a}{5} = b\star a$
+\item yes: $(a,b)\star (c,d) = (ad+bc,bd) = (cb+da,db) = (c,d)\star (a,b)$
+\item no: $a\star b = \frac{a}{b} \neq \frac{b}{a} = b\star a$
+\end{enumerate}
+\item I usually don't distinguish between $a$ and $\bar{a}$ but here I will. This is basically just spamming modulo $n$ (since applying it once is the same as applying it e.g. ten times), and then using the associativity of addition.
+\begin{align}
+(\bar{a} + \bar{b}) + \bar{c} &= \left( (a+b)\md n + c \right) \md n \\
+&= \left( (a+b)\md n + c\md n \right) \md n \\
+&= \left( a\md n + (b+c)\md n \right) \md n \\
+&= \left( a + (b+c)\md n \right) \md n \\
+&= (\bar{a} + \bar{b}) + \bar{c}
+\end{align}
+\item This is identical to the above with all $+$'s replaced with $\cdot$'s.
+\item We just showed it was associative, we know that $\bar{1}$ is the identity, so we need to show that not every element has an inverse. For $n>1$, clearly $\bar{0}$ has no inverse since $\bar{0}\cdot\bar{a} = \bar{a}\cdot\bar{0} = \bar{0} \neq \bar{1}$ for all $\bar{a}$. For $n=1$, $\bar{0} = \bar{1}$ is the only element.
+\item Addition on the reals is obviously associative, and all of these examples contain the additive identity $0$, so we just need to check closure and inverses.\begin{enumerate}
+\item \underline{Closure}: {\color{red} idk} \\
+\underline{Inverse}: For any $\frac{a}{2n+1}$ in this set, $\frac{(-a)}{2n+1}$ is also in the set; the two add to zero.
+\item no closure: $\frac{1}{2} + \frac{1}{2} = 1 = \frac{1}{1}$ 
+\item no closure: $\frac{1}{2} + \frac{1}{2} = 1$ again
+\item no closure: $-\frac{3}{2} + 1 = -\frac{1}{2}$ (can't reuse the same example a third time sadly)
+\item \underline{Closure}: A (reduced) rational number with a denominator of 1 can be written with a denominator of 2: $\frac{a}{1} = \frac{2a}{2}, a\in\bbz$. A (reduced) rational number with a denominator of 2 must have an odd numerator, since if it didn't then we could divide both top and bottom by 2; so these fractions are of the form $\frac{2b+1}{2}, b\in\bbz$. Now just following the rules of adding even and odd numbers (in the numerators) we see that this set is closed under addition: adding two reduced rational numbers with denominator 1, or adding two numbers with a denominator 2, yields a sum with denominator 1; adding a denominator 1 with a denominator 2 gives an denominator 2. \\
+\underline{Inverse}: The inverse of $\frac{a}{1}$ is $\frac{(-a)}{1}$; likewise for denominator 2.
+\item no closure: $\frac{1}{2} + \frac{1}{3} = \frac{5}{6}$.
+\end{enumerate}
+\item {\color{red} idk how to prove something is well defined}
+\begin{enumerate}
+\item \underline{Closure}: {\color{red} this is so obvious I don't even know what to write} \\
+\underline{Associativity}: Follow from associativity of addition over $\bbr$.\\ 
+\underline{Identity}: The additive identity of addition (zero) is in $G$.\\
+\underline{Inverse}: For $x \in G$, the inverse is $x^{-1} = 1-x$ since $x+x^{-1} = x + (1-x) = 1 \equiv 0$. The exception here is that zero is its own inverse; these two rules cover all elements of $G$.\\
+\underline{Commutativity}: $x\star y = x + y - \lfloor x+y \rfloor = y + x - \lfloor y+x \rfloor = y\star x$.
+\end{enumerate}
+\item \begin{enumerate}
+\item \underline{Closure}: If $z_1^n = z_2^n = 1$, then $(z_1 z_2)^n = 1$. \\
+\underline{Associativity}: Follows from associativity of multiplication over $\bbc$. \\ 
+\underline{Identity}: $1^n = 1$ so $1 \in G$. \\
+\underline{Inverse}: We want to show that the obvious candidate $z^{-1} = \frac{1}{z}$ is the inverse of $z$ where $z^n = 1$. Clearly $z \cdot z^{-1} = 1$, so we just need to check that $z^{-1} \in G$. This follows from $\left(z^{-1}\right)^ n = \left(\frac{1}{z}\right)^n = \frac{1}{z^n} = 1$.
+\item Writing each $z \in G$ in polar form, we see that $\abs{z} = 1$. Clearly $1 \in G$ for all $n$; but $1+1 = 2$ has absolute value 2 and hence is not in $G$, so the operation of addition is not closed.
+\end{enumerate}
+\item \begin{enumerate}
+\item \underline{Closure}: The addition of two generic elements is $(a + b\sqrt{2}) + (c + d\sqrt{2}) = (a+c) + (b+d)\sqrt{2}$. There is no weird edge case where maybe something cancels because $\sqrt{2} \notin \bbq$ so the two terms are guaranteed to stay separate. \\
+\underline{Associativity}: Follows from associativity of addition for $\bbq$. \\
+\underline{Identity}: $a + b\sqrt{2}$ with $a,b=0$ gives the additive identity. \\
+\underline{Inverse}: For $a+b\sqrt{2} \in G$, $(-a) + (-b)\sqrt{2} \in G$; the two add to the identity of zero.
+\item \underline{Closure}: The multiplcation of two generic elements is $(a + b\sqrt{2})(c + d\sqrt{2}) = (ac+2bd) + (ad+bc)\sqrt{2}$. Since $a,b,c,d\in\bbq$, $ac+2bd\in\bbq$ and $ad+bc\in\bbq$ so the product is still in $G$.\\
+\underline{Associativity}: Follows from associativity of multiplication for $\bbr$. \\
+\underline{Identity}: $a + b\sqrt{2}$ with $a=1,b=0$ gives the multiplicative identity. \\
+\underline{Inverse}: For $a+b\sqrt{2}$, we can define the number $\frac{1}{a+b\sqrt{2}}$ since $0 \notin G$. Now we massage:
+\begin{equation}
+\frac{1}{a+b\sqrt{2}} = \frac{a- b\sqrt{2}}{a^2-2b^2} = \frac{a}{a^2-2b^2} + \frac{(-b)}{a^2-2b^2}\cdot\sqrt{2}\ .
+\end{equation}
+Since $a,b\in\bbq$, both $\frac{a}{a^2-2b^2}$ and $\frac{(-b)}{a^2-2b^2}$ are also in $\bbq$, so the inverse is in $G$.
+\end{enumerate}
+\item Label the elements of $G$ as $i_1, i_2, \ldots, i_{\abs{G}}$, and denote the matrix of the multiplication as $M$ (so the product $i_j\cdot i_k$ is in $M_{jk}$). If $G$ is abelian then $i_j i_k$ = $i_k i_j$ for all $j,k$, which means $M_{jk} = M_{kj}$ for all $j,k$. Likewise if $M_{jk} = M_{kj}$ for all $j,k$, then $i_j i_k$ = $i_k i_j$ for all $j,k$.
+\item This question asks to find the smalled $k$ such that $ka \equiv 1\md{12}$. This is only possible if $(a,12)=1$; otherwise the order is infinite.\begin{enumerate}
+\item[$\bar{0}$]: the order is infinite since $0+0=0$ no matter how hard you try
+\item[$\bar{1}$]: order 1
+\item[$\bar{2}$]: infinite
+\item[$\bar{3}$]: infinite
+\item[$\bar{4}$]: infinite
+\item[$\bar{5}$]: $5+5 = 10 \rightarrow 10+5 = 3 \rightarrow 3+5 = 8 \rightarrow 8+5=1$ so the order is 5
+\item[$\bar{6}$]: infinite
+\item[$\bar{7}$]: not typing this out but the order is 7 since $49 \equiv 1$
+\item[$\bar{8}$]: infinite
+\item[$\bar{9}$]: infinite
+\item[$\bar{10}$]: infinite
+\item[$\bar{11}$]: definitely not typing this out but the order is 11 since $121 \equiv 1$
+\end{enumerate}
+\item \begin{enumerate}
+\item[$\bar{1}$]: order 1
+\item[$-\bar{1}$]: $-1\cdot -1 = 1$; order 2
+\item[$\bar{5}$]: $5\cdot 5 = 25 \equiv 1$; order 2
+\item[$\bar{7}$]: $7\cdot 7 = 49 \equiv 1$; order 2
+\item[$-\bar{7}$]: $-7 \equiv 5$; order 2
+\item[$\bar{13}$]: $13 \equiv 1$; order 1
+\end{enumerate}
+\item Again, the order is infinite exactly when $(a,36) \neq 1$.\begin{enumerate}
+\item[$\bar{1}$]: order 1
+\item[$\bar{2}$]: infinite
+\item[$\bar{6}$]: infinite
+\item[$\bar{9}$]: infinite
+\item[$\bar{10}$]: infinite
+\item[$\bar{12}$]: infinite
+\item[$-\bar{1}$]: $1 \equiv -35$ so we need to add $-1$ to itself 35 times to reach the identity; order is 35
+\item[$-\bar{10}$]: $-10 \equiv 26$; infinite
+\item[$-\bar{18}$]: $-18 \equiv 18$; infinite
+\end{enumerate}
+\item \begin{enumerate}
+\item[$\bar{1}$]: order 1
+\item[$-\bar{1}$]: $-1\cdot -1 = 1$; order 2
+\item[$\bar{5}$]: $5^2 = 25 \rightarrow 25\cdot 5 = 125 \equiv 17 \rightarrow 17\cdot 5 = 85 \equiv 13 \rightarrow 13\cdot 5 = 65 \equiv 29 \rightarrow 29\cdot 5 = 145 \equiv 1$; order 6
+\item[$\bar{13}$]: $13^2 = 169 \equiv 25 \rightarrow 25\cdot 13 = 325 \equiv 1$; order 3
+\item[$-\bar{13}$]: from above, $13^3 \equiv 1$, so $(-13)^3 \equiv -1$. Then $(-13)^6 \equiv -1\cdot -1 = 1$; order 6
+\item[$\bar{17}$]: $17^2 = 289 \equiv 1$; order 2 (thank you)
+\end{enumerate}
+\item For $n=1$ the equality is trivial. For $n=2$ we want the inverse of $(a_1a_2)$. Call it $x$. Then
+\begin{align}
+(a_1a_2)x &= 1 \\
+a_2 x &= a_1^{-1} \\
+x &= a_2^{-1} a_1^{-1}\ .
+\end{align}
+Now we want the inverse of $(a_1\ldots a_n)$, and we know the inverse of $(a_1\ldots a_{n-1})$ is $a_{n-1}^{-1}\ldots a_1^{-1}$. Call the total inverse $x$ again.
+\begin{align}
+(a_1\ldots a_{n-1}a_n)x &= 1 \\
+(a_1\ldots a_{n-1})a_nx &= 1 \\
+a_nx &= (a_1\ldots a_{n-1})^{-1} \\
+a_nx &= a_{n-1}^{-1}\ldots a_1^{-1} \\
+x &= a_n^{-1}\cdot a_{n-1}^{-1}\ldots a_1^{-1}
+\end{align}
+\item The easy direction first: if $\abs{x} = 1$ then $x^1 = x = 1$, so $x^2 = 1\cdot 1 = 1$. If $\abs{x} = 2$ then by definition $x^2 = 1$. {\color{red} The other direction idk}
+\item If $n=1$ then $x^1 = x = 1$ so trivially any power of $x$ is the identity. For $n>1$, expand $x^n = 1$to get $x \cdot x \cdot \ldots \cdot x = 1$ where there are a total of $n$ factors of $x$. Group all but the first factor together to get $x \cdot x^{n-1} = 1$. By the uniqueness of the inverse, $x^{n-1} = x^{-1}$.
+\item Start with $xy = yx$. Left multiply by $y^{-1}$ to get $y^{-1}xy = x$. Left multiply by $x^{-1}$ to get $x^{-1}y^{-1}xy = 1$. The other direction of implications follows from this operation being reversible since e.g. $y = \left( y^{-1} \right)^{-1}$.
+\end{enumerate}
+
+
+
+\end{document}
