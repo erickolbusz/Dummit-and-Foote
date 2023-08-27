@@ -17,6 +17,7 @@
 \newcommand{\mult}{\star}
 \newcommand{\abs}[1]{| #1 |}
 \newcommand{\inv}[1]{ {#1}^{-1} }
+\renewcommand{\bar}{\overline}
 
 
 \setlength\parindent{0pt}
@@ -31,7 +32,7 @@
 \subsection{Basic Axioms and Examples, 1-18}
 \subsubsection{}
 \begin{enumerate}[(a)]
-\item Yes: Subtraction in $\ints$ is associative
+\item No: $a-(b-c) = a-b+c \neq (a-b)-c$
 \item Yes. Note:
 \begin{align}
 (a \mult b) \mult c &= (a+b+ab)\mult c\\
@@ -189,8 +190,8 @@ Process: $|\bar r| = \frac{l}{r}$ where $l = \mbox{lcm}(r,12)$. $l$ itself can b
 \abs{\bar 7 } &= 12\\
 \abs{\bar 8 } &= 3\\
 \abs{\bar 9 } &= 4\\
-\abs{\bar 10 } &= 6\\
-\abs{\bar 11 } &= 12\\
+\abs{\bar{10} } &= 6\\
+\abs{\bar{11} } &= 12\\
 \end{align*}
 \subsubsection{}
 Noting that $5^2 = 12\cdot 2 + 1$, $7^2 = 12\cdot 4+1$, $13 = 12+1$, we have
@@ -199,8 +200,8 @@ Noting that $5^2 = 12\cdot 2 + 1$, $7^2 = 12\cdot 4+1$, $13 = 12+1$, we have
 \abs{\bar -1 } &= 2\\
 \abs{\bar 5 } &= 2\\
 \abs{\bar 7 } &= 2\\
-\abs{\bar -7 } &= 2\\
-\abs{\bar 13 } &= 1
+\abs{\bar{-7} } &= 2\\
+\abs{\bar{13}} &= 1
 \end{align*}
 \subsubsection{}
 Same process as in \ref{ex11}, yielding
@@ -209,21 +210,21 @@ Same process as in \ref{ex11}, yielding
 \abs{\bar 2 } &= 18\\
 \abs{\bar 6 } &= 6\\
 \abs{\bar 9 } &= 4\\
-\abs{\bar 10 } &= 18\\
-\abs{\bar 12 } &= 3\\
-\abs{\bar -1 } &= 36\\
-\abs{\bar -10 } &= 18\\
-\abs{\bar -18 } &= 2\\
+\abs{\bar{10}} &= 18\\
+\abs{\bar{12} } &= 3\\
+\abs{\bar{ -1} } &= 36\\
+\abs{\bar{ -10 }} &= 18\\
+\abs{\bar{-18 }} &= 2\\
 \end{align*}
 \subsubsection{}
-Note that $5^3 = 36\cdot 4 + 1$, $13^3 = 36\cdot 61 + 1$, $17^2 = 36\cdot 8 +1 $. Then
+Note that $5^3 = 36\cdot 4 + 1$, $13^3 = 36\cdot 61 + 1$, $17^2 = 36\cdot 8 +1 $, $(-13)^6 = (13^3)^2$. Then
 \begin{align*}
 \abs{\bar 1 } &= 1\\
 \abs{\bar -1 } &= 2\\
 \abs{\bar 5 } &= 3\\
-\abs{\bar 13 } &= 3\\
-\abs{\bar -13 } &= 3\\
-\abs{\bar 17 } &= 2\\
+\abs{\bar{ 13} } &= 3\\
+\abs{\bar{ -13} } &= 6\\
+\abs{\bar {17} } &= 2\\
 \end{align*}
 \subsubsection{}
 Using generalized associativity,
