@@ -7,6 +7,7 @@
 \usepackage{xcolor}
 \usepackage{hhline}
 \usepackage[shortlabels]{enumitem}
+\usepackage{amsthm}
 %\setcounter{section}{-1}
 
 \newcommand{\ints}{\mathbb{Z}}
@@ -275,6 +276,7 @@ $x^m = 0 \implies m$ is a multiple of $|x|$.
 \begin{corollary} \label{cor1p2}
 If $|x| = n$, then $1,x,x^2,\ldots,x^{n-1}$ are distinct
 \end{corollary}
+Nowe we finish the exercise:\\
 Let $|x| = n$. Then $(\inv{x})^n = x^{-n} - \inv{(x^n)} = \inv{1} = 1$. Hence, $|\inv{x}| \leq n$. \\
 Now suppose $|\inv{x}| = m$. Then $0 < m \leq n$. But
 \begin{align*}
@@ -371,15 +373,15 @@ Let $H = \set{x^n | n \in \ints}$. Then $x^nx^m = x^{n+m} \in H$, satisfying clo
 &= (ac,bd)(e,f)\\
 &= ((a,b),(c,d))(e,f)
 \end{align*}
-\item (a,b)(1,1) = (a\cdot 1, b\cdot 1) = (a,b) = (1\cdot a, 1\cdot b) = (1,1)(a,b)
-\item (a,b)(\inv{a}, \inv{b) = (a\inv{a}, b\inv{b}) = (1,1) = (\inv{a}a,\inv{b}b) = (\inv{a},\inv{b})(a,b)
+\item Le $(a,b)(1,1) = (a\cdot 1, b\cdot 1) = (a,b) = (1\cdot a, 1\cdot b) = (1,1)(a,b)$
+\item  Le $(a,b)(\inv{a}, \inv{b}) = (a\inv{a}, b\inv{b}) = (1,1) = (\inv{a}a,\inv{b}b) = (\inv{a},\inv{b})(a,b)$
 \end{enumerate}
 \subsubsection{}
 \begin{itemize} 
-\item \implies:
+\item $\implies$:
 \\
 Suppose $A,B$ are abelian. Then given $(a,b),(c,d) \in A \times B$, we have $(a,b)(c,d) = (ac,bd) = (ca,db) = (c,d)(a,b)$. Hence $A \times B$ is abelian.
-\item \impliedby:
+\item $\impliedby$:
 \\
 Suppose $A \times B$ is abelian. Then given $a,c \in A$,
 \begin{align*}
@@ -409,7 +411,7 @@ This is Corollary \ref{cor1p2}
 \subsubsection{}
 Assume $i > 0$ wlg. Note
 \begin{align}
-x^i &= x^{-i} \label{eq33p1}
+x^i &= x^{-i} \label{eq33p1} \\
 \implies x^{2i} &= 1 \label{eq33p2}
 \end{align}
 Since the order of $x$ is $n$, we must have by Corollary \ref{cor1p1} that $2i$ is a multiple of $n$. There is some positive $d$ such that
@@ -474,7 +476,7 @@ c &= 1\cdot c\\
 \implies ac &= bbc\\
 \implies ac &= b^2c\\
 \implies a &= ac
-\implies c &= 1
+\implies c &= 1 
 \end{align*}
 But this reduces the order of the group. So this is a contradiction, and we cannot have $|a| = 3$. Setting $|b|=3$, $|c|=3$ of course also yields contradicions\\
 In which case, we must have $|a|=2$, so $a^2=1$. We can't have $ab=a$ or $ab=b$, else we'd get $b=1$ or $a=1$. We can't have $ab=1$ or $ba=1$, else we'd get $b=\inv{a}$. But $a^2=1 \implies \inv{a}=a \implies b = a$, reducing the order of the group. So we must have $ab=c$ and $ba=c$. Similarly, we are forced to set $|b|=2, |c|=2$, which forces $bc=cb=a$ and $ca=ac=b$, respectively. 
