@@ -19,6 +19,9 @@
 \newcommand{\inv}[1]{ {#1}^{-1} }
 \renewcommand{\bar}{\overline}
 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
 
 \setlength\parindent{0pt}
 %\allowdisplaybreaks
@@ -29,7 +32,7 @@
 \vspace{-5em}
 
 \section{Introduction to Groups}
-\subsection{Basic Axioms and Examples, 1-18}
+\subsection{Basic Axioms and Examples}
 \subsubsection{}
 \begin{enumerate}[(a)]
 \item No: $a-(b-c) = a-b+c \neq (a-b)-c$
@@ -248,4 +251,231 @@ NOOOOOOOOOOO SHIIIIIIIIIIIIIIIIIIIIIIIT
 \end{align*}
 \subsubsection{}
 The proof is in the very formulation of the exercise llololololol
+\subsubsection{}
+Trivial
+\subsubsection{}\label{ex20}
+I'm going to prove a Lemma that will be useful for these exercises
+\begin{lemma} \label{lemma1}
+Let $|x|=n$. If $m \in \ints$, then $x^m = x^r$ for $0 \leq r < n$, $r \equiv m \pmod{n}$.
+\end{lemma}
+\begin{proof}
+This follows directly from the Euclidean algorithm. We can write $m = dn+r$ where $r$ satisfies the inequalities and congruence above. Then
+\begin{align*}
+x^m &= x^{dn+r}\\
+&= x^{dn}x^r\\
+&= (x^n)^dx^r\\
+&= 1^d x^r\\
+&= x^r
+\end{align*}
+\end{proof}
+From this we immediately obtain two corollaries:
+\begin{corollary} \label{cor1p1}
+$x^m = 0 \implies m$ is a multiple of $|x|$. 
+\end{corollary}
+\begin{corollary} \label{cor1p2}
+If $|x| = n$, then $1,x,x^2,\ldots,x^{n-1}$ are distinct
+\end{corollary}
+Let $|x| = n$. Then $(\inv{x})^n = x^{-n} - \inv{(x^n)} = \inv{1} = 1$. Hence, $|\inv{x}| \leq n$. \\
+Now suppose $|\inv{x}| = m$. Then $0 < m \leq n$. But
+\begin{align*}
+x^m &= (\inv{(\inv{x})})^m\\
+&= (\inv{x})^{-m}\\
+&= \inv{((\inv{x})^m)}\\
+&= \inv{1}\\
+&= 1
+\end{align*}
+Hence, by Corollary \ref{cor1p1}, $m$ is a multiple of $n$, but $0 < m \leq n$ means that $m = n$.
+\subsubsection{}
+Let $n=2l+1$. Then
+\begin{align*}
+x^n &= 1\\
+\implies x^{2l+1} &= 1\\
+\implies x^{2l}x &= 1\\
+\implies x^{2l} &= \inv{x}\\
+\implies (x^2)^l &= \inv{x}\\
+\implies (x^2)^lx^2 &= \inv{x}x^2\\
+\implies (x^2)^{l+1} &= x
+\end{align*}
+Why did we need $G$ to be finite? Lol
+\subsubsection{}
+\newcommand{\gxg}{\inv{g}xg}
+Let $|x| = n$. Then $(\inv{g}xg)^n = g^{-n}x^ng^n = g^{-n}g^n = 1$, so $|\gxg| \leq n$. Suppose $|\gxg| = m$, with $0 < m \leq n$. Then 
+\begin{align*}
+(\gxg)^m &= 1\\
+\implies g^{-m}x^mg^m &= 1\\
+\implies x^mg^m &= g^m\\
+\implies x^m &= 1
+\end{align*}
+So $m$ must be a multiple of $|x|=n$, but $0 < m \leq n$ so $m=n$.\\
+Now let $|ab| = n$. Then
+\begin{align*}
+(ab)^n &= 1\\
+\iff a^nb^n &= 1\\
+\iff a^n &= b^{-n}\\
+\iff 1 &= a^{-n}b^{-n}\\
+\iff 1 &= \inv{(a^n)}\inv{(b^n)}\\
+\iff 1 &= \inv{b^na^n}\\
+\iff 1 &= \inv{(ba)^n}
+\end{align*}
+So $|\inv{(ba)}| \leq n$. But if we follow the proof above backwards with arbitrary $n$, we see that since $|ab| = n$, $|\inv{(ba)}| = n$. But by \ref{ex20}, we get that in fact $|ba| = n$.
+\subsubsection{}
+\begin{align*}
+x^n &= 1\\
+\iff x^{st} &= 1\\
+\iff (x^s)^t &= 1
+\end{align*}
+So $|x^s| \leq t$. Follow the proof backwards to establish that $|x^s| = t$.
+\subsubsection{}
+Clearly $(ab)^1 = a^1b^1$. 
+\\
+Now suppose for $n>0$, $(ab)^n = a^nb^n$. Then
+\begin{align*}
+(ab)^{n+1} &= (ab)^nab\\
+&= a^nb^nab\\
+&= a^nab^nb\\
+&= a^{n+1}b^{n+1}
+\end{align*}
+so $(ab)^n = a^nb^n$ for $n \geq 1$. The case $n=0$ is obvious. And also if $n \geq 0$, we have
+\begin{align*}
+(ab)^{-n} &= \inv{((ab)^n)}\\
+&= \inv{(a^nb^n)}\\
+&= \inv{(b^n)}\inv{(a^n)}\\
+&= b^{-n}a^{-n}\\
+&= a^{-n}b^{-n}
+\end{align*}
+So $(ab)^n = a^nb^n$ for negative $n$ as well.
+\subsubsection{}
+Given $x,y\in G$,
+\begin{align*}
+xy &= xy1\\
+&=xy(yx)^2\\
+&=xyyxyx\\
+&=xy^2xyx\\
+&=x1xyx\\
+&=xxyx\\
+&=x^2yx\\
+&=1yx\\
+&=yx
+\end{align*}
+\subsubsection{}
+Trivial. Associativity and identity are inherited from $G$. Closure and inverses are given in the definition.
+\subsubsection{}
+Let $H = \set{x^n | n \in \ints}$. Then $x^nx^m = x^{n+m} \in H$, satisfying closure. And given $x^n \in H$, $x^{-n}$ is also clearly in $H$.
+\subsubsection{}
+\begin{enumerate}[(a)]
+\item 
+\begin{align*}
+(a,b)( (c,d), (e,f) ) &= (a,b)(ce,df)\\
+&= (a(ce), b(df))\\
+&= ((ac)e, (bd)f)\\
+&= (ac,bd)(e,f)\\
+&= ((a,b),(c,d))(e,f)
+\end{align*}
+\item (a,b)(1,1) = (a\cdot 1, b\cdot 1) = (a,b) = (1\cdot a, 1\cdot b) = (1,1)(a,b)
+\item (a,b)(\inv{a}, \inv{b) = (a\inv{a}, b\inv{b}) = (1,1) = (\inv{a}a,\inv{b}b) = (\inv{a},\inv{b})(a,b)
+\end{enumerate}
+\subsubsection{}
+\begin{itemize} 
+\item \implies:
+\\
+Suppose $A,B$ are abelian. Then given $(a,b),(c,d) \in A \times B$, we have $(a,b)(c,d) = (ac,bd) = (ca,db) = (c,d)(a,b)$. Hence $A \times B$ is abelian.
+\item \impliedby:
+\\
+Suppose $A \times B$ is abelian. Then given $a,c \in A$,
+\begin{align*}
+(a,1)(c,1) &= (c,1)(a,1)\\
+\implies (ac, 1) &= (ca, 1)\\
+\implies ac &= ca
+\end{align*}
+Hence, $A$ is abelian. An analagous proof shows that $B$ is also abelian.
+\end{itemize}
+\subsubsection{}
+$(a,1)(1,b) = (a1,1b) = (a,b) = (1a,b1) = (1,b)(a,1)$.\\
+Then
+\begin{align*}
+(a,b)^n &= (1,1)\\
+\iff ((a,1)(1,b))^n &= (1,1)
+\iff ((a,1)^n(1,b^n) &= (1,1) & \mbox{(Since they commute)}\\
+\iff (a^n,1)(1,b^n) &= (1,1)\\
+\iff (a^n, b^n) &= (1,1)\\
+\iff a^n = 1 &, b^n =1
+\end{align*}
+Suppose $n$ satisfies both these equations. Then $n$ must be a multiple of both $|a|$ and $|b|$, by Corollary \ref{cor1p1}. But $n$ is an order, so it in fact must be the LEAST common multiple of $|a|$ and $|b|$.
+\subsubsection{}
+$g \in t(G) \implies \inv{g} \in t(G)$, where these elements are distinct. Hence, the elements of $t(G)$ appear in pairs, and $|t(G)|$ is even.\\
+Suppose $x \in G-t(G)$. Then $x = \inv{x} \implies x^2 = 1$. So $|x| \leq 2$. But $|x|=1 \implies x=1$, so if $x \neq 1$ and $x \in G-t(G)$, then $|x| = 2$. But since $|t(G)|$ is even and $1 \in G-t(G)$, then $G-t(G)$ must have at least one other element for $|G|$ to be even, and this element has order $2$.
+\subsubsection{}
+This is Corollary \ref{cor1p2}
+\subsubsection{}
+Assume $i > 0$ wlg. Note
+\begin{align}
+x^i &= x^{-i} \label{eq33p1}
+\implies x^{2i} &= 1 \label{eq33p2}
+\end{align}
+Since the order of $x$ is $n$, we must have by Corollary \ref{cor1p1} that $2i$ is a multiple of $n$. There is some positive $d$ such that
+\begin{equation*}
+nd = 2i \label{eq33p3}
+\end{equation*}
+\begin{enumerate}[(a)]
+\item If $d=1$, then $n$ is not odd, a contradiction. If $d \geq 2$, then 
+\begin{align*}
+2i &= nd\\
+&\geq 2n\\
+\implies i \geq n
+\end{align*}
+contradicting the assumption that $i=1,2,\ldots,n-1$. Hence, \eqref{eq33p1} is impossible.
+\item Let $n=2k$. Then
+\begin{align*}
+nd &= 2i\\
+\implies 2kd &= 2i\\
+\implies i &= kd
+\end{align*}
+\begin{itemize}
+\item Case: $d = 2l+1$ is odd. Then
+\begin{align*}
+nd &= 2i\\
+\implies nd -n &= 2i - n\\
+\implies n(d -1) &= 2i - 2k\\
+\implies n(2l+1 -1) &= 2(i - k)\\
+\implies 2nl &= 2(i - k)\\
+\implies nl &= i - k\\
+\implies i \equiv k \pmod{n}
+\end{align*}
+\item Case: $d = 2l$ is even. Then
+\begin{align*}
+nd &= 2i\\
+\implies n2l &= 2i\\
+\implies nl &= i\\
+\implies i \equiv 0 \pmod{n}
+\end{align*}
+\end{itemize}
+Hence, this exercise is WRONG, because we can't have $k=0$. For a trivial counterexample, take $i=n$ (or any multiple of $n$). Then the exercise would tell us that $n \equiv k \pmod{n}$. But $n=2k$, so $0<k<n$, so this is ridiculous.
+\end{enumerate}
+\subsubsection{}
+Let $n,m \in \ints$, with $n \neq m$. Then 
+\begin{align*}
+x^n &= x^m\\
+\implies x^{n-m} &=1
+\end{align*}
+\begin{itemize}
+\item Case: $n-m > 0$\\
+Then $|x| \leq n-m < \infty$, a contradiction
+\item Case: $n-m < 0$\\
+Then $(x^{n-m})^{-1} = 1 \implies x^{m-n} = 1$, and $|x| \leq m-n \leq \infty$, a contradiction.
+\end{itemize}
+\subsubsection{}
+This is Corollary \ref{cor1p2}.
+\subsubsection{}
+We cannot have $|x| = 1$ for $x \neq 1$. So let's consider the case $|a| = 3$. We can't have $a^2 = 1$, since this contradicts that. We can't have $a^2 = a$, or else cancellation gives $a=1$. So assume wlg $a^2 = b$. Then $b^2 = a^2a^2 = a^3a = a$. So $|b| \neq 2$, i.e. $|b| = 3$. If $b^2=a$. Then $a^2 = b \implies a^3 = ab \implies 1 = ab$, and right multiplication instead gives $1=ba$. I.e. $b=\inv{a}$. Then
+\begin{align*}
+c &= 1\cdot c\\
+&= abc\\
+\implies ac &= a^2bc\\
+\implies ac &= bbc\\
+\implies ac &= b^2c\\
+\implies a &= ac
+\implies c &= 1
+\end{align*}
+But this reduces the order of the group. So this is a contradiction, and we cannot have $|a| = 3$. Setting $|b|=3$, $|c|=3$ of course also yields contradicions\\
+In which case, we must have $|a|=2$, so $a^2=1$. We can't have $ab=a$ or $ab=b$, else we'd get $b=1$ or $a=1$. We can't have $ab=1$ or $ba=1$, else we'd get $b=\inv{a}$. But $a^2=1 \implies \inv{a}=a \implies b = a$, reducing the order of the group. So we must have $ab=c$ and $ba=c$. Similarly, we are forced to set $|b|=2, |c|=2$, which forces $bc=cb=a$ and $ca=ac=b$, respectively. 
 \end{document}
