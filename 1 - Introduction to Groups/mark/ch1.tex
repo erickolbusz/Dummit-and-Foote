@@ -49,7 +49,7 @@ a \mult (b \mult c) &= a\mult (b+c+bc)\\
 &= a + (b+c+bc) + a(b+c+bc)\\
 &= a+b+c+bc+ab+ac+abc \label{eq1p2}
 \end{align}
-Equations \eqref{eq1p1} and \eqref{eq1p2} are clearly equal from commutativity of addition in $\reals$.
+Equations \eqref{eq1p1} and \eqref{eq1p2}  are clearly equal from commutativity of addition in $\reals$.
 \item No. Note:
 \begin{align}
 	a\mult(b\mult c) &= (\frac{a+b}{5})\mult c\\
@@ -253,7 +253,16 @@ NOOOOOOOOOOO SHIIIIIIIIIIIIIIIIIIIIIIIT
 \subsubsection{}
 The proof is in the very formulation of the exercise llololololol
 \subsubsection{}
-Trivial
+(a) and (b) are trivial. For (c), 
+\begin{itemize}
+\item Case: $a \geq 0, b \leq 0$.\\
+We treat $-b$ as a nonnegative number, and $x^ax^b = x^a\inv{(x^{-b})} = x^a(\inv{x})^{-b} = x^{a-(-b)} = x^{a+b}$.\\
+Also $(x^a)^b = \inv{( (x^a)^{-b} )} = \inv{( x^{-ab}  )} = x^{ab}$. \\
+The case $a \leq 0, b \geq 0$ is analgous to this one.
+\item Case: $a,b \leq 0$\\
+We treat both $-a,-b$ as nonnegative numbers, and $x^ax^b = \inv{(x^{-a})}\inv{(x^{-b})} = \inv{( x^{-b}x^{-a} )} = \inv{( x^{-b + -a})} = \inv{( x^{-(a+b)} )} = x^{a+b}$.\\
+Also $(x^a)^b = \inv{( (\inv{x})^{-a})^{-b} )} = \inv{( (\inv{x})^{ab} )} = (\inv{x})^{-ab} = x^{ab}$
+\end{itemize}
 \subsubsection{}\label{ex20}
 I'm going to prove a Lemma that will be useful for these exercises
 \begin{lemma} \label{lemma1}
@@ -396,7 +405,7 @@ $(a,1)(1,b) = (a1,1b) = (a,b) = (1a,b1) = (1,b)(a,1)$.\\
 Then
 \begin{align*}
 (a,b)^n &= (1,1)\\
-\iff ((a,1)(1,b))^n &= (1,1)
+\iff ((a,1)(1,b))^n &= (1,1)\\
 \iff ((a,1)^n(1,b^n) &= (1,1) & \mbox{(Since they commute)}\\
 \iff (a^n,1)(1,b^n) &= (1,1)\\
 \iff (a^n, b^n) &= (1,1)\\
@@ -475,7 +484,7 @@ c &= 1\cdot c\\
 \implies ac &= a^2bc\\
 \implies ac &= bbc\\
 \implies ac &= b^2c\\
-\implies a &= ac
+\implies a &= ac\\
 \implies c &= 1 
 \end{align*}
 But this reduces the order of the group. So this is a contradiction, and we cannot have $|a| = 3$. Setting $|b|=3$, $|c|=3$ of course also yields contradicions\\
