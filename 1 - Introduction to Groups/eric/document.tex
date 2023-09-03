@@ -14,6 +14,7 @@
 \newcommand{\bbq}{\mathbb{Q}}
 \newcommand{\bbr}{\mathbb{R}}
 \newcommand{\bbc}{\mathbb{C}}
+\newcommand{\bbn}{\mathbb{N}}
 
 \setlength\parindent{0pt}
 %\allowdisplaybreaks
@@ -64,6 +65,7 @@
 \section*{\underline{1.1: Basic Axioms and Examples}}
 \subsection*{\underline{Exercises}}
 \begin{enumerate}
+
 \item \begin{enumerate}
 \item no: $a-(b-c) = a-b+c \neq (a-b)-c$
 \item yes: \begin{align}
@@ -83,6 +85,8 @@ a \star (b\star c) &= a\star \frac{b+c}{5} = \frac{a + \frac{b+c}{5}}{5} = \frac
 a\star (b\star c) &= a\star \frac{b}{c} = \frac{a}{\frac{b}{c}} = \frac{ac}{b}
 \end{align}
 \end{enumerate}
+
+
 \item \begin{enumerate}
 \item no: $a\star b = a - b \neq b - a = b\star a$
 \item yes: $a\star b = a + b + ab = b + a + ba = b\star a$
@@ -90,6 +94,8 @@ a\star (b\star c) &= a\star \frac{b}{c} = \frac{a}{\frac{b}{c}} = \frac{ac}{b}
 \item yes: $(a,b)\star (c,d) = (ad+bc,bd) = (cb+da,db) = (c,d)\star (a,b)$
 \item no: $a\star b = \frac{a}{b} \neq \frac{b}{a} = b\star a$
 \end{enumerate}
+
+
 \item I usually don't distinguish between $a$ and $\bar{a}$ but here I will. This is basically just spamming modulo $n$ (since applying it once is the same as applying it e.g. ten times), and then using the associativity of addition.
 \begin{align}
 (\bar{a} + \bar{b}) + \bar{c} &= \left( (a+b)\md n + c \right) \md n \\
@@ -98,8 +104,14 @@ a\star (b\star c) &= a\star \frac{b}{c} = \frac{a}{\frac{b}{c}} = \frac{ac}{b}
 &= \left( a + (b+c)\md n \right) \md n \\
 &= (\bar{a} + \bar{b}) + \bar{c}
 \end{align}
+
+
 \item This is identical to the above with all $+$'s replaced with $\cdot$'s.
+
+
 \item We just showed it was associative, we know that $\bar{1}$ is the identity, so we need to show that not every element has an inverse. For $n>1$, clearly $\bar{0}$ has no inverse since $\bar{0}\cdot\bar{a} = \bar{a}\cdot\bar{0} = \bar{0} \neq \bar{1}$ for all $\bar{a}$. For $n=1$, $\bar{0} = \bar{1}$ is the only element.
+
+
 \item Addition on the reals is obviously associative, and all of these examples contain the additive identity $0$, so we just need to check closure and inverses.\begin{enumerate}
 \item \underline{Closure}: {\color{red} idk} \\
 \underline{Inverse}: For any $\frac{a}{2n+1}$ in this set, $\frac{(-a)}{2n+1}$ is also in the set; the two add to zero.
@@ -110,14 +122,18 @@ a\star (b\star c) &= a\star \frac{b}{c} = \frac{a}{\frac{b}{c}} = \frac{ac}{b}
 \underline{Inverse}: The inverse of $\frac{a}{1}$ is $\frac{(-a)}{1}$; likewise for denominator 2.
 \item no closure: $\frac{1}{2} + \frac{1}{3} = \frac{5}{6}$.
 \end{enumerate}
-\item {\color{red} idk how to prove something is well defined}
+
+
+\item For $x,y\in G$, $0 \leq x,y < 1$ so $0 \leq x+y < 2$. If $0\leq x+y < 1$ then $\lfloor x+y \rfloor = 0$ and $x\star y = x+y$. If $1\leq x+y < 2$ then $\lfloor x+y \rfloor = 1$ and $x\star y = x+y-1$. These two cases cover all possibilities.
 \begin{enumerate}
-\item \underline{Closure}: {\color{red} this is so obvious I don't even know what to write} \\
+\item \underline{Closure}: From the above, if $0\leq x+y < 1$ then $x\star y = x+y$ so $0\leq x\star y < 1$ as required. If $1\leq x+y < 2$, then $x\star y = x+y-1$ or $x\star y + 1 = x+y$ so $1\leq (x\star y + 1) < 2$ which means $0\leq x\star y < 1$ as required. \\
 \underline{Associativity}: Follow from associativity of addition over $\bbr$.\\ 
 \underline{Identity}: The additive identity of addition (zero) is in $G$.\\
 \underline{Inverse}: For $x \in G$, the inverse is $x^{-1} = 1-x$ since $x+x^{-1} = x + (1-x) = 1 \equiv 0$. The exception here is that zero is its own inverse; these two rules cover all elements of $G$.\\
 \underline{Commutativity}: $x\star y = x + y - \lfloor x+y \rfloor = y + x - \lfloor y+x \rfloor = y\star x$.
 \end{enumerate}
+
+
 \item \begin{enumerate}
 \item \underline{Closure}: If $z_1^n = z_2^n = 1$, then $(z_1 z_2)^n = 1$. \\
 \underline{Associativity}: Follows from associativity of multiplication over $\bbc$. \\ 
@@ -125,6 +141,8 @@ a\star (b\star c) &= a\star \frac{b}{c} = \frac{a}{\frac{b}{c}} = \frac{ac}{b}
 \underline{Inverse}: We want to show that the obvious candidate $z^{-1} = \frac{1}{z}$ is the inverse of $z$ where $z^n = 1$. Clearly $z \cdot z^{-1} = 1$, so we just need to check that $z^{-1} \in G$. This follows from $\left(z^{-1}\right)^ n = \left(\frac{1}{z}\right)^n = \frac{1}{z^n} = 1$.
 \item Writing each $z \in G$ in polar form, we see that $\abs{z} = 1$. Clearly $1 \in G$ for all $n$; but $1+1 = 2$ has absolute value 2 and hence is not in $G$, so the operation of addition is not closed.
 \end{enumerate}
+
+
 \item \begin{enumerate}
 \item \underline{Closure}: The addition of two generic elements is $(a + b\sqrt{2}) + (c + d\sqrt{2}) = (a+c) + (b+d)\sqrt{2}$. There is no weird edge case where maybe something cancels because $\sqrt{2} \notin \bbq$ so the two terms are guaranteed to stay separate. \\
 \underline{Associativity}: Follows from associativity of addition for $\bbq$. \\
@@ -139,7 +157,11 @@ a\star (b\star c) &= a\star \frac{b}{c} = \frac{a}{\frac{b}{c}} = \frac{ac}{b}
 \end{equation}
 Since $a,b\in\bbq$, both $\frac{a}{a^2-2b^2}$ and $\frac{(-b)}{a^2-2b^2}$ are also in $\bbq$, so the inverse is in $G$.
 \end{enumerate}
+
+
 \item Label the elements of $G$ as $i_1, i_2, \ldots, i_{\abs{G}}$, and denote the matrix of the multiplication as $M$ (so the product $i_j\cdot i_k$ is in $M_{jk}$). If $G$ is abelian then $i_j i_k$ = $i_k i_j$ for all $j,k$, which means $M_{jk} = M_{kj}$ for all $j,k$. Likewise if $M_{jk} = M_{kj}$ for all $j,k$, then $i_j i_k$ = $i_k i_j$ for all $j,k$.
+
+
 \item This question asks to find the smallest $k$ such that $ka \equiv 0\md{12}$. Then $ka = \text{lcm}(a,12)$. From the relation $\text{lcm}(a,b) \cdot (a,b) = ab$, we see $k = \frac{\text{lcm}(a,12)}{a} = \frac{12}{(a,12)}$.\begin{enumerate}
 \item[$\bar{0}$]: order 1 (identity)
 \item[$\bar{1}$]: order 12
@@ -154,6 +176,8 @@ Since $a,b\in\bbq$, both $\frac{a}{a^2-2b^2}$ and $\frac{(-b)}{a^2-2b^2}$ are al
 \item[$\bar{10}$]: order 6
 \item[$\bar{11}$]: order 12
 \end{enumerate}
+
+
 \item \begin{enumerate}
 \item[$\bar{1}$]: order 1
 \item[$-\bar{1}$]: $-1\cdot -1 = 1$; order 2
@@ -162,6 +186,8 @@ Since $a,b\in\bbq$, both $\frac{a}{a^2-2b^2}$ and $\frac{(-b)}{a^2-2b^2}$ are al
 \item[$-\bar{7}$]: $-7 \equiv 5$; order 2
 \item[$\bar{13}$]: $13 \equiv 1$; order 1
 \end{enumerate}
+
+
 \item Again, the order is $\frac{36}{(a,36)}$, unless of course $a=0$.\begin{enumerate}
 \item[$\bar{1}$]: order 36
 \item[$\bar{2}$]: order 18
@@ -173,6 +199,8 @@ Since $a,b\in\bbq$, both $\frac{a}{a^2-2b^2}$ and $\frac{(-b)}{a^2-2b^2}$ are al
 \item[$-\bar{10}$]: $-10 \equiv 26$ so $(26,36) = 2$; order 18
 \item[$-\bar{18}$]: $-18 \equiv 18$ so $(18,36) = 18$; order 2
 \end{enumerate}
+
+
 \item \begin{enumerate}
 \item[$\bar{1}$]: order 1
 \item[$-\bar{1}$]: $-1\cdot -1 = 1$; order 2
@@ -181,6 +209,8 @@ Since $a,b\in\bbq$, both $\frac{a}{a^2-2b^2}$ and $\frac{(-b)}{a^2-2b^2}$ are al
 \item[$-\bar{13}$]: from above, $13^3 \equiv 1$, so $(-13)^3 \equiv -1$. Then $(-13)^6 \equiv -1\cdot -1 = 1$; order 6
 \item[$\bar{17}$]: $17^2 = 289 \equiv 1$; order 2 (thank you)
 \end{enumerate}
+
+
 \item For $n=1$ the equality is trivial. For $n=2$ we want the inverse of $(a_1a_2)$. Call it $x$. Then
 \begin{align}
 (a_1a_2)x &= 1 \\
@@ -195,9 +225,208 @@ a_nx &= (a_1\ldots a_{n-1})^{-1} \\
 a_nx &= a_{n-1}^{-1}\ldots a_1^{-1} \\
 x &= a_n^{-1}\cdot a_{n-1}^{-1}\ldots a_1^{-1}
 \end{align}
-\item The easy direction first: if $\abs{x} = 1$ then $x^1 = x = 1$, so $x^2 = 1\cdot 1 = 1$. If $\abs{x} = 2$ then by definition $x^2 = 1$. {\color{red} The other direction idk}
-\item If $n=1$ then $x^1 = x = 1$ so trivially any power of $x$ is the identity. For $n>1$, expand $x^n = 1$to get $x \cdot x \cdot \ldots \cdot x = 1$ where there are a total of $n$ factors of $x$. Group all but the first factor together to get $x \cdot x^{n-1} = 1$. By the uniqueness of the inverse, $x^{n-1} = x^{-1}$.
+
+
+\item If $\abs{x} = 1$ then $x^1 = x = 1$, so $x^2 = 1\cdot 1 = 1$. If $\abs{x} = 2$ then by definition $x^2 = 1$. For the other direction, if $x^2=1$, then $\abs{x}$ is at most 2 since $\abs{x}$ is by definition the smallest power $n$ such that $x^n=1$. If $\abs{x} = 2$ then (don't hold your breath) $x^2 = 1$, if $\abs{x}<2$ the only option is $\abs{x} = 1$ so $x^2 = x\cdot x \equiv 1\cdot 1 = 1$.
+
+
+\item If $n=1$ then $x^1 = x = 1$ so trivially any power of $x$ is the identity. For $n>1$, expand $x^n = 1$ to get $x \cdot x \cdot \ldots \cdot x = 1$ where there are a total of $n$ factors of $x$. Group all but the first factor together to get $x \cdot x^{n-1} = 1$. By the uniqueness of the inverse, $x^{n-1} = x^{-1}$.
+
+
 \item Start with $xy = yx$. Left multiply by $y^{-1}$ to get $y^{-1}xy = x$. Left multiply by $x^{-1}$ to get $x^{-1}y^{-1}xy = 1$. The other direction of implications follows from this operation being reversible since e.g. $y = \left( y^{-1} \right)^{-1}$.
+
+
+\item \begin{enumerate}
+\item The first formula is just counting: \begin{equation}
+x^a x^b = \underbrace{x\ldots x}_{a \text{\ times}} \underbrace{x\ldots x}_{b \text{\ times}} = \underbrace{x\ldots x x \ldots x}_{a+b \text{\ times}} = x^{a+b}\ .\label{eq:1.19a1}
+\end{equation} Note that this tells us that $x^ax^a = x^{2a}$. Inductively, we get that the product of $b$ copies of $x^a$ is $x^{ab}$. More clearly,
+if $b=1$ then $(x^a)^b = x^a = x^{ab}$. For $b\geq 2$ we use induction: 
+\begin{equation}
+(x^a)^b = \underbrace{x^a \ldots x^a}_{b\text{\ times}} = x^a \underbrace{x^a \ldots x^a}_{b-1\text{\ times}} = x^a \cdot x^{\overbrace{a + \ldots + a}^{b-1 \text{\ times}}} = x^a\cdot x^{a(b-1)} = x^{a+a(b-1)} = x^{ab}\ . \label{eq:1.19a2}
+\end{equation}
+\item The equation $(x^a)^{-1} = x^{-a}$ seems weirdly tautological so let's rephrase it as $(x^a)^{-1} = (x^{-1})^a$: multiplying $a$ copies of the inverse of $x$ to $x^a$ gives the identity. Prove this inductively as well, starting with $a=1$. Obviously multiplying 1 copy of $x^{-1}$ to $x^1 = x$ gives the identity. Now for general $a>1$,
+\begin{equation}
+\underbrace{x^{-1}\ldots x^{-1}}_{a\text{\ times}} x^{a} = x^{-1}\underbrace{x^{-1}\ldots x^{-1}}_{a-1\text{\ times}} x^{a-1}x^1 = x^{-1}\left(\underbrace{x^{-1}\ldots x^{-1}}_{a-1\text{\ times}} x^{a-1}\right)x^1 = x^{-1}(1)x^1 = x^{-1}x^1 = 1\ . \label{eq:1.19b}
+\end{equation}
+\item {\color{red} aaaaaaaaaaaaaaa}
+\end{enumerate}
+
+
+\item First we show that $\abs{x^{-1}} \leq \abs{x}$. If $\abs{x} = n$, then by \eqref{eq:1.19b}, $1 = 1^{-1} = (x^n)^{-1} = (x^{-1})^n$, so the order of $x^{-1}$ is at most $n$. Now repeat the same process with $x$ and $x^{-1}$ switched to get that $\abs{x} \leq \abs{x^{-1}}$. Therefore the two must be equal.
+
+
+\item If the order of $x$ is odd then $1 = x^{2k-1}$ for some $k\geq 1$. Multiplying both sides by $x$, we see that \begin{equation}
+x = x\cdot x^{2k-1} = x^{2k} = (x^2)^k
+\end{equation} where the second equality is by \eqref{eq:1.19a1} and the third equality is by \eqref{eq:1.19a2}.
+
+
+\item We want to find $\abs{g^{-1}xg}$. Start multiplying it by itself to see the pattern:
+\begin{align}
+\left(g^{-1}xg\right)^1 &= g^{-1}xg \\
+\left(g^{-1}xg\right)^2 &= g^{-1}xgg^{-1}xg = g^{-1}x1xg = g^{-1}x^2g 
+\end{align}
+so it looks like $\left(g^{-1}xg\right)^n = g^{-1}x^ng$. Prove this inductively:
+\begin{align}
+\left(g^{-1}xg\right)^n &= g^{-1}xg\cdot \left(g^{-1}xg\right)^{n-1} \\
+&= g^{-1}xg\cdot g^{-1}x^{n-1}g \\
+&= g^{-1}x(1)x^{n-1}g \\
+&= g^{-1}x^{n}g 
+\end{align}
+Now we first show that $\abs{x} = n \implies \abs{g^{-1}xg} = n$. Using $x^n = 1$ and manipulating,
+\begin{equation}
+\left(g^{-1}xg\right)^n = g^{-1}x^{n}g = g^{-1}(1)g = g^{-1}g = 1\ .
+\end{equation}
+Now we do the implication the other way: $\abs{g^{-1}xg} = n \implies \abs{x} = n$. This is just more manipulation:
+\begin{align}
+1 &= \left(g^{-1}xg\right)^n \\
+&= g^{-1}x^{n}g \\
+g &= g g^{-1}x^n g \\
+g &= x^n g \\
+gg^{-1} &= x^n gg^{-1} \\
+1 &= x^n
+\end{align}
+
+
+\item If $1 = x^n = x^{st}$, from \eqref{eq:1.19a2} we have $1 = (x^s)^t$ so $\abs{x^s} = t$.
+
+
+\item For $n=0$ this is brainless: $(ab)^0 = 1 = 1\cdot 1 = a^0b^0$. Just as brainless for $n=1$: $(ab)^1 = ab = a^1b^1$. Now prove inductively for $n>1$, assuming $(ab)^{n-1} = a^{n-1}b^{n-1}$:
+\begin{equation}
+(ab)^n = (ab)(ab)^{n-1} = (ab)a^{n-1}b^{n-1}\ . \label{eq:1.24a}
+\end{equation}
+Now we want to show that $ba^{n-1} = a^{n-1}b$ which requires induction again. For $n=2$ we have $ba = ab$, which is true by the definition of commutativity. Then for $n>2$,
+\begin{equation}
+ba^{n-1} = ba^{n-2}\cdot a = a^{n-2}b\cdot a = a^{n-2}\cdot ba = a^{n-2} \cdot ab = a^{n-1}b \label{eq:1.24b}
+\end{equation}
+where, if we're being pedantic, we used \eqref{eq:1.19a1}. Continuing from \eqref{eq:1.24a},
+\begin{equation}
+(ab)^n = (ab)a^{n-1}b^{n-1} = a(ba^{n-1})b^{n-1} = a(a^{n-1}b)b^{n-1} = a^nb^n \label{eq:1.24c}
+\end{equation}
+again using \eqref{eq:1.19a1}.
+Now we want to prove this for $n < 0$. More explicitly, since
+\begin{equation}
+(ab)^{-n} = \left((ab)^n\right)^{-1} = \left(a^nb^n\right)^{-1}
+\end{equation}
+(we used \eqref{eq:1.19b} in the first equality), we want to show that $a^{-n}b^{-n}$ is the inverse of $a^n b^n$. Multiplying the two looks like \begin{equation}
+1 =^{?} a^{-n}b^{-n} \cdot a^n b^n\ .
+\end{equation}
+If we can show that $b^{-n}$ and $a^n$ commute then we're done since we get $1 = a^{-n}a^{n}\cdot b^{-n}b^n = 1\cdot 1$. We have to show this inductively (wow!), first do it for $n=1$:
+\begin{equation}
+ab = ba \implies b^{-1}ab = b^{-1}ba = a \implies b^{-1}abb^{-1} = ab^{-1} \implies b^{-1}a = ab^{-1}\ .
+\end{equation}
+Now inductively we assume that $b^{-(n-1)}a^{(n-1)} = a^{(n-1)}b^{-(n-1)}$ for $n>1$. Then
+\begin{equation}
+b^{-n}a^{n} = b^{-1}\left(b^{-(n-1)}a^{(n-1)} \right) a = b^{-1}\left( a^{(n-1)}b^{-(n-1)} \right) a\ .
+\end{equation}
+We need to show that we can commute $b^{-1}$ with powers of $a$, and vice versa. Luckily we already did this in \eqref{eq:1.24b} and \eqref{eq:1.24c}; e.g. we can just rename $b^{-1} \to b$ since the only fact that was used was that these two elements commute. Finally we have
+\begin{equation}
+b^{-n}a^{n} = b^{-1}a^{(n-1)}b^{-(n-1)}a = a^{(n-1)} b^{-1}b^{-(n-1)}a = a^{(n-1)} b^{-n}a = a^{(n-1)} a b^{-n} = a^nb^{-n}
+\end{equation}
+(using \eqref{eq:1.19a1} twice) as required.
+
+\item If $x^2 = 1$ for all $x\in G$, then picking any two elements $x$ and $y$, their product squares to the identity: $1 = (xy)^2 = xyxy$. Then
+\begin{equation}
+xy = x(1)y = x(xyxy)y = (xx)yx(yy) = (1)yx(1) = yx\ .
+\end{equation}
+
+
+\item \underline{Closure}: We are told that for all $h,k \in H$, $hk \in H$. \\
+\underline{Associativity}: This is inherited from the associativity of $G$ since all elements in $H$ are also in $G$. \\
+\underline{Inverse}: We are given that for all $h \in H$, $h^{-1} \in H$. \\
+\underline{Identity}: If $h \in H$, then $h^{-1} \in H$, and $hh^{-1} = 1 \in H$.
+
+
+\item In the language of the previous exercise, let $H(x) = \{ x^n \ \vert\ n \in \bbz \}$. We want to show that for all $h,k \in H(x)$, we have $hk \in H(x)$ and $h^{-1} \in H(x)$. From the form of $H$ we have $h = x^m$ and $k = x^n$ for some $m,n\in \bbz$. Then $hk = x^mx^n = x^{m+n} \in H(x)$ by \eqref{eq:1.19a1} and $h^{-1} = \left(x^m\right)^{-1} = x^{-m} \in H(x)$ by \eqref{eq:1.19b}.
+
+
+\item Given the groups $(A,\star)$ and $(B,\diamond)$, for the group $A\times B$ we have\begin{enumerate}
+\item \underline{Associativity}: follows from algebra bashing using the associativity of $A$ and $B$ in the third equality\begin{align}
+(a_1,b_1) \left[ (a_2,b_2) (a_3,b_3) \right] &= (a_1,b_1)\left[(a_2\star a_3, b_2\diamond b_3)\right] \\
+&= (a_1\star(a_2\star a_3),b_1\diamond (b_2\diamond b_3)) \\
+&= ((a_1\star a_2)\star a_3,(b_1\diamond b_2)\diamond b_3) \\
+&= \left[a_1\star a_2,b_1\diamond b_2\right](a_3,b_3) \\
+&= \left[(a_1,b_1)(a_2,b_2)\right](a_3,b_3)
+\end{align}
+\item \underline{Identity}: We want to show that $ae = ea = a$ for all $a \in A\times B$, with $e = (1_A,1_B)$:
+\begin{align}
+(a,b)(1_A,1_B) &= (a\star 1_A, b\diamond 1_B) = (a,b) \\
+(1_A,1_B)(a,b) &= (1_A\star a, 1_B\diamond b) = (a,b) 
+\end{align}
+\item \underline{Inverse}: We want to show that $(a,b)^{-1} = (a^{-1},b^{-1})$:
+\begin{align}
+(a^{-1},b^{-1})(a,b) &= (a^{-1}\star a, b^{-1}\diamond b) = (1_A, 1_B) = 1
+\end{align}
+Since $a^{-1} \in A$ and $b^{-1} \in B$, $(a^{-1},b^{-1})$ is in $A\times B$ and this is well-defined.
+\end{enumerate}
+
+
+\item Use the same notation from the previous exercise. For arbitrary $(a,b)$ and $(c,d) \in A\times B$, 
+\begin{equation}
+(a,b)(c,d) = (a\star c,b\diamond d)\ .
+\end{equation}
+If $A\times B$ is abelian, then we also have
+\begin{equation}
+(a,b)(c,d) = (c,d)(a,b) = (c\star a, d\diamond b)
+\end{equation}
+which tells us that $a\star c = c\star a$ (for arbitrary $a,c\in A$) meaning $A$ is abelian. The same can be said for $B$. This works in the other direction: if $A$ and $B$ are both abelian then 
+\begin{equation}
+(a,b)(c,d) = (a\star c, b\diamond d) = (c\star a, d\diamond b) = (c,d)(a,b)\ .
+\end{equation}
+
+
+\item Proving $(a,1_B)$ and $(1_A,b)$ commute is trivial:
+\begin{equation}
+(a,1_B)(1_A,b) = (a\star 1_A, 1_B\diamond b) = (a,b) = (1_A\star a, b\diamond 1_B) = (1_A,b)(a,1_B)\ .
+\end{equation}
+Then, using the result from exercise 24 to split apart the product group (please don't make me prove the last equality),
+\begin{equation}
+(a,b)^n = \left( (a,1_B)(1_A,b) \right)^n = (a,1_B)^n (1_A,b)^n = (a^n,1_B)(1_A,b^n)\ .
+\end{equation}
+If we want $\abs{(a,b)} = n$ then we must have both $a^n = 1_A$ and $b^n = 1_B$. The smallest positive $n$ that satisfies this condition is the least common multiple of $\abs{a}$ and $\abs{b}$.
+
+
+\item Following the hint, let $t(G)$ be the set of all elements in $G$ that are not their own inverse. From exercise 32 we know that, since $G$ is a finite group, the order of all $x \in G$ is finite. Choose an arbitrary element $x$ and call its order $n$, then 
+\begin{equation}
+1 = x^n = x\cdot x^{n-1} \implies x^{-1} = x^{n-1}\ .
+\end{equation}
+If $n > 2$, then $x \neq x^{n-1}$, so we have found two elements that are not their own inverse: $x$ and $x^{-1}$. Add these to $t(G)$. Continuing like this and finding all such pairs in $G$ (double-counting is fine; we just care that they come in pairs), we end up with an even number of elements in $t(G)$. Clearly, $1 \notin t(G)$ since the identity is its own inverse. That means the set $t(G) \cup {1}$ has an odd number of elements in it, and contains all $x \in G$ such that $\abs{x} = 1$ or $\abs{x} > 2$. Then $G - (t(G) \cup {1})$, assuming it is nonempty, contains all elements of order 2. If $\abs{G}$ is even, then this set must contain an odd (i.e. nonzero) number of elements, hence there is at least one element of order 2.
+
+
+\item Prove the contrapositive. Suppose that $1, x, x^2, \ldots, x^{n-1}$ are not all distinct, i.e. there exist $a,b \in\bbz$ with $0 \leq a < b \leq n-1$ such that $x^a = x^b$. Then, multiplying both sides by $x^{-a}$ and using \eqref{eq:1.19a1} we see
+\begin{equation}
+1 = x^{-a}x^a = x^{-a}x^b = x^{b-a}
+\end{equation}
+so $\abs{x} = b-a < n$. Then it cannot be the case that $\abs{x} = n$. \\
+Since there are $\abs{G}$ distinct elements in $G$ (duh), by the sequence of $\abs{G}+1$ elements $1, x, x^2, \ldots, x^{\abs{G}}$ cannot contain $\abs{G}+1$ distinct elements. Following the above argument, we see that $\abs{x} < \abs{G}+1$ meaning $\abs{x} \leq \abs{G}$.
+
+
+\item If $x^n = 1$ for some $n$ then, for some given power $x^a$,
+\begin{equation}
+(x^i)^{-1} = x^{-i} = 1\cdot x^{-i} = x^n x^{-i} = x^{n-i}
+\end{equation}
+using \eqref{eq:1.19b} and \eqref{eq:1.19a1}, so if we want the two equal we require $i = n-i$ (more technically, both sides are modulo $n$), so $n = 2i$.
+\begin{enumerate}
+\item If $n$ is odd then there is no $i$ such that $n=2i$, so the above is impossible.
+\item If $n$ is even, then there is only one solution for $i$ (modulo $n$), and we have $n = 2i$.
+\end{enumerate}
+
+
+\item Prove the contrapositive. Suppose that the elements $x^n, n\in\bbz$ are not all distinct. That means there exist $a,b \in\bbz$ such that $x^a = x^b$. Then, multiplying both sides by $x^{-a}$ and using \eqref{eq:1.19a1} we see
+\begin{equation}
+1 = x^{-a}x^a = x^{-a}x^b = x^{b-a}
+\end{equation}
+so we see $\abs{x} = b-a$, so $x$ does not have infinite order.
+
+
+\item Suppose $\abs{x} = n$ for some finite (duh) integer $n>0$, so $x^n = 1 = 1^{-1} = x^{-n}$. Consider an arbitrary power $x^a$. By the division algorithm, we can write $a = qn + r$ for some $q,r\in\bbz$ and $0 \leq r < n$. Then
+\begin{equation}
+x^a = x^{qn+r} = x^{qn}x^r = (x^n)^qx^r = 1^qx^r = 1x^r = x^r
+\end{equation}
+where the second equality is by \eqref{eq:1.19a1} and the third equality is by \eqref{eq:1.19a2}. We see that $x^a = x^{a\md n}$.
+
+
+\item {\color{red} not sure how to do this using the hint about cancellation rules, the only way I could do this was extremely ugly and trial and error; it'd be easier if I could use the fact that no element has order 3 but we're not there yet}
+
 \end{enumerate}
 
 
