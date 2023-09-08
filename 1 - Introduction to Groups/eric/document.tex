@@ -7,6 +7,7 @@
 \usepackage{xcolor}
 \usepackage{hhline}
 \usepackage{hyperref}
+\usepackage{tikz}
 
 \newcommand{\abs}[1]{\left\vert #1 \right\vert}
 \newcommand{\md}{\,\text{mod}\,}
@@ -428,6 +429,302 @@ where the second equality is by \eqref{eq:1.19a1} and the third equality is by \
 \item {\color{red} not sure how to do this using the hint about cancellation rules, the only way I could do this was extremely ugly and trial and error; it'd be easier if I could use the fact that no element has order 3 but we're not there yet}
 
 \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\section*{\underline{1.2: Dihedral Groups}}
+
+\subsection*{\underline{Page 25 -- $D_{2n}$ Relations}}
+Given an regular $n$-gon with its vertices labeled 0 through $n-1$, denote the set of all vertices $S = \{0,1,\ldots, n-1\}$. This makes modular arithmetic much easier, and is equivalent to the textbook formulation; just add 1 to every label. Then any element $g \in D_{2n}$ sends each vertex to some (possibly the same) vertex, so we have a corresponding function $\sigma_g : S \to S$. We want to describe $r$ and $s$ in terms of their corresponding functions in order to understand arbitrary compositions of them. We (the textbook authors) have already established what $\sigma_r$ is:
+\begin{equation}
+\sigma_r(i) = \begin{cases}
+i+1\ , & 0\leq i < n-1 \\
+0\ , & i = n-1
+\end{cases}
+\end{equation}
+which can be written in the succinct form (this is why I labeled them 0 to $n-1$)
+\begin{equation}
+\sigma_r(i) = (i+1)\md n\ .
+\end{equation}
+For $\sigma_s$ we go vertex-by-vertex. Since the axis of reflection goes through vertex $0$, clearly this is a fixed point with $\sigma_s(0) = 0$. The two adjacent vertices, labeled by $1$ and $n-1$, swap under the action of $s$. The two vertices after, $2$ and $n-2$ also switch. This goes all the way around the polygon, so the total description is
+\begin{equation}
+\sigma_s(i) = \begin{cases}
+n-i\ , & 0< i \leq n-1\\
+0\ , & i = 0
+\end{cases}
+\end{equation}
+and, since $n-0 = n \equiv 0$ when considered modulo $n$, we can combine the two cases into
+\begin{equation}
+\sigma_s(i) = (n-i)\md n = -i\md n\ .
+\end{equation}
+
+\begin{enumerate}
+
+\item Given $\sigma_r$, the action of $\sigma_{r^2}$ is easy:
+\begin{equation}
+\sigma_{r^2}(i) = \sigma_r (\sigma_r(i)) = \sigma_r( (i+1)\md n ) = \left( \left( (i+1)\md n \right) + 1\right) \md n  = ((i+1)+1)\md n = (i+2)\md n\ .
+\end{equation}
+Inductively,
+\begin{align}
+\sigma_{r^k}(i) = \sigma_r(\sigma_{r^{k-1}}(i)) = \sigma_r \left( (i+k-1)\md n \right) =  \left( \left((i+k-1)\md n\right) +1 \right)\md n = (i+k)\md n\ . \label{eq:2.0a}
+\end{align}
+The easiest way to show that $r^k$ and $r^l$ ($0 \leq k,l < n$ and $k \neq l$) are different transformations is to show that there exists an $i$ such that $\sigma_{r^k}(i) \neq \sigma_{r^l}(i)$. This is easily verified by choosing $i=0$: $\sigma_{r^k}(0) = k$ and $\sigma_{r^l}(0) = l$, so these cannot be the same function and hence $r^k$ and $r^l$ are not the same transformation. Showing that $r^n = 1$ is just as straightforward:
+\begin{equation}
+\sigma_{r^n}(i) = (i+n)\md n = i\md n = i \label{eq:2.0b}
+\end{equation}
+where the last equality is because $0 \leq i < n$. Since $\sigma_{r^n}$ is the identity map on all of $S$, $r^n$ is the identity element of $D_{2n}$.
+
+
+\item We know what $\sigma_s$ is so we just compose it twice:
+\begin{equation}
+\sigma_{s^2}(i) = \sigma_s(\sigma_s(i)) = \sigma_s (-i\md n) = -(-i\md n)\md n = -(-i)\md n = i \md n = i
+\end{equation}
+where, again, the last equation is because $0 \leq i < n$. Just as in the above example, this shows that $s^2 = 1$. Obviously $s \neq 1$ so we see $\abs{s} = 2$.
+
+
+\item This is easily shown by looking at the image of $0$ and $1$. The action of $s$ has $\sigma_s(0) = 0$ and $\sigma_s(1) = n-1$. If we want a power of $r$ that recreates $0 \mapsto 0$ then we want $\sigma_{r^k}(0) = (0+k)\md n = k\md n = 0$ so we have $k$ is a multiple of $n$, write it $k = an$. But then $r^{k} = r^{an} = (r^n)^a = 1^a = 1$ so we must have $\sigma_{r^k}(1) = 1$. The only way this can agree with $\sigma_s$ is if $n=2$, but then we don't even have a polygon to begin with.
+
+
+\item We want to show that $sr^k \neq sr^l$ (again for $0\leq k,l < n$ and $k\neq l$). Again, this just requires showing that there is one element $i \in S$ such that $\sigma_{sr^k}(i) \neq \sigma_{sr^l}(i)$. Choose $i=0$ again; the left-hand side is
+\begin{equation}
+\sigma_{sr^k}(0) = \sigma_s(\sigma_{r^k}(0)) = \sigma_s(k\md n) = -(k\md n) \md n = -k\md n
+\end{equation}
+and likewise the right-hand side is $-l\md n$. Since $k\neq l$, $n-k \neq n-l$ so $-k$ and $-l$ are different equivalence classes modulo $n$.
+
+
+\item We can show this for all $i\in S$, but first we need to establish what $\sigma_{r^{-1}}$ is. Since $r^n = 1$, we immediately have $r^{-1} = r^{n-1}$ which means
+\begin{equation}
+\sigma_{r^{-1}}(i) = \sigma_{r^{n-1}}(i) = (i+n-1)\md n = (i-1)\md n
+\end{equation}
+as expected. Now to show $rs = sr^{-1}$ by showing $\sigma_r \circ \sigma_s = \sigma_s \circ \sigma_{r^{-1}}$. The left-hand side is
+\begin{equation}
+\sigma_r(\sigma_s(i)) = \sigma_r(-i \md n) = ((-i\md n)+ 1)\md n = (-i+1) \md n\ .
+\end{equation}
+The right-hand side is
+\begin{equation}
+\sigma_s(\sigma_{r^{-1}}(i)) = \sigma_s( (i-1)\md n) = -((i-1)\md n)\md n = -(i-1)\md n = (-i+1)\md n\ .
+\end{equation}
+
+
+\item We have already shown equality for $k=1$. Now inductively commute all but one power of $r$, then do the last by itself:
+\begin{equation}
+r^ks = r(r^{k-1}s) = r(sr^{-(k-1)}) = (rs)r^{-(k-1)} = (sr^{-1})r^{-(k-1)} = s(r^{-1}r^{-(k-1)}) = sr^{-k}\ .
+\end{equation}
+
+\end{enumerate}
+
+
+
+
+\subsection*{\underline{Page 27 -- ``it is easy to see''}}
+{\color{red} not sure, following the discussion for $X_{2n}$ I just get $r = r$ lol}
+
+
+
+
+\subsection*{\underline{Exercises}}
+\begin{enumerate}
+
+\item The elements of $D_{2n}$ are $\{1, r, r^2, \ldots, r^{n-1}, s, sr, sr^2, \ldots, sr^{n-1}\}$. A lot of these have the same answers: consider $sr^k$ for some $k\geq 1$. Squaring it gives
+\begin{equation}
+(sr^k)^2 = (sr^k)(sr^k) = s(r^ks)r^k = s(sr^{-k})r^k = s^2r^{-k}r^k = s^2 = 1 \label{eq:2.1}
+\end{equation}
+so every element of this form has order 2. We also know $s^2 = 1$, and we made no reference to $k$ being positive, so this is in fact true for all integer $k$. 
+\begin{enumerate}
+\item for $D_6$, $n=3$:
+\begin{enumerate}
+\item[$1$]: 1
+\item[$r$]: 3 
+\item[$r^2$]: $r^6 = (r^2)^3 = 1$ so order is 3; note this is $\frac{\text{lcm}(2,3)}{2}$ which is equivalent to $\frac{3}{(2,3)}$ (c.f. exercise 1.1.11)
+\item[$s$]: 2
+\item[$sr$]: 2
+\item[$sr^2$]: 2
+\end{enumerate}
+
+\item for $D_8$, $n=4$:
+\begin{enumerate}
+\item[$1$]: 1
+\item[$r$]: 4
+\item[$r^2$]: $\frac{4}{(2,4)} = 2$
+\item[$r^3$]: $\frac{4}{(3,4)} = 4$
+\item[$s$]: 2
+\item[$sr$]: 2
+\item[$sr^2$]: 2
+\item[$sr^3$]: 2
+\end{enumerate}
+
+\item for $D_{10}$, $n=5$:
+\begin{enumerate}
+\item[$1$]: 1
+\item[$r$]: 5
+\item[$r^2$]: $\frac{5}{(2,5)} = 5$
+\item[$r^3$]: $\frac{5}{(3,5)} = 5$
+\item[$r^4$]: $\frac{5}{(4,5)} = 5$
+\item[$s$]: 2
+\item[$sr$]: 2
+\item[$sr^2$]: 2
+\item[$sr^3$]: 2
+\item[$sr^4$]: 2
+\end{enumerate}
+
+\end{enumerate}
+
+
+\item If $x$ is not a power of $r$, then we can write it in the form $sr^k$. Now do the algebra bash:
+\begin{equation}
+rx = r(sr^k) = (rs)r^k = (sr^{-1})r^k = sr^{k-1} = (sr^k)r^{-1} = xr^{-1}\ . \label{eq:2.2}
+\end{equation}
+
+
+\item See \eqref{eq:2.1}. $D_{2n}$ is generated by $\{r, s\}$, but we can write $r = s\cdot sr$, so we can also generate the group with $\{sr, s\}$. We already knew $s^2 = 1$; we have shown $(sr)^2 = 1$.
+
+
+\item If $n = 2k$, then $1 = r^n = r^{2k} = (r^k)^2$ so $r^k$ has order 2 (and is its own inverse). Any element of $D_{2n}$ is either $r^l$ for some $l$, or $sr^l$. Commutation is obvious in the first case since $r^kr^l = r^{k+l} = r^{l+k} = r^lr^k$ (I guess I showed it anyway). In the second case, we can use \eqref{eq:2.2} to inductively show that $r^lx = xr^{-l}$:
+\begin{equation}
+r^lx = r(r^{l-1}x) = r(xr^{1-l}) = (rx)r^{1-l} = xr^{-1}r^{1-l} = xr^{-l}\ .
+\end{equation}
+We see that $r^l$ commutes with any and all of these $x$ elements exactly when $r^{l} = r^{-l} = r^{n-l}$. For $0 \leq l < n$, the only solutions are the identity (trivial), and $n = 2l$. We see that $r^k$ is the only element (other than the identity) that commutes with everything.
+
+
+\item This follows from my solution of the previous exercise; there is no solution to $n = 2l$ if $n$ is odd, so there is no second element that commutes with everything.
+
+
+\item If $x$ and $y$ are order two then $x = x^{-1}$ and $y = y^{-1}$. Then $t^{-1} = (xy)^{-1} = y^{-1}x^{-1} = yx$ so 
+\begin{equation}
+tx = (xy)x = x(yx) = xt^{-1} \ .
+\end{equation}
+
+
+\item Two of the relations follow trivially since $a = s$ and $ab = ssr = r$:
+\begin{align}
+s^2 = 1 &\iff a^2 = 1 \\
+(ab)^n = 1 &\iff r^n = 1
+\end{align}
+The last relation is also pretty easy:
+\begin{align}
+b^2 = 1 \iff b = b^{-1} \iff sr = (sr)^{-1} \iff sr = r^{-1}s^{-1} = r^{-1}s \iff r = sr^{-1}s \iff rs = sr^{-1}
+\end{align}
+
+
+\item The order is $n$... this seems so easy I think I have to be interpreting it incorrectly... we showed in \eqref{eq:2.0a} and \eqref{eq:2.0b} that $1, r, r^2, \ldots r^{n-1}$ are all distinct, and $r^n = 1$.
+
+
+\item These problems seem intimidating but have a straightforward solution. If we orient the solid such that one face is on ``the bottom'', and specify the rotation of this face, we have fixed the entire solid. The rotational symmetry group of the face is $\bbz /3 \bbz$ so it has three elements. There are four possible faces we can choose to be on the bottom, so the total number of automorphisms of the vertices of a tetrahedron is $4\cdot 3 = 12$.
+
+
+\item Likewise, the cube has six faces, each of which has 4 vertices, so $6\cdot 4 = 24$.
+
+
+\item Eight faces, three vertices on a face, $8\cdot 3 = 24$.
+
+
+\item Twelve faces, five vertices on a face, $12\cdot 5 = 60$.
+
+
+\item Twenty faces, three vertices on a face, $20\cdot 3 = 60$.
+
+
+\item Wasn't this given as an example? $\bbz = \langle\, 1\, \rangle$.
+
+
+\item We can reach every element of $\bbz / n\bbz$ by repeatedly adding $1$ to itself. The only condition is that $n = 0$ so 
+\begin{equation}
+\bbz / n\bbz = \langle\, 1 \ \vert\ n(1) = 0 \, \rangle\ .
+\end{equation}
+
+
+\item Take exercise 7 and set $n=2$.
+
+
+\item We already know that $\abs{X_{2n}} \leq 6$, and $x^3 = 1$ for any $n$. That means $x^2 = x^{-1}$ and the relation $xy = yx^2$ can be rewritten $xy = yx^{-1}$, which is the same as the relation for $D_{2n}$ with $y$ taking the role of $s$ and $x$ taking the role of $r$. The other relations are $y^2 = 1$, which is identical to $s^2 = 1$, and $x^n = 1$.
+\begin{enumerate}
+\item If $n = 3k$, then $1 = x^n = x^{3k} = (x^3)^k = 1^k$ and the condition that $x^n = 1$ is the same as the condition that $x^3 = 1$. We have $x^3 = y^2 = 1$ and $xy = yx^{-1}$, which is the presentation for $D_6$. The elements are $1, x, x^2, y, yx, yx^2$.
+\item If $(3,n) = 1$ then there exist integers $a, b$ such that $3a + nb = 1$. Then
+\begin{equation}
+x = x^1 = x^{3a+nb} = x^{3a}x^{nb} = (x^3)^a (x^n)^b = 1^a 1^b = 1
+\end{equation}
+and the only elements of the group are $1$ and $y$.
+\end{enumerate}
+
+
+\item The presentation is $Y = \langle\, u,v \ \vert\ u^4=v^3=1, uv=v^2u^2\, \rangle$.
+\begin{enumerate}
+\item This is so easy that I used it without comment in the previous exercise. Take $v^3 = 1$ and apply $v^{-1}$ to both sides to get $v^2 = v^{-1}$.
+\item Lots of algebra bashing:
+\begin{equation}
+vu^3 = vu1u^2 = vuv^3u^2 = v(uv)(v^2u^2) = v(v^2u^2)(uv) = v^3u^3v = u^3v\ .
+\end{equation}
+\item Since $u^4 = 1$, $u = (u^4)^2u = u^8u = u^9$. Then
+\begin{equation}
+vu = vu^9 = vu^3u^3u^3 = u^3vu^3u^3 = u^3u^3vu^3 = u^3u^3u^3v = u^9v = uv\ .
+\end{equation}
+\item Now that we know we can arbitrarily commute $u$ and $v$, the last relation becomes
+\begin{equation}
+uv = v^2u^2 = uvuv = (uv)^2 \implies 1 = uv\ .
+\end{equation}
+\item Use $u^4 = v^3 = 1$:
+\begin{equation}
+1 = 1\cdot 1 = u^4v^3 = uvuvuvu = (uv)^3u = 1^3u = u\ ,
+\end{equation}
+then since $uv = 1$ we see that we also have $v = 1$. Since $Y$ is generated by $u=1$ and $v=1$, and arbitrary products of $1$ still equal to $1$, we find that the only element of $Y$ is the identity.
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
