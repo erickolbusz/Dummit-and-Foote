@@ -207,7 +207,7 @@ Noting that $5^2 = 12\cdot 2 + 1$, $7^2 = 12\cdot 4+1$, $13 = 12+1$, we have
 \abs{\bar{-7} } &= 2\\
 \abs{\bar{13}} &= 1
 \end{align*}
-\subsubsection{}
+\subsubsection{}\label{ex13}
 Same process as in \ref{ex11}, yielding
 \begin{align*}
 \abs{\bar 1 } &= 36\\
@@ -269,7 +269,7 @@ I'm going to prove a Lemma that will be useful for these exercises
 Let $|x|=n$. If $m \in \ints$, then $x^m = x^r$ for $0 \leq r < n$, $r \equiv m \pmod{n}$.
 \end{lemma}
 \begin{proof}
-This follows directly from the Euclidean algorithm. We can write $m = dn+r$ where $r$ satisfies the inequalities and congruence above. Then
+This follows directly from the division algorithm. We can write $m = dn+r$ where $r$ satisfies the inequalities and congruence above. Then
 \begin{align*}
 x^m &= x^{dn+r}\\
 &= x^{dn}x^r\\
@@ -280,7 +280,7 @@ x^m &= x^{dn+r}\\
 \end{proof}
 From this we immediately obtain two corollaries:
 \begin{corollary} \label{cor1p1}
-$x^m = 0 \implies m$ is a multiple of $|x|$. 
+$x^m = 1 \implies m$ is a multiple of $|x|$. 
 \end{corollary}
 \begin{corollary} \label{cor1p2}
 If $|x| = n$, then $1,x,x^2,\ldots,x^{n-1}$ are distinct
@@ -417,7 +417,7 @@ $g \in t(G) \implies \inv{g} \in t(G)$, where these elements are distinct. Hence
 Suppose $x \in G-t(G)$. Then $x = \inv{x} \implies x^2 = 1$. So $|x| \leq 2$. But $|x|=1 \implies x=1$, so if $x \neq 1$ and $x \in G-t(G)$, then $|x| = 2$. But since $|t(G)|$ is even and $1 \in G-t(G)$, then $G-t(G)$ must have at least one other element for $|G|$ to be even, and this element has order $2$.
 \subsubsection{}
 This is Corollary \ref{cor1p2}
-\subsubsection{}
+\subsubsection{}\label{ex1p33}
 Assume $i > 0$ wlg. Note
 \begin{align}
 x^i &= x^{-i} \label{eq33p1} \\
@@ -428,14 +428,14 @@ Since the order of $x$ is $n$, we must have by Corollary \ref{cor1p1} that $2i$ 
 nd = 2i \label{eq33p3}
 \end{equation*}
 \begin{enumerate}[(a)]
-\item If $d=1$, then $n$ is not odd, a contradiction. If $d \geq 2$, then 
+\item If $d=1$, then $n$ is not odd, a contradiction. If $d \geq 2$, then \label{ex1p33a}
 \begin{align*}
 2i &= nd\\
 &\geq 2n\\
 \implies i \geq n
 \end{align*}
 contradicting the assumption that $i=1,2,\ldots,n-1$. Hence, \eqref{eq33p1} is impossible.
-\item Let $n=2k$. Then
+\item Let $n=2k$. Then \label{ex1p33b}
 \begin{align*}
 nd &= 2i\\
 \implies 2kd &= 2i\\
@@ -489,4 +489,165 @@ c &= 1\cdot c\\
 \end{align*}
 But this reduces the order of the group. So this is a contradiction, and we cannot have $|a| = 3$. Setting $|b|=3$, $|c|=3$ of course also yields contradicions\\
 In which case, we must have $|a|=2$, so $a^2=1$. We can't have $ab=a$ or $ab=b$, else we'd get $b=1$ or $a=1$. We can't have $ab=1$ or $ba=1$, else we'd get $b=\inv{a}$. But $a^2=1 \implies \inv{a}=a \implies b = a$, reducing the order of the group. So we must have $ab=c$ and $ba=c$. Similarly, we are forced to set $|b|=2, |c|=2$, which forces $bc=cb=a$ and $ca=ac=b$, respectively. 
+\subsection{Dihedral Groups}
+\subsubsection{}\label{ex2p1}
+Note that for any $k$,
+\begin{align*}
+(sr^k)^2 &= sr^ksr^k\\
+&= ssr^{-k}r^k\\
+&= s^2\\
+&= 1
+\end{align*}
+So $|sr^{k}| = 2$. On the other hand, the elements $r^k$ form a cyclic subgroup of order $n$ which can be identified with the group $\ints/n\ints$. Hence, to compute the order of each of the elements, we follow the same method as in exercises \ref{ex11}, \ref{ex13}. Hence...
+\begin{enumerate}[(a)]
+\item $n=3$
+\begin{align*}
+|1| &= 1\\
+|r| &= 3\\
+|r^2| &= 3\\
+|sr^k| &= 2
+\end{align*}
+\item $n=4$
+\begin{align*}
+|1| &= 1\\
+|r| &= 4\\
+|r^2| &= 2\\
+|r^3| &= 4\\
+|sr^k| &= 2
+\end{align*}
+\item $n=5$
+\begin{align*}
+|1| &= 1\\
+|r| &= 5\\
+|r^2| &= 5\\
+|r^3| &= 5\\
+|r^4| &= 5\\
+|sr^k| &= 2
+\end{align*}
+\end{enumerate}
+\subsubsection{}
+$x = sr^k$. So $rx = rsr^k = s\inv{r}r^k = sr^{k-1} = sr^k\inv{r} = x\inv{r}$
+\subsubsection{}
+$|sr^k| = 2$ was shown in \ref{ex2p1}. And note that\\
+$r^k = 1r^k = 1^kr^k = (1r)^k = (s^2r)^k = (s(sr))^k$,\\
+and $sr^k = s(s(sr))^k$
+\subsubsection{}
+Using the method of \ref{ex11} again, $\mbox{lcm}(k,2k) = 2k$, so $|z|=|r^k|=\frac{2k}{k} = 2$. $z$ obviously commutes with the $r^i$. And
+\begin{align*}
+z(sr^i) &= r^ksr^i\\
+&= sr^{-k}r^i\\
+&= (sr^i)r^{-k}\\
+&= (sr^i)r^{n-k}\\
+&= (sr^i)r^{2k-k}\\
+&= (sr^i)r^k\\
+&= (sr^i)z
+\end{align*}
+Note:
+\begin{align*}
+(sr^i)(sr^j) &= sr^isr^j\\
+&= ssr^{-i}r^{j}\\
+&= s^2r^{j-i}\\
+&= r^{j-i}
+\end{align*}
+Whereas $(sr^j)(sr^i) = r^{i-j} =r^{-(j-i)}$, which according to \ref{ex1p33b} is equal to $r^{i-j}$ iff $i-j =k$, which is not the case for arbitrary $i,j$. Hence, the elements $sr^i$ do not commute in general.\\
+On the other hand, the $r^i$ commute with each other. And 
+\begin{align*}
+(r^i)(sr^j) &= r^isr^j\\
+&= sr^{-i}r^j\\
+&= sr^{j-i}
+\end{align*}
+Whereas $(sr^j)r^i = sr^{j+i}$. And 
+\begin{align*}
+sr^{j+i} &= sr^{j-i}\\
+\implies r^{j+i} &= r^{j-i}
+\end{align*}
+In particular, the above equality has to apply to $j=n$. The only possible setting of $0 \leq i < n$ that fulfills this (other than $i=0$, which gives the identity) is $i=k$
+\subsubsection{}
+Follow the previous exercise and note that we can't set $i=n/2$
+\subsubsection{}
+Note: $t(yx) = (xy)(yx) = x(yy)x = xx = 1$, so $\inv{t} = yx$,\\
+and $tx = xyx = x\inv{t}$.
+\subsubsection{}
+\begin{itemize}
+\item The old relations come from the new. Note that $\inv{b} = \inv{r}\inv{s}$, and $b^2 = 1 \implies b = \inv{b}$. So we have\\
+$s^2 = a^2 = 1$\\
+$rs = 1rs = s^2rs = ssrs = aba = a\inv{b}a = s\inv{r}\inv{s} s = s\inv{r}$\\
+$r^n = (1r)^n = (s^2r)^n = (s(sr))^n = (ab)^n = 1$
+\item The new relations come from the old. We have\\
+$a^2 = s^2 = 1$\\
+$b^2 = (sr)^2 = srsr = ss\inv{r}r = 1\cdot 1 = 1$\\
+$(ab)^n =(s(sr))^n = (s^2r)^n = (1r)^n = r^n = 1$
+\end{itemize}
+\subsubsection{}
+$n$. lol
+\subsubsection{}
+For these next 5 exercises, we note that the order is the amount of rotations a face can undergo, times the number of faces the face can be sent to. I.e. the formula is
+\begin{equation*}
+\mbox{Num vertices on a face} \times \mbox{Num faces}
+\end{equation*}
+So for a tetrahedron, it's $3\cdot 4=12$
+\subsubsection{}
+$4\cdot6 = 24$
+\subsubsection{}
+$3\cdot 8 = 24$
+\subsubsection{}
+$5\cdot 12 = 60$
+\subsubsection{}
+$3\cdot 20 = 60$
+\subsubsection{}
+$\ints = <1>$
+\subsubsection{}
+$\ints/n\ints = < \bar{1} | \bar{n} = \bar{1} >$
+\subsubsection{}
+$x_1^2 = y_1^2 = 1$ directly corresponds to $r^n = s^2 = 1$. And
+\begin{align*}
+(x_1y_1)^2 &= 1\\
+\iff x_1y_1x_1y_1 &= 1\\
+\iff x_1y_1 &= \inv{y_1}\inv{x_1}\\
+\iff x_1y_1 &= y_1\inv{x_1}
+\end{align*}
+\subsubsection{}
+$X_{2n} = <x,y | x^n = y^2 = 1, xy=yx^2>$
+Recall from the text that $x^3 = 1$
+\begin{enumerate}[(a)]
+\item $x^3 = 1 \implies x^2 x = 1 \implies \inv{x} = x^2$. So $xy=yx^2 \iff xy = y\inv{x}$ corresponds to $rs = s\inv{r}$. Also, $x^n =y^2=1$ corresponds to $ r^n =s^2=1$, and thus in this case $X_{2n} = D_6$, so the order of course is $6$.
+\item Use \ref{cor1p2} and note that both $3$ and $n$ have to share a divisor which is the order of $x$. But $(3,n) = 1$ implies the order is $1$.
+\end{enumerate}
+\subsubsection{}
+$Y = <u,v| u^4 = v^3 = 1, uv = v^2u^2>$
+\begin{enumerate}[(a)]
+\item $v^3 = 1 \implies \inv{v} = v^2$ \label{2p18a}
+\item \label{2p18b}
+\begin{align*}
+v^2u^3v &= (v^2u^2)(uv)\\
+&= (uv)(v^2u^2)\\
+&= uv^3u^2\\
+&= u1u^2\\
+&= u^3
+\end{align*}
+So
+\begin{align*}
+v^2u^3v &= u^3\\
+\implies \inv{v}u^3v &= u^3\\
+\implies u^3v &= vu^3
+\end{align*}
+\item \label{2p18c}
+$u^9 = u^4u^4u = 1\cdot1\cdot u = u$.\\
+$vu = vu^9 = u^9v = u^8uv = 1uv = uv$
+\item \label{2p18d}
+\begin{align*}
+uv &= v^2u^2\\
+\implies uv &= (uv)^2 &  \mbox{Commutativity of $u,v$}\\
+\implies 1 &= uv
+\end{align*}
+\item \label{2p18e}
+\begin{align*}
+u^4v^3 &= 1\\
+\implies uu^3v^3 &= 1\\
+\implies u(uv)^3 &= 1 & \mbox{Commutativity}\\
+\implies u1 &= 1\\
+\implies u &= 1
+\end{align*}
+And thus also $uv = 1 \implies v = 1$
+\end{enumerate}
 \end{document}
