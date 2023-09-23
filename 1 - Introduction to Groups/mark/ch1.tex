@@ -8,6 +8,7 @@
 \usepackage{hhline}
 \usepackage[shortlabels]{enumitem}
 \usepackage{amsthm}
+\usepackage{bm}
 %\setcounter{section}{-1}
 
 \newcommand{\ints}{\mathbb{Z}}
@@ -18,7 +19,9 @@
 \newcommand{\mult}{\star}
 \newcommand{\abs}[1]{| #1 |}
 \newcommand{\inv}[1]{ {#1}^{-1} }
+\newcommand{\id}{ \bm{1} }
 \renewcommand{\bar}{\overline}
+\DeclareMathOperator*{\argmin}{\arg\!\min}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
@@ -37,7 +40,7 @@
 \subsubsection{}
 \begin{enumerate}[(a)]
 \item No: $a-(b-c) = a-b+c \neq (a-b)-c$
-\item Yes. Note:
+\item Yes. Note: 
 \begin{align}
 (a \mult b) \mult c &= (a+b+ab)\mult c\\
 &= (a+b+ab) + c + (a+b+ab)c\\
@@ -336,7 +339,7 @@ x^n &= 1\\
 \iff (x^s)^t &= 1
 \end{align*}
 So $|x^s| \leq t$. Follow the proof backwards to establish that $|x^s| = t$.
-\subsubsection{}
+\subsubsection{}\label{ex1p24} 
 Clearly $(ab)^1 = a^1b^1$. 
 \\
 Now suppose for $n>0$, $(ab)^n = a^nb^n$. Then
@@ -650,4 +653,161 @@ u^4v^3 &= 1\\
 \end{align*}
 And thus also $uv = 1 \implies v = 1$
 \end{enumerate}
+\subsection{Symmetric Groups}
+In these exercises, I will use exercises 10, 13-15 throughout without explicit reference
+\subsubsection{}
+\begin{itemize}
+\item $\sigma = (1\ 3\ 5)(2\ 4)$
+\item $\tau = (1\ 5)(2\ 3)$
+\item $\sigma^2 = (1\ 5\ 3)$
+\item $\sigma\tau = (2\ 5\ 3\ 4)$
+\item $\tau\sigma = (1\ 2\ 4\ 3)$
+\item $\tau^2\sigma = 1\sigma = \sigma$
+\end{itemize}
+\subsubsection{}
+No thanks
+\subsubsection{}
+Only doing it for exercise 1, using exercise \ref{ex3p15}.
+\begin{itemize}
+\item $|\sigma| = 6$
+\item $|\tau| = 2$
+\item $|\sigma^2| = 3$
+\item $|\sigma\tau| = 4$
+\item $|\tau\sigma| = 4$
+\item $|\tau^2\sigma| = 6$
+\end{itemize}
+\subsubsection{}\label{ex3p4}
+\begin{enumerate}[(a)]
+\item $S_3 = \set{1, (1\ 2), (2\ 3), (1\ 3), (1\ 2\ 3), (1\ 3\ 2)}$\\
+The orders are, respectively, $1,2,2,2,3,3$
+\item $S_4 = \set{1, (1\ 2), (2\ 3), (1\ 3), (1\ 4), (2\ 4), (3\ 4), 
+(1\ 2)(3\ 4), (1\ 3)(2\ 4), (1\ 4)(2\ 3),
+(1\ 2\ 3), (1\ 3\ 2), (1\ 3\ 4), (1\ 4\ 3), (2\ 3\ 4), (2\ 4\ 3), (1\ 2\ 4), (1\ 4\ 2),
+(1\ 2\ 3\ 4), (1\ 3\ 2\ 4), (1\ 4\ 2\ 3), (1\ 2\ 4\ 3), (1\ 3\ 4\ 2), (1\ 4\ 3\ 2)}$\\
+The order of $1$ is $1$, the order of the elements with $2$-cycles are $2$, the order of the $3$ and $4$ cycles are $3$ and $4$ respectively.
+\end{enumerate}
+\subsubsection{}\label{ex3p5}
+Using \ref{ex3p15}, $|\sigma| = \mbox{lcm}(2,3,5) = 30$
+\subsubsection{}\label{ex3p6}
+Done in \ref{ex3p4}
+\subsubsection{}\label{ex3p7}
+Done in \ref{ex3p4}
+\subsubsection{}\label{ex3p8}
+$\infty! = \infty$ jk. Consider the permutation $\sigma$ that shifts each element to the right by one: $1 \mapsto 2, 2\mapsto 3$, etc. Then $\sigma^n$ is distinct for all $n \geq 0$
+\subsubsection{}\label{ex3p9}
+We use \ref{ex3p11}.
+\begin{enumerate}[(a)]
+\item $1, 5, 7, 11$
+\item $3, 5, 7$
+\item $3, 5, 9, 11, 13$
+\end{enumerate}
+\subsubsection{}\label{ex3p10}
+Of course, $\sigma^0(a_k) = \id(a_k) = a_k = a_{k+0}$\\
+Now suppose $\sigma^i(a_k) = a_{k+i}$.\\
+Then $\sigma^{i+1}(a_k) = \sigma\sigma^i{a_k} = \sigma(a_{k+i}) = a_{k+i+1}$, where we implicitly replace the subscripts with their residues.\\
+Hence, $\sigma^i(a_k) = a_{k+i}$ holds in general.\\
+For $1 \leq i < m$,\\
+$\sigma^i(a_k) = a_{k+i} \neq a_k = \id(a_k)$, so $\sigma^i \neq \id$.\\
+But $\sigma^m(a_k) = a_{k+m} = a_k = \id(a_k)$, hence $\sigma^m = \id$ and $|\sigma| = m$
+\subsubsection{}\label{ex3p11}
+For convenience, relabel the elements $0, \ldots, m-1$, so
+\begin{equation*}
+\sigma = (0\ 1\ 2\ \ldots\ m-1)
+\end{equation*}
+and by the previous exercise \ref{ex3p10}, 
+\begin{equation*}
+\sigma^i(n) = n+i \pmod{m}
+\end{equation*}
+Then
+\begin{align}
+& \sigma^i \mbox{an $m$-cycle} \\
+\iff m &= \argmin_k (\sigma^i)^k(0) = 0\\
+\iff m &= \argmin_k \sigma^{ik}(0) = 0\\
+\iff m &= \argmin_k 0 + ik \mod{m} = 0\\
+\iff m &= \argmin_k 0 + ik = 0 \pmod{m}\\
+\iff m &= \argmin_k m | ik\\ \label{athing1}
+\iff m &= \mbox{lcm}(i,m)/i\\ \label{athing2}
+\iff mi &= \mbox{lcm}(i,m)\\
+\iff \mbox{gcd}(i,m) &= 1 \label{athing3}
+\end{align}
+\subsubsection{}\label{ex3p12}
+\begin{enumerate}[(a)]
+\item Set $\sigma = (1\ 3\ 5\ 7\ 9\ 2\ 4\ 6\ 8\ 10)$.\\
+Using \ref{ex3p10}, I placed each elem $5$ spaces away.
+\item idk
+\end{enumerate}
+\subsubsection{}\label{ex3p13}
+The "if" is obvious, so we handle the "only if"\\
+Consider $\sigma \in S_n$ with order $2$.\\
+given $s \in \set{1,\ldots,n}$.\\
+\begin{itemize}
+\item Case: $\sigma(s) = s$\\
+Then $s$ is in a $1$-cycle in $\sigma$
+\item Case: $\sigma(s) = t (t \neq s)$\\
+Then since $|\sigma| =2$, 
+\begin{align*}
+\sigma^2(s) &= s\\
+\implies \sigma(\sigma(s)) &= s\\
+\implies \sigma(t) &= s
+\end{align*}
+So $(s\ t)$ makes a $2$-cycle in $\sigma$
+\end{itemize}
+Hence, $\sigma$ has only $1$ and $2$-cycles
+\subsubsection{}\label{ex3p14}
+The "if" is again obvious, so we handle the "only if"\\
+Consider $\sigma \in S_n$ with order $p > 2$.\\
+given $s \in \set{1,\ldots,n}$.\\
+\begin{itemize}
+\item Case: $\sigma(s) = s$\\
+Then $s$ is in a $1$-cycle in $\sigma$
+\item Case: $\sigma(s) = t (t \neq s)$\\
+Then we know at least that $\sigma^p(s) = s$.\\
+Suppose $s$ is in an $m$-cycle with $1 < m < p$.\\
+Then $\sigma^m(s) = s$.\\
+Let $p = mq  + r$ by Euclidean division. Note $0 < r < m$ (if $r=0$, then $m|p$, contradicting primeness of $p$). Then
+\begin{align*}
+s &= \sigma^{p}(s)\\
+&= \sigma^{mq+r}(s)\\
+&= \sigma^r\sigma^{mq}(s)\\
+&= \sigma^r(\sigma^m)^q(s)\\
+&= \sigma^r(\id)^q(s)\\
+&= \sigma^r\id(s)\\
+&= \sigma^r(s)\\
+\implies \sigma^r(s) &= s
+\end{align*}
+So $s$ is actually in an $r$-cycle, a contradiction.
+\end{itemize}
+A counterexample is any product of cycles of different length
+\subsubsection{}\label{ex3p15}
+Exercise \ref{ex3p10} immediately implies that a $m$-cycle has an order of $m$, while a combination of Corollary \ref{cor1p1} and exercise \ref{ex1p24} show that it's the lcm when we have a product of cycles
+\subsubsection{}\label{ex3p16}
+"Count the number of ways of forming an $m$-cycle and divide by the number of representations of a particular $m$-cycle" is the solution lol.
+\subsubsection{}\label{ex3p17}
+Analgous to above, we count the number of ways of ordering $4$ elements, then divide by $2$ since we don't care about the order of the cycles, then divide by $2$ again since we don't care about the order of the elements in the first cycle, then $2$ again for the second cycle.
+\subsubsection{}\label{ex3p18}
+How many ways are there to add up to $5$?
+\begin{itemize}
+\item lcm$(1,1,1,1,1) = 1$
+\item lcm$(2,1,1,1) = 2$
+\item lcm$(2,2,1) = 2$
+\item lcm$(2,3) = 6$
+\item lcm$(3,1,1) = 3$
+\item lcm$(4,1) = 4$
+\end{itemize}
+\subsubsection{}\label{ex3p19}
+How many ways are there to add up to $7$?
+\begin{itemize}
+\item lcm$(1,1,1,1,1,1,1) = 1$
+\item lcm$(2,1,1,1,1,1) = 2$
+\item lcm$(2,2,1,1,1) = 2$
+\item lcm$(2,2,2,1) = 2$
+\item lcm$(3,2,2) = 6$
+\item lcm$(3,1,1,1,1) = 3$
+\item lcm$(3,2,1,1) = 6$
+\item lcm$(4,2,1) = 4$
+\item lcm$(4,1,1,1) = 4$
+\item lcm$(4,3) = 12$
+\end{itemize}
+\subsubsection{}\label{ex3p20}
+idk
 \end{document}
