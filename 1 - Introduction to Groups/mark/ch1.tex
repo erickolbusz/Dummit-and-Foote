@@ -11,7 +11,7 @@
 \usepackage{bm} 
 %\setcounter{section}{-1}
 
-\newcommand{\ints}{\mathbb{Z}}
+\newcommand{\ints}{\mathbb{Z}} 
 \newcommand{\reals}{\mathbb{R}}
 \newcommand{\rats}{\mathbb{Q}}
 \newcommand{\comps}{\mathbb{C}}
@@ -819,4 +819,166 @@ $(1\ 2\ 3)^2 = (1\ 3\ 2)$\\
 $(1\ 2\ 3)(1\ 3\ 2) = \id$\\
 $(1\ 2\ 3)(1\ 2) = (1\ 3)$\\
 $(1\ 2\ 3)(1\ 3) = (2\ 3)$
+\subsection{}\label{sec4}
+\subsubsection{}\label{ex4p1}
+$|F_2| = |\ints/2\ints| = 2$, so\\
+$|GL_2(F_2)| = (2^2 - 2^0)(2^1 - 2^1) = 3\cdot 2 = 6$
+\subsubsection{}\label{ex4p2}
+Denote:
+\begin{align*}
+I &= 
+\begin{pmatrix}
+1 & 0\\
+0 & 1
+\end{pmatrix}\\
+A &= 
+\begin{pmatrix}
+0 & 1\\
+1 & 0
+\end{pmatrix}\\
+B &= 
+\begin{pmatrix}
+1 & 1\\
+1 & 0
+\end{pmatrix}\\
+C &= 
+\begin{pmatrix}
+0 & 1\\
+1 & 1
+\end{pmatrix}\\
+D &= 
+\begin{pmatrix}
+1 & 0\\
+1 & 1
+\end{pmatrix}\\
+E &= 
+\begin{pmatrix}
+1 & 1\\
+0 & 1
+\end{pmatrix}
+\end{align*}
+Manual computation yields
+\begin{align*}
+|I| &= 1\\
+|A| &= 2\\
+|B| &= 3\\
+|C| &= 3\\
+|D| &= 2\\
+|E| &= 3
+\end{align*}
+\subsubsection{}\label{ex4p3}
+$CD = E$, but $DC = A$
+\subsubsection{}\label{ex4p4}
+If $n$ is not prime, decompose $n = ab$ with $1<a,b<n$.\\
+In $\ints/n\ints$, $ab = 0$, so $\ints/n\ints - \set{0}$ is not a group under multiplication (because it fails closure)
+\subsubsection{}\label{ex4p5}
+For the "only if", suppose $GL_n(F)$ is finite. Let $D$ be the subgroup of $GL_n(F)$ of diagonal matrices where each entry of the diagonal is the same. Then we can identify $F$ with $D$. So $GL_n(F)$ finite means that $D$ is finte, and hence so is $F$.\\
+For the "if", the following exercise provides an upper bound
+\subsubsection{}\label{ex4p6}
+For each entry of a matrix, we have at most $q$ choices, and there are $n^2$ entries, so in total we have $\prod_{i=1}^{n^2}q = q^{n^2}$ choices.
+\subsubsection{}\label{ex4p7}
+idk
+\subsubsection{}\label{ex4p8}
+Let $A$ be an upper triangular matrix of $1$s. And let $B$ be a lower triangular matrix of $1$s. Then\\
+$(AB)_{1,1} = \sum_{i=1}^nA_{i,1}B{1,i} = \sum_{i=1}^n 1 = n$\\
+$(BA)_{1,1} = \sum_{i=1}^nA_{1,i}B{i,1} = A_{1,1}B_{1,1} + \sum_{i=2}^n 0 = 1$\\
+So $AB \neq BA$
+\subsubsection{}\label{ex4p9}
+No shit. Waste of time.
+\subsubsection{}\label{ex4p10}
+Denote 
+\begin{align*}
+A &= 
+\begin{pmatrix}
+a_1 & b_1\\
+0 & c_1
+\end{pmatrix}\\
+B &= 
+\begin{pmatrix}
+a_2 & b_2\\
+0 & c_2
+\end{pmatrix}\\
+\end{align*}
+\begin{enumerate}[(a)]
+\item \label{ex4p10a}
+\begin{equation*}
+AB = 
+\begin{pmatrix}
+a_1a_2 & a_1b_2 + b_1c_2\\
+0 & c_1c_2
+\end{pmatrix}
+\end{equation*}
+\item \label{ex4p10b}
+If $B = \inv{A}$, we must set 
+\begin{align*}
+a_2 &= \frac{1}{a_1}\\
+c_2 &= \frac{1}{c_2}\\
+a_1b_2 + b_1c_2 &= 0\\
+\implies b_2 &= \frac{-b_1c_2}{a_1}
+\end{align*}
+All of which is doable in $\reals$
+\item Immediate
+\item \label{ex4p10d}
+In \ref{ex4p10a}, $c_1 = a_1$, and $c_2 = a_2$, so
+\begin{equation*}
+AB = 
+\begin{pmatrix}
+a_1a_2	&	a_1b_2 + b_1c_2\\
+0		&	a_1a_2
+\end{pmatrix}
+\end{equation*}
+And using \ref{ex4p10b}, the inverse is
+\begin{equation*}
+\inv{A} =
+\begin{pmatrix}
+\frac{1}{a_1}	&	\frac{-b_1a_2}{a_1}\\
+0				&	\frac{1}{a_1}
+\end{pmatrix}
+\end{equation*}
+which is clearly also in the group
+\end{enumerate}
+\subsubsection{}\label{ex4p11}
+\begin{enumerate}[(a)]
+\item \label{11a}
+\begin{align*}
+XY &= 
+\begin{pmatrix}
+1	&	a+d	&	e+af+b\\
+0	&	1	&	f+c\\
+0	&	0	&	1
+\end{pmatrix}\\
+YX &= 
+\begin{pmatrix}
+1	&	a+d	&	e+cd+b\\
+0	&	1	&	f+c\\
+0	&	0	&	1
+\end{pmatrix}
+\end{align*}
+So all the entries in $XY$ and $YX$ are the same except the top-right entry. Setting $a,f=1$, and $c,d=2$ immediately yields equality
+\item \label{11b}
+If $Y = \inv{X}$, we must have
+\begin{align*}
+a+d &= 0\\
+e + af + b &= 0\\
+f+c &= 0
+\end{align*}
+which yield
+\begin{align*}
+d &= -a\\
+e &= ca - b\\
+f &= -c
+\end{align*}
+\item \label{11c}
+I'M ASSUMIN MATRIX MULT IS ASSOCIATIVE. It's $|F|^3$ because we have $|F|$ choices for each entry $a,b,c$
+\item \label{11d}
+\item \label{11e}
+It's easy to see that the top middle element of $X^n$ is $na$. And $na \neq 0$ for any $a \in \reals$ and $n \in \ints^+$
+\subsection{}
+\subsubsection{}
+$|1| = 1, |-1| = 2$ of course. The orders of the rest are $4$.
+\subsubsection{}
+no
+\subsubsection{}
+idk
+\end{enumerate}
 \end{document}
