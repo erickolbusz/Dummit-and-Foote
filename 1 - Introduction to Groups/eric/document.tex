@@ -17,6 +17,7 @@
 \newcommand{\bbc}{\mathbb{C}}
 \newcommand{\bbn}{\mathbb{N}}
 \newcommand{\bbf}{\mathbb{F}}
+\newcommand{\im}{\text{im\,}}
 
 \usepackage{pgffor}
 \newcommand*{\cycle}[1]{( \foreach \entry [count=\i] in {#1} {\ifnum\i>1\ \fi\entry})}
@@ -1309,12 +1310,13 @@ $-k$ & $-k$ & $k$ & $-j$ & $j$ & $i$ & $-i$ & 1 & $-1$ \\ \hline
 \end{tabular}
 \end{table}
 
-
-\end{enumerate}
-
 \end{enumerate}
 
 
+\item {\color{red} todo}
+
+
+\end{enumerate}
 
 
 
@@ -1331,6 +1333,153 @@ $-k$ & $-k$ & $k$ & $-j$ & $j$ & $i$ & $-i$ & 1 & $-1$ \\ \hline
 
 
 
+
+
+
+
+
+
+
+\addcontentsline{toc}{section}{1.6: Homomorphisms and Isomorphisms}
+\section*{\underline{1.6: Homomorphisms and Isomorphisms}}
+\addcontentsline{toc}{subsection}{Exercises}
+\subsection*{\underline{Exercises}}
+\begin{enumerate}
+
+\item The statement is trivial for $n=1$: $\phi(x^1) = \phi(x) = \phi(x)^1$ for all $x \in G$.
+\begin{enumerate}
+\item Proceed inductively for $n>1$: assuming $\phi(x^{n-1}) = \phi(x)^{n-1}$,
+\begin{equation}
+\phi(x^n) = \phi(x \cdot x^{n-1}) = \phi(x)\cdot\phi(x^{n-1}) = \phi(x)\cdot \phi(x)^{n-1} = \phi(x)^n
+\end{equation}
+where the second equality uses the fact that $\phi$ is a homomorphism.
+
+\item First show the $n=0$ case, i.e. that $\phi$ maps the identity of $G$ to the identity of $H$. Note that, for all $x \in G$, 
+\begin{equation}
+\phi(x) = \phi(1\cdot x) = \phi(1)\phi(x)\ ,
+\end{equation}
+then canceling (since the inverse of $\phi(x)$ exists in $H$) tells us that $1 = \phi(1)$ (more technically, $1_H = \phi(1_G)$) as required. Now we can also see
+\begin{equation}
+1_H = \phi(1_G) = \phi(x^{-1}\cdot x) = \phi(x^{-1})\phi(x)
+\end{equation}
+for all $x \in G$, meaning that $\phi(x^{-1})$ is the inverse of $\phi(x)$ in $H$. In other words, $\phi(x^{-1}) = \phi(x)^{-1}$. This generalizes to any $n$:
+\begin{equation}
+1_H = \phi(1_G) = \phi(x^{-n}\cdot x^n) = \phi(x^{-n})\phi(x^n) = \phi(x^{-n})\phi(x)^n 
+\end{equation} 
+so again, $\phi(x^{-n})$ is the inverse of $\phi(x)^n$, so it is equal to $\phi(x)^{-n}$ by uniqueness of group inverses.
+\end{enumerate}
+
+
+\item If $\phi: G\to H$ is a homomorphism, and $\abs{x} = n$ for some $x\in G$, then 
+\begin{equation}
+\phi(x)^n = \phi(x^n) = \phi(1_G) = 1_H
+\end{equation}
+where the first and last equalities use exercise 1. This tells us that $n = k\abs{\phi(x)}$ for some positive integer $k$, i.e. $\abs{\phi(x)}$ divides $\abs{x}$. Switching gears for a moment, if $\phi$ is an isomorphism then it has a well-defined inverse $\phi^{-1}: H \to G$. This inverse is also a homomorphism:
+\begin{equation}
+\phi^{-1}(\phi(x)\phi(y)) = \phi^{-1}(\phi(xy)) = xy = \phi^{-1}(\phi(x))\phi^{-1}(\phi(y))
+\end{equation}
+where the first equality uses that $\phi$ is a homomorphism, and the other equalities just use that $\phi^{-1}\circ \phi$ is the identity. Now, since $\phi^{-1}$ is a homomorphism, we can run the same argument switching the roles of $x$ and $\phi(x)$ to find that $\abs{x}$ divides $\abs{\phi(x)}$ as well. The two conditions are only possible if the two orders are equal; hence $\abs{x} = \abs{\phi(x)}$. \\
+
+Let $G_n$ be the subset of $G$ containing every element of order $n$ in $G$. Obviously the $G_n$ partition the set $G$. Likewise let $H_n$ be the subsets of $H$. We have shown that, for each element $x \in G_n$, the image $\phi(x)$ is in $H_n$. Therefore there is a bijection between each $G_n$ and its corresponding $H_n$, so the two have the same cardinality. \\
+
+If we only have a homomorphism, and not an isomorphism, then we only know that $\abs{\phi(x)}$ divides $\abs{x}$ but not the other way around. For example, let $H$ be the trivial group consisting of just an identity element, and $\phi$ sends every element in $G$ to the identity in $H$. Then $\abs{\phi(x)} = 1$ for all $x \in G$, even though there exists at least one element in $G$ whose order is greater than one (unless, of course, $G$ is trivial as well).
+
+
+\item If $\phi: G\to H$ is a homomorphism and $G$ is abelian, then
+\begin{equation}
+\phi(y)\phi(x) = \phi(yx) = \phi(xy) = \phi(x)\phi(y)
+\end{equation}
+for all $x,y\in G$. If $\phi$ is an isomorphism then it is surjective, and all $h \in H$ can be written in the form $h = \phi(x)$ for some $x \in G$. Therefore we see that $H$ is abelian as well. Since $\phi$ is an isomorphism, $\phi^{-1}$ is also an isomorphism and we can repeat the proof swapping the roles of $G$ and $H$ to see that if $H$ is abelian, then so is $G$. \\
+
+As seen in the proof, all that we require is that $\phi: G \to H$ is a surjective homomorphism to show that $G$ being abelian implies $H$ being abelian. It does not need to be injective (and hence bijective), although bijectivity is required to prove the opposite direction.
+
+
+\item Let $G = (\bbr - \{0\}, \times)$ and $H = (\bbc - \{0\}, \times)$. In exercise 2 we showed that isomorphic groups have bijections between their subsets of elements with a specific order, so let's analyze the orders of elements in each group. In $G$, the equation $x^n = 1$ only has solutions $\pm 1$, so we see that the orders of all elements are:
+\begin{enumerate}
+\item[1]: 1 
+\item[2]: $-1$
+\item[$\infty$]: everything else
+\end{enumerate}
+Now consider the same equation in $H$. By the Fundamental Theorem of Algebra, $x^n = 1$ has $n$ solutions, so obviously we won't have the bijections we require. As an explicit example consider $n=4$; the solutions are $x = \pm 1, \pm i$. The order of $i$ and $-i$ is 4 in $H$, but there are no elements of order 4 in $G$. Therefore there is no isomorphism between $G$ and $H$.
+
+
+\item The two sets $\bbr$ and $\bbq$ have different cardinalities, so there is no bijection between them. No homomorphism between them can be an isomorphism because no map whatsoever can be bijective.
+
+
+\item 
+
+
+\item Just like in exercise 4, it suffices to show that there are a different number of elements with order 2 in $D_8$ and $Q_8$. In $D_8$ we have five such elements ($r^2, s, sr, sr^2, sr^3$), while in $Q_8$ we only have one ($-1$). For easy proofs see the multiplication tables in section 1.5.
+
+
+\item Again like in exercise 4, we want to compare the number of elements of order 2 in $S_m$ and $S_n$. From section 1.3 exercise 13 we know that the elements of order 2 are exactly products of disjoint 2-cycles, so we just need to count how many there are. Generalizing section 1.3 exercise 17, if we want a product of $k$ disjoint 2-cycles (obviously $2k < n$ otherwise this makes no sense), we have $n^{\underline{2k}}$ ways to pick the elements of $\{1, 2, \ldots, n\}$ in order. Then each cycle can be ordered in either way so we have to divide by 2 for each cycle, and finally the order of the cycles doesn't matter so we divide by $k!$. Summing over all possible $k$ gives us the number of elements of order 2 to be
+\begin{equation}
+f(n) = \sum_{k=1}^{\left\lfloor\frac{n}{2}\right\rfloor} f_k(n)
+\end{equation}
+where
+\begin{equation}
+f_k(n) = \frac{n^{\underline{2k}}}{2^k k!} = \begin{cases}
+\frac{n!}{2^k (n-2k)!k!} &, n\geq 2k\\
+0 &, n<2k
+\end{cases} \label{eq:1.4.8}
+\end{equation}
+is the number of elements that are a product of $k$ disjoint 2-cycles. If $f(n)$ is different for all $n \in \bbn$, then no symmetric groups are isomorphic. The easiest way to prove this is to show that each $f_k(n)$ is an increasing function, and $f_1$ is strictly increasing. The first part matters because otherwise some terms might go down and balance out the increase of other terms. \\
+
+For the first part, $f_k(n) = 0$ if $n<2k$ because we can't make $k$ disjoint 2-cycles from less than $2k$ elements. When we reach $n=2k$ we have $f_k(2k) = \frac{(2k)!}{2^k k!} > 0$. After that, we can just compare terms:
+\begin{equation}
+\frac{f_k(n+1)}{f_k(n)} = \frac{\frac{(n+1)!}{2^k ((n+1)-2k)!k!}}{\frac{n!}{2^k (n-2k)!k!}} = \frac{\frac{(n+1)n!}{ (n+1-2k)(n-2k)!}}{\frac{n!}{(n-2k)!}} = \frac{n+1}{n+1-2k} > 1
+\end{equation}
+so each $f_k$ is strictly increasing once it stops being zero. \\
+
+In the case where $k=1$, $f_1$ stops being zero once $n = 2k = 2$. Therefore $f_1(1) = 0$, $f_1(2) > 0$, and from the above general proof we know $f_1(n+1) > f(n)$ for $n\geq 2$. Therefore $f(n)$ is different for every $n \in N$.
+
+
+\item Again again again, consider the number of elements of order 2. For $S_4$ we have
+\begin{equation}
+f(4) = \frac{4!}{2^1(4-2\cdot1)!1!} + \frac{4!}{2^2(4-2\cdot2)!2!} = \frac{24}{2\cdot 2\cdot 1} + \frac{24}{4\cdot 1\cdot 2} = 6 + 3 = 9\ .
+\end{equation}
+For $D_{24}$, all elements are of the form $r^k$ or $sr^k$ for $k = 0,\ldots,11$. In the first case only $r^6$ has order two; in the second case all twelve elements have order two since 
+\begin{equation}
+(sr^k)^2 = (sr^k)(sr^k) = (sr^k)(r^{-k}s) = s^2 = 1\ . 
+\end{equation}
+Therefore $D_{24}$ has 13 elements of order 2.
+
+
+\item AAAAAAAAAAA
+
+
+\item Let $G = A\times B$ and $H = B\times A$. We want to show that the obvious candidate $\phi: (a,b) \mapsto (b,a)$ is an isomorphism. First check that it's a homomorphism, using $\cdot$ for multiplication in $G$, $\star$ for multiplication in $H$, and no symbol for multiplication in $A$ or $B$:
+\begin{equation}
+\phi((a_1,b_1) \cdot (a_2,b_2)) = \phi((a_1a_2,b_1b_2)) = (b_1b_2,a_1a_2) = (b_1,a_1) \star (b_2,a_2) = \phi(a_1,b_1) \star \phi(a_2,b_2)\ .
+\end{equation}
+It's obvious that $\phi$ is a bijection, but anyway, it's injective because the preimage of each $(b,a)$ is exactly one element $(a,b)$, and it's surjective because every element in $B\times A$ can be written in the form $(b,a)$ for some $a \in A$ and $b \in B$.
+
+
+\item The obvious map is $\phi: ((a,b),c) \mapsto (a,(b,c))$. First, show it's a homomorphism:
+\begin{align}
+\phi(((a_1,b_1),c_1) \cdot ((a_2,b_2),c_2)) &= \phi( ((a_1,b_1)(a_2,b_2),c_1c_2) ) \\
+&= \phi((a_1a_2,b_1b_2),c_1c_2) \\
+&= (a_1a_2,(b_1b_2,c_1c_2)) \\
+&= (a_1a_2,(b_1,c_1)(b_2,c_2)) \\
+&= (a_1,(b_1,c_1))(a_2,(b_2,c_2)) \\
+&= \phi(((a_1,b_1),c_1)) \cdot \phi(((a_2,b_2),c_2))
+\end{align}
+then the argument for bijectivity is the same as the previous exercise; the preimage of $(a,(b,c))$ is a one-element set, and every element of $A \times (B \times C)$ can be written $(a,(b,c))$.
+
+
+\item Just go down the list here:
+\begin{enumerate}
+\item \underline{Closure}: We want to show that if $a, b \in \im\phi$, then so is $ab$. The preimages of both $a$ and $b$ are nonempty, so choose some $x$ and $y$ such that $\phi(x) = a$ and $\phi(y) = b$. Then $ab = \phi(x)\phi(y) = \phi(xy) \in \im\phi$.
+\item \underline{Associativity}: Since $\im\phi \subset H$, we inherit associativity from the group structure of $H$.
+\item \underline{Identity}: From exercise 1, we know that $\phi(1_G) = 1_H$ so the $1 \in \im\phi$.
+\item \underline{Inverse}: Also from exercise 1, $\phi(x^{-1}) = \phi(x)^{-1}$ for all $x \in G$, so for all $a \in \im\phi$, we know that $a^{-1} \in \im\phi$ as well.
+\end{enumerate}
+
+
+
+
+
+\end{enumerate}
 
 
 \end{document}
