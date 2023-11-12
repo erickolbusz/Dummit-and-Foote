@@ -1313,7 +1313,10 @@ $-k$ & $-k$ & $k$ & $-j$ & $j$ & $i$ & $-i$ & 1 & $-1$ \\ \hline
 \end{enumerate}
 
 
-\item {\color{red} todo}
+\item Obviously we need two of $i,j,k$ to get the third, but we also need to include $-1$ and the fact that it commutes with everything. To simplify products we also need that $i,j,k$ square to $-1$:
+\begin{equation}
+Q_8 = \left\langle\, i,j,-1 \ \vert\ i^2=j^2=-1, (-1)^2=1, (-1)i=i(-1), (-1)j=j(-1), ij=(-1)ji\, \right\rangle
+\end{equation}
 
 
 \end{enumerate}
@@ -1406,7 +1409,7 @@ Now consider the same equation in $H$. By the Fundamental Theorem of Algebra, $x
 \item The two sets $\bbr$ and $\bbq$ have different cardinalities, so there is no bijection between them. No homomorphism between them can be an isomorphism because no map whatsoever can be bijective.
 
 
-\item 
+\item {\color{red} todo}
 
 
 \item Just like in exercise 4, it suffices to show that there are a different number of elements with order 2 in $D_8$ and $Q_8$. In $D_8$ we have five such elements ($r^2, s, sr, sr^2, sr^3$), while in $Q_8$ we only have one ($-1$). For easy proofs see the multiplication tables in section 1.5.
@@ -1475,6 +1478,172 @@ then the argument for bijectivity is the same as the previous exercise; the prei
 \item \underline{Inverse}: Also from exercise 1, $\phi(x^{-1}) = \phi(x)^{-1}$ for all $x \in G$, so for all $a \in \im\phi$, we know that $a^{-1} \in \im\phi$ as well.
 \end{enumerate}
 
+
+\item \begin{enumerate}
+\item \underline{Closure}: For $x,y \in G$, if $x,y \in \ker \phi$, then $\phi(xy) = \phi(x)\phi(y) = 1_H 1_H = 1_H$ so $xy \in \ker \phi$.
+\item \underline{Associativity}: Inherited from $G$ this time.
+\item \underline{Identity}: Again, from exercise 1, $\phi(1_G) = 1_H$.
+\item \underline{Inverse}: Using the above, $1_H = \phi(1_G) = \phi(x\cdot x^{-1}) = \phi(x)\phi(x^{-1})$ for any $x \in G$, so if $\phi(x) = 1_H$ then we find that $\phi(x^{-1}) = 1_H$ as well.
+\end{enumerate}
+
+
+\item I'm assuming the groups in question are $(\bbr^2, +)$ and $(\bbr, +)$. Given two elements $(a,b)$ and $(c,d)$ of $\bbr^2$,
+\begin{equation}
+\pi((a,b)+(c,d)) = \pi((a+c,b+d)) = a+c = \pi((a,b)) + \pi((c,d))\ .
+\end{equation}
+The kernel is $\{(0,y)\,\vert\, y\in\bbr \}$, the ``y axis''.
+
+
+\item This is pretty much just the previous exercise without the plus signs. Let $(a_1,b_1)$ and $(a_2,b_2)$ be elements of $G$. For the first projection,
+\begin{equation}
+\pi_1((a_1,b_1)\cdot(a_2,b_2)) = \pi_1((a_1a_2,b_1b_2)) = a_1a_2 = \pi_1((a_1,b_1))\cdot\pi_1((a_2,b_2))\ .
+\end{equation}
+Likewise
+\begin{equation}
+\pi_2((a_1,b_1)\cdot(a_2,b_2)) = \pi_2((a_1a_2,b_1b_2)) = b_1b_2 = \pi_2((a_1,b_1))\cdot\pi_2((a_2,b_2))\ .
+\end{equation}
+The kernel of $\pi_1$ is $(1_A,B)$; the kernel of $\pi_2$ is $(A,1_B)$.
+
+
+\item If $\phi: g \mapsto g^2$ is a homomorphism, then, for arbitrary $x,y \in G$,
+\begin{equation}
+\phi(xy) = \phi(x)\phi(y) \implies (xy)^{-1} = x^{-1}y^{-1} \implies y^{-1}x^{-1} = x^{-1}y^{-1}\ .
+\end{equation}
+Since every element in $G$ is the inverse of some other element, this tells us that $xy = yx$ for all $x,y$. In the other direction, if $G$ is abelian then
+\begin{equation}
+xy = yx \implies \phi(xy) = \phi(yx) = (yx)^{-1} = x^{-1}y^{-1} = \phi(x)\phi(y)\ .
+\end{equation}
+
+
+\item If $\phi: g \mapsto g^2$, then
+\begin{equation}
+\phi(xy) = (xy)^2 = xyxy \label{eq:1.6.18a}
+\end{equation}
+and
+\begin{equation}
+\phi(x)\phi(y) = x^2y^2 = xxyy\ . \label{eq:1.6.18b}
+\end{equation}
+If $\phi$ is a homomorphism then, left-canceling $x$ and right-canceling $y$, we find $yx = xy$ hence $G$ is abelian. If $G$ is abelian, then we can commute $x$ and $y$ in \eqref{eq:1.6.18a} to get $xyxy = xxyy$ and we see that \eqref{eq:1.6.18a} and \eqref{eq:1.6.18b} are equal.
+
+
+\item {\color{red} todo}
+
+
+\item Let $\phi_1, \phi_2 \in \text{Aut}(G)$.
+\begin{enumerate}
+\item \underline{Closure}: The composition of two bijections is also a bijection so $\phi_1 \circ \phi_2$ is a bijection. Showing that it's a homomorphism is also straightforward:
+\begin{equation}
+\phi_1(\phi_2(xy)) = \phi_1(\phi_2(x)\phi_2(y)) = \phi_1(\phi_2(x))\phi_1(\phi_2(y))
+\end{equation}
+since $\phi_2(x)$ and $\phi_2(y)$ are just some elements of $G$.
+\item \underline{Associativity}: Function composition is associative.
+\item \underline{Identity}: The identity map $I: g \mapsto g$ is an isomorphism since it's a bijection and obviously $\phi(xy) = \phi(x)\phi(y)$. This is also the identity in $\text{Aut}(G)$ since $\phi \circ I = I \circ \phi = \phi$ for all functions $\phi$.
+\item \underline{Inverse}: For a given $\phi$, $\phi^{-1}$ exists since $\phi$ is a bijection. Then If $\phi(xy) = \phi(x)\phi(y)$ for all $x,y \in G$ then 
+\begin{equation}
+\phi(\phi^{-1}(x)\phi^{-1}(y)) = \phi(\phi^{-1}(x))\phi(\phi^{-1}(y)) = xy = \phi(\phi^{-1}(xy))
+\end{equation}
+so $\phi^{-1}(x)\phi^{-1}(y) = \phi^{-1}(xy)$ (applying $\phi^{-1}$ to both sides) and $\phi^{-1}$ is a homomorphism.
+\end{enumerate}
+
+
+\item For a given nonzero $k$ we want to show that $f_k: q \mapsto kq$ is injective and surjective.
+\begin{enumerate}
+\item \underline{Injective}: If $f_k(q) = f_k(r)$ then $kq = kr$, dividing by $k$ we get $q=r$.
+\item \underline{Surjective}: Assume $\im f_k \subsetneq \bbq$. Then there exists $y \in Q$ such that there does not exist any $q$ such that $y = kq$. But $\frac{y}{k}$ is such a $q$.
+\end{enumerate}
+
+
+\item For $x \in A$, the map is $\phi: x \to x^a$. Then, for arbitrary $x,y$, we have $\phi(x)\phi(y) = x^ky^k = (xy)^k = \phi(xy)$ where the hard equality is from exercise 1.1.24. If $k=-1$, then:
+\begin{enumerate}
+\item \underline{Injective}: If $\phi(x) = \phi(y)$ then $x^{-1} = y^{-1}$, so
+\begin{equation}
+yy^{-1} = 1 = xx^{-1} = xy^{-1} \implies y = x\ .
+\end{equation}
+\item \underline{Surjective}: For all $x \in A$, the inverse $x^{-1}$ exists and $\phi(x^{-1}) = x$.
+\end{enumerate}
+
+
+\item {\color{red} todo}
+
+
+\item From exercise 1.2.6, if we define $t = xy$, then $tx = xt^{-1}$. If $\abs{xy} = n$, then $t^n = 1$. We also know that $x^2 = 1$. Since $G = \left\langle\, x,y\, \right\rangle$ and $y = x^{-1}t$, we see that $G = \left\langle\,  x,t\,  \right\rangle$. Then the presentation is $G = \left\langle\,  x,t\ \vert\ x^2=t^n=1, tx=xt^{-1}\, \right\rangle$, which is the usual presentation of $D_{2n}$.
+
+
+\item Oh boy
+\begin{enumerate}
+\item Let $M_\theta = \begin{bmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta\end{bmatrix}$. For any $\theta$, $\det M = 1$ so $\abs{Mv} = \abs{v}$ for all $v \in \bbr^2$ and it suffices to study the action of $M$ on the unit circle. Let $v = (\cos\phi,\, \sin\phi)$ be an arbitrary unit vector. Then 
+\begin{equation}
+Mv = (\cos\phi\cos\theta-\sin\phi\sin\theta,\, \cos\phi\sin\theta+\sin\phi\cos\theta)
+\end{equation}
+and the (cosine of the) angle between them is given as
+\begin{align}
+\frac{v \cdot Mv}{\abs{v}\abs{Mv}} &= \frac{\left( \cos^2\phi\cos\theta-\cos\phi\sin\phi\sin\theta \right) + \left( \cos\phi\sin\phi\sin\theta+\sin^2\phi\cos\theta \right)}{1\cdot 1} \\
+&= \cos^2\phi\cos\theta + \sin^2\phi\cos\theta \\
+&= \cos\theta\left(\cos^2\phi + \sin^2\phi\right) \\
+&= \cos\theta
+\end{align}
+where
+\begin{align}
+\abs{Mv}^2 &= \left( \cos\phi\cos\theta-\sin\phi\sin\theta \right)^2 + \left( \cos\phi\sin\theta+\sin\phi\cos\theta \right)^2 \\
+&= \left( \cos^2\phi\cos^2\theta + \sin^2\phi\sin^2\theta - 2\cos\phi\sin\phi\cos\theta\sin\theta \right) \nonumber \\
+&\ \ \ \ + \left( \cos^2\phi\sin^2\theta+ \sin^2\phi\cos^2\theta + 2\cos\phi\sin\phi\cos\theta\sin\theta \right) \\
+&= \cos^2\phi\cos^2\theta + \sin^2\phi\sin^2\theta + \cos^2\phi\sin^2\theta+ \sin^2\phi\cos^2\theta \\
+&= \cos^2\phi(\cos^2\theta + \sin^2\theta) + \sin^2\phi(\cos^2\theta + \sin^2\theta) \\
+&= \cos^2\phi + \sin^2\phi \\
+&= 1
+\end{align}
+which means that $\theta$ is the angle between $v$ and $Mv$. However, we don't know if $v$ was rotated clockwise or counterclockwise. We can see what happens by looking at a specific point that's easy to work with: $\phi = 0$, corresponding to $v = (1,\,0)$. Then $Mv = (\cos\theta,\,\sin\theta)$ which is a counterclockwise rotation.
+\item It suffices to show that $\phi(r)^n = \phi(s)^2 = 1$ and $\phi(s)\phi(r) = \phi(r^{-1})\phi(s)$ (see ``example 1'' in this section on page 39). We're given that
+\begin{equation}
+\phi(r) = \begin{bmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta\end{bmatrix},\ \phi(s) = \begin{bmatrix}0&1\\1&0\end{bmatrix}
+\end{equation}
+and $n\theta = 2\pi$. We just showed that $\phi(r)$ is a counterclockwise rotation of $\theta$, so $\phi(r)^n$ is a counterclockwise rotation of $n\theta = 2\pi \equiv 0$ i.e. $\phi(r)^n$ is the identity. It's also trivial to show that $\phi(s)$ squares to the identity matrix. To show the last piece we first note that since $\phi(r)$ is a counterclockwise rotation of $\theta$, $\phi(r)^{-1}$ must correspond to a clockwise rotation of $\theta$, or equivalently a counterclockwise rotation of $-\theta$.
+\begin{align}
+\phi(s)\phi(r) &= \begin{bmatrix}0&1\\1&0\end{bmatrix}\begin{bmatrix}\cos\theta & -\sin\theta \\ \sin\theta & \cos\theta\end{bmatrix} = \begin{bmatrix}\sin\theta & \cos\theta \\ \cos\theta & -\sin\theta\end{bmatrix} \\
+\phi(r^{-1})\phi(s) &= \begin{bmatrix}\cos(-\theta) & -\sin(-\theta) \\ \sin(-\theta) & \cos(-\theta)\end{bmatrix}\begin{bmatrix}0&1\\1&0\end{bmatrix} = \begin{bmatrix}\cos\theta & \sin\theta \\ -\sin\theta & \cos\theta\end{bmatrix}\begin{bmatrix}0&1\\1&0\end{bmatrix} = \begin{bmatrix}\sin\theta & \cos\theta \\ \cos\theta & -\sin\theta\end{bmatrix}
+\end{align}
+\item We want to show that $\phi(g)$ is a different matrix for each $g \in D_{2n}$. All elements of $D_{2n}$ are $r^k$ or $sr^k$ for $k = 0,1,\ldots,n-1$. These look like
+\begin{align}
+\phi(r^k) &= \begin{bmatrix}\cos k\theta & -\sin k\theta \\ \sin k\theta & \cos k\theta\end{bmatrix} \\
+\phi(sr^k) &= \phi(s)\phi(r^k) = \begin{bmatrix}\sin k\theta & \cos k\theta \\ \cos k\theta & -\sin k\theta\end{bmatrix}
+\end{align}
+The two are easily distinguishable since the diagonal elements are the same for $\phi(r^k)$ and the off-diagonal elements are the same for $\phi(sr^k)$; the other two elements are negatives of each other. For the $\phi(r^k)$s, the image of $(1,0) = (\cos k\theta,\, \sin k\theta)$ is different for every $k=0,1,\ldots n-1$. Likewise $(1,0) \mapsto (\sin k\theta,\, \cos k\theta)$ is different for each $\phi(sr^k)$.
+\end{enumerate}
+
+
+
+\item Use the presentation of $Q_8$ given in exercise 1.5.3. We're given
+\begin{equation}
+\phi(i) = \begin{bmatrix}\sqrt{-1}&0\\0&-\sqrt{-1}\end{bmatrix},\ \phi(j) = \begin{bmatrix}0&-1\\1&0\end{bmatrix}
+\end{equation}
+and we want to show that $\phi$ respects the group presentation. For ease of reading, list all the relations:
+\begin{enumerate}
+\item \underline{$i^2 = j^2 = -1$}: Define the element $\phi(-1)$ to be $\phi(i)^2$. We want to show that $\phi(i)^2 = \phi(j)^2$:
+\begin{align}
+\phi(-1) := \phi(i)^2 &= \begin{bmatrix}\sqrt{-1}&0\\0&-\sqrt{-1}\end{bmatrix}^2 = \begin{bmatrix}-1&0\\0&-1\end{bmatrix} = -I_2 \\
+\phi(j)^2 &= \begin{bmatrix}0&-1\\1&0\end{bmatrix}^2 = \begin{bmatrix}-1&0\\0&-1\end{bmatrix} = -I_2
+\end{align}
+where $I_2$ is the 2-by-2 identity matrix.
+\item \underline{$(-1)^2 = 1$}: Obviously $(-I_2)^2 = I_2$.
+\item \underline{$(-1)i = i(-1)$}: $\phi(-1)$ is a scalar multiple of the identity matrix and therefore commutes with every other matrix in $GL_2(\bbc)$.
+\item \underline{$(-1)j = j(-1)$}: Same as above.
+\item \underline{$ij = (-1)ji$}: Just bash out both sides
+\begin{align}
+\phi(i)\phi(j) &= \begin{bmatrix}\sqrt{-1}&0\\0&-\sqrt{-1}\end{bmatrix} \begin{bmatrix}0&-1\\1&0\end{bmatrix} =  \begin{bmatrix}0&-\sqrt{-1}\\-\sqrt{-1}&0\end{bmatrix}  \\
+\phi(-1)\phi(j)\phi(i) &= -I_2\begin{bmatrix}0&-1\\1&0\end{bmatrix} \begin{bmatrix}\sqrt{-1}&0\\0&-\sqrt{-1}\end{bmatrix} = -I_2\begin{bmatrix}0&\sqrt{-1}\\\sqrt{-1}&0\end{bmatrix} = \begin{bmatrix}0&-\sqrt{-1}\\-\sqrt{-1}&0\end{bmatrix}
+\end{align}
+To show that $\phi$ is injective we can just bash out all eight matrices and observe that they're all different. We calculated $\phi(k) = \phi(i)\phi(j)$ in the last relation, and we know that multiplication by $\phi(-1)$ is just entrywise multiplication by $-1$, so we're pretty much done:
+\begin{align}
+\phi(1) &= I_2 \\
+\phi(-1) &= -I_2 \\
+\phi(i) &= \begin{bmatrix}\sqrt{-1}&0\\0&-\sqrt{-1}\end{bmatrix} \\
+\phi(-i) &= \begin{bmatrix}-\sqrt{-1}&0\\0&\sqrt{-1}\end{bmatrix} \\
+\phi(j) &= \begin{bmatrix}0&-1\\1&0\end{bmatrix} \\
+\phi(-j) &= \begin{bmatrix}0&1\\-1&0\end{bmatrix} \\
+\phi(k) &= \begin{bmatrix}0&-\sqrt{-1}\\-\sqrt{-1}&0\end{bmatrix} \\
+\phi(-k) &= \begin{bmatrix}0&\sqrt{-1}\\\sqrt{-1}&0\end{bmatrix}
+\end{align}
+\end{enumerate}
 
 
 
