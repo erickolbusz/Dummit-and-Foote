@@ -13,7 +13,7 @@
 
 \newcommand{\ints}{\mathbb{Z}} 
 \newcommand{\reals}{\mathbb{R}}
-\newcommand{\rats}{\mathbb{Q}}
+\newcommand{\rats}{\mathbb{Q}} 
 \newcommand{\comps}{\mathbb{C}}
 \newcommand{\set}[1]{ \{ #1 \} }
 \newcommand{\mult}{\star}
@@ -22,6 +22,9 @@
 \newcommand{\id}{ \bm{1} }
 \newcommand{\iso}{ \equiv }
 \newcommand{\comp}{ \circ }
+\newcommand{\Aut}{ \mbox{Aut} }
+\newcommand{\Stab}{ \mbox{Stab} }
+\newcommand{\sheaf}{ \mathcal{O} }
 \renewcommand{\bar}{\overline}
 \DeclareMathOperator*{\argmin}{\arg\!\min}
 
@@ -530,13 +533,13 @@ So $|sr^{k}| = 2$. On the other hand, the elements $r^k$ form a cyclic subgroup 
 |sr^k| &= 2
 \end{align*}
 \end{enumerate}
-\subsubsection{}
+\subsubsection{}\label{ex2p2}
 $x = sr^k$. So $rx = rsr^k = s\inv{r}r^k = sr^{k-1} = sr^k\inv{r} = x\inv{r}$
-\subsubsection{}
+\subsubsection{}\label{ex2p3}
 $|sr^k| = 2$ was shown in \ref{ex2p1}. And note that\\
 $r^k = 1r^k = 1^kr^k = (1r)^k = (s^2r)^k = (s(sr))^k$,\\
 and $sr^k = s(s(sr))^k$
-\subsubsection{}
+\subsubsection{}\label{ex2p4}
 Using the method of \ref{ex11} again, $\mbox{lcm}(k,2k) = 2k$, so $|z|=|r^k|=\frac{2k}{k} = 2$. $z$ obviously commutes with the $r^i$. And
 \begin{align*}
 z(sr^i) &= r^ksr^i\\
@@ -567,12 +570,12 @@ sr^{j+i} &= sr^{j-i}\\
 \implies r^{j+i} &= r^{j-i}
 \end{align*}
 In particular, the above equality has to apply to $j=n$. The only possible setting of $0 \leq i < n$ that fulfills this (other than $i=0$, which gives the identity) is $i=k$
-\subsubsection{}
+\subsubsection{}\label{ex2p5}
 Follow the previous exercise and note that we can't set $i=n/2$
-\subsubsection{}
+\subsubsection{}\label{ex2p6}
 Note: $t(yx) = (xy)(yx) = x(yy)x = xx = 1$, so $\inv{t} = yx$,\\
 and $tx = xyx = x\inv{t}$.
-\subsubsection{}
+\subsubsection{}\label{ex2p7}
 \begin{itemize}
 \item The old relations come from the new. Note that $\inv{b} = \inv{r}\inv{s}$, and $b^2 = 1 \implies b = \inv{b}$. So we have\\
 $s^2 = a^2 = 1$\\
@@ -1108,4 +1111,384 @@ yz &= \phi(a)\phi(b)\\
 \end{align*}
 So closure is satisfied.\\
 Now, given $y \in \phi(G)$, we have $y=\phi(a)$ for some $a \in G$. Now let $z = \phi(\inv{a})$, so $z \in \phi(G)$. Then from \ref{ex6p1}, we have in fact that $z = \inv{\phi(a)}$, i.e. $z = \inv{y}$. So inverses are in $\phi(G)$
+\subsubsection{}\label{ex6p14}
+\begin{itemize}
+\item Closure:\\
+If $g,h \in \ker \phi$, then
+\begin{align*}
+\phi(gh) &= \phi(g)\phi(h)\\
+&= 1\cdot 1\\
+&= 1\\
+\implies gh &\in \ker\phi
+\end{align*}
+\item Inverses:\\
+Let $g\in\ker\phi$. Then
+\begin{align*}
+\implies 1 &= \inv{\phi(g)}\phi(g)\\
+\implies 1 &= \inv{\phi(g)}\cdot 1\\
+\implies 1 &= \inv{\phi(g)}\\
+\implies 1 &= \phi(\inv{g})\\
+\implies \inv{g} &\in \ker\phi
+\end{align*}
+\end{itemize}
+Now we shall prove a lemma which we will henceforth use without mention:
+\begin{lemma}
+A map $\phi: G \to H$ is injective if and only if\\
+$\forall g \in G: \phi(g) = 1 \implies g =1$
+\end{lemma}
+\begin{proof}
+\begin{align*}
+\phi \mbox{ injective }\\
+\iff \forall g,h\in G: \phi(g)=\phi(h) &\implies g=h\\
+\iff \forall g,h\in G: \phi(g)\inv{\phi(h)}=1 &\implies g\inv{h} = 1\\
+\iff \forall g,h\in G: \phi(g)\phi(\inv{h})=1 &\implies g\inv{h} = 1\\
+\iff \forall g,h\in G: \phi(g\inv{h})=1 &\implies g\inv{h} = 1\\
+\iff \forall g\in G: \phi(g)=1 &\implies g = 1\\
+\end{align*}
+\end{proof}
+And furthermore, using the lemma above, we have
+\begin{align*}
+\phi \mbox{ injective }\\
+\iff \forall g\in G: \phi(g)=1 &\implies g = 1\\
+\iff \forall g\in G: g\in\ker\phi &\implies g = 1\\
+\iff \ker\phi &= 1
+\end{align*}
+\subsubsection{}\label{ex6p15}
+This follows from the next exercise
+\subsubsection{}\label{ex6p16}
+Denote $\pi = \pi_1$ and note:
+\begin{align*}
+\pi((a,c)(b,d)) &= \pi(ab,cd)\\
+&= ab\\
+&= \pi(a,c)\pi(b,d)
+\end{align*}
+so $\pi$ is a homomorphism. Furthermore, since $\pi(a,b) = a$, we have that\\
+$\pi(a,b) = 1 \iff a = 1$. So, clearly,
+\begin{equation}
+\ker\pi = \set{(1,b) \in A\times B | b \in B}
+\end{equation}
+(in $\reals^2$, the notation is additive and amounts to the line $x=0$)\\
+The calculations for $\pi_2$ are analagous.
+\subsubsection{}\label{ex6p17}
+Denote the map in question by $\phi$, and recall that $\inv{(gh)} = \inv{h}\inv{g}$. So
+\begin{align*}
+\phi \mbox{ is a homomorphism}\\
+\iff \forall g,h \in G: \phi(\inv{g}\inv{h}) &= \phi(\inv{g})\phi(\inv{h})\\
+\iff \forall g,h \in G: \inv{(\inv{g}\inv{h})} &= \inv{(\inv{g})}\inv{(\inv{h})}\\
+\iff \forall g,h \in G: hg &= gh
+\end{align*}
+\subsubsection{}\label{ex6p18}
+\begin{align*}
+\phi \mbox{ is a homomorphism}\\
+\iff \forall g,h\in G: \phi(gh) &= \phi(g)\phi(h)\\
+\iff \forall g,h\in G: (gh)^2 &= g^2h^2\\
+\iff \forall g,h\in G: ghgh &= gghh\\
+\iff \forall g,h\in G: hg &= gh & \mbox{(left multiply by $\inv{g}$, right multiply by $\inv{h}$)}\\
+\end{align*}
+\subsubsection{}\label{ex6p19}
+Denote the morphism by $\phi$. We are giving $G \subset \comps$ the multiplicative structure (which is ok, because $0 \notin \comps$)
+\begin{align*}
+\phi(z)\phi(y) &= z^ky^k\\
+&= (zy)^k & \mbox{($\comps$ is abelian)}\\
+&= \phi(zy)
+\end{align*}
+so $\phi$ is a morphism.\\
+Now let $x\in G$ so $x^n = 1$ for some $n \in \ints^+$. If there exists $z \in \comps$ such that $\phi(z) = x$, then note that
+\begin{align*}
+1 &= x^n\\
+&= \phi(z)^n\\
+&= (z^k)^n\\
+&= z^{kn}\\
+\implies z &\in G
+\end{align*}
+But the equation $z^k - x = 0$ has $k$ solutions in $\comps$, which are all in $G$ by the above argument, so the map $\phi$ is indeed surjective (but not injective, because of the $k > 1$ solutions)
+\subsubsection{}\label{6p20}
+\begin{itemize}
+\item Associativity follows from the associativity of function composition
+\item The identity map is an isomorphism which preserves any map it is composed with, so it forms the identity in $\Aut G$
+\item By definition, isomorphisms have (unique) inverses, which themselves are isomorphisms, which upon composition yield the very identity established above.
+\item Closure: The composition of two isomorphisms is an isomorphism
+\end{itemize}
+\subsubsection{}\label{6p21}
+Denote the map as $\phi$. Then
+\begin{align*}
+\phi(q + r) &= k(q+r)\\
+&= kq + kr\\
+&= \phi(q) + \phi(r)
+\end{align*}
+so $\phi$ is a homomorphism\\
+\begin{itemize}
+\item Injectivity:
+Let $q \in \rats$, so $q = a/b$ for $a\in \ints, b\in\ints^{\times}$. Then\\
+\begin{align*}
+\phi(q) &= 0\\
+\implies kq &= 0\\
+\implies k = 0 &\mbox{or } q = 0 &\mbox{(by the zero product property)}
+\end{align*}
+But $k$ is nonzero by assumption, so $q=0$. 
+\item Surjectivity:
+Let $s\in\rats$, with $s=a/b$. Then define $t=\frac{a}{kb}$ ($k\neq 0$, so this works). Then
+\begin{align*}
+\phi(t) &= kt\\
+&= k(\frac{a}{kb})\\
+&= a/b\\
+&= s
+\end{align*}
+\end{itemize}
+\subsubsection{}\label{ex6p22}
+Let $\phi$ denote the map. Then 
+\begin{align*}
+\phi(ab) &= (ab)^k\\
+&= a^kb^k & \mbox{($A$ abelian)}
+&= \phi(a)\phi(b)
+\end{align*}
+so $\phi$ is a homomorphism.
+
+\begin{itemize}
+\item Injectivity:\\
+Now let $k = -1$. Then 
+\begin{align*}
+\phi(a) &= 1\\
+\implies \inv{a} &= 1\\
+\implies 1 &= a\\
+\end{align*}
+
+\item Surjectivity:\\
+Let $b \in A$. Then
+\begin{align*}
+\phi(\inv{b}) &= \inv{(\inv{b})}\\
+&= b
+\end{align*}
+\end{itemize}
+\subsubsection{}\label{ex6p23}
+idk????????
+\subsubsection{}\label{ex6p24}
+Following \ref{ex2p6}, we have that if we set $t=xy$ in $G$, then
+\begin{align*}
+tx &= x\inv{t}\\
+x^2 &= 1\\
+t^n &= 1
+\end{align*}
+and also, $xt = x^2y =y$, so $x,t$ generate $G$. Now define a homomorphism by
+\begin{align*}
+\phi: G &\to D_{2n}\\
+t &\mapsto r\\
+s &\mapsto x
+\end{align*}
+Then we establish
+\begin{itemize}
+\item Injectivity:
+\begin{align*}
+\phi(t^mx^l) &= 1\\
+\implies r^ms^l &= 1
+\end{align*}
+which implies that $r^m,s^l=1$ (they both have to be $1$ because rotations can't invert reflections nor vice versa), which in turn implies that $n|m$ or $m=0$, and $2|l$ or $l=0$. which due to the relations on $t$ and $x$ implies that $t^mx^l = 1$
+\item Surjectivity:
+Let $r^ms^l \in D_{2n}$. Then clearly $t^mx^l \mapsto r^ms^l$
+\end{itemize}
+\subsubsection{}\label{ex6p25}
+\begin{enumerate}
+\item Basic linear algebra
+\item This and the next part clearly follows from the fact that rotations and reflections of regular polygons can be identified with rotations and reflections of the $xy$ plane. See the next exercise for what a more "explicit" computation would look like
+\item See above
+\end{enumerate}
+\subsubsection{}\label{ex6p26}
+To prove that $\phi$ is a homomorphism, we need to show that it is well-defined on powers of the generators that yield the identity. For convenience, I'll actually compute $\phi$ for all possible powers of generators
+\begin{align*}
+\phi(i) &= 
+\begin{pmatrix}
+\sqrt{-1} 	& 0\\
+0			& \sqrt{-1}
+\end{pmatrix}\\
+\phi(i^2) &= 
+\begin{pmatrix}
+-1 	& 0\\
+0	& -1
+\end{pmatrix}\\
+\phi(i^3) &= 
+\begin{pmatrix}
+-\sqrt{-1} 	& 0\\
+0	& -\sqrt{-1}
+\end{pmatrix}\\
+\phi(i^4) &= I\\
+\phi(j) &= 
+\begin{pmatrix}
+0 	&	-1\\
+1	&	0
+\end{pmatrix}\\
+\phi(j^2) &= 
+\begin{pmatrix}
+-1 	&	0\\
+0	&	-1
+\end{pmatrix}\\
+\phi(j^3) &= 
+\begin{pmatrix}
+0	&	1\\
+-1	&	0
+\end{pmatrix}\\
+\phi(j^4) &= I
+\end{align*}
+The fact that $i^4,j^4 \mapsto I$ confirms that this map is well defined and therefore a homomorphism. Furthermore, the image of any element under $\phi$ will be one of the first 4 matrices times one of the last 4 matrices. It's clear that this only amounts to $1$ in the case of $\phi(i^2)\phi(j^2)$ or $\phi(i^4)\phi(j^4)$, which means the map is injective since $i^2j^2,i^4j^4=1$.
+\subsection*{1.7}
+IN GENERAL, ACTIONS WILL BE DENOTED AS $\sigma$ AND PERMUTATION REPRESENTATIONS WILL BE DENOTED AS $\phi$
+\subsubsection{}\label{ex7p1}
+Follows directly from multiplicative associativity and identity
+\subsubsection{}\label{ex7p2}
+This is just the left regular action of $\ints$ on itself
+\subsubsection{}\label{ex7p3}
+\begin{itemize}
+\item Associativity
+\begin{align*}
+r(s(x,y)) &= r(x+sy,y)\\
+&= (x+sy + ry, y)\\
+&= (x+(s+r)y, y)\\
+&= (s+r)(x,y)
+\end{align*}
+\item Identity: 
+$0(x,y) = (x + 0y, y) = (x,y)$
+\end{itemize}
+\subsubsection{}\label{ex7p4}
+\begin{enumerate}
+	\item Kernel:
+		\begin{itemize}
+			\item Inverses:\\
+				
+				\begin{align*}
+				gb &\in \ker\sigma\\
+				\implies \forall b\in B: gb &= b\\
+				\implies \forall b\in B: b &= \inv{g}b\\
+				\implies \inv{g} &\in \ker\sigma
+				\end{align*}
+			\item Closure:\\
+				If $g,h\in \ker\sigma$, then given $b\in A$,\\
+				$(gh)b = g(hb) = gb = b$, so $gh \in ker\sigma$
+		\end{itemize}
+	\item Stabilizer\\
+		Denote the stabilizer of $a$ by $\Stab a$.
+		\begin{itemize}
+				\item Closure: If $g,h \in \Stab a$, then $(gh)a=g(ha)=ga=a$, so $gh \in \Stab a$
+				\item Inverses: If $g\in\Stab a$, then $ga=a \implies a=\inv{g}a\implies \inv{g} \in \Stab a$
+		\end{itemize}
+\end{enumerate}
+\subsubsection{}\label{ex7p5}
+Denote the action as $\sigma$ and the permutation representation as $\phi$. Then
+\begin{align*}
+g &\in \ker\sigma\\
+\iff \forall a\in A: ga&=a\\
+\iff \forall a\in A: \sigma(g,a)&=a\\
+\iff \forall a\in A: \phi(g)(a)&=a\\
+\iff \forall a\in A: \phi(g)(a)&=\id(a)\\
+\iff \phi(g)&=\id\\
+\iff g \in \ker\phi\\
+\end{align*}
+\subsubsection{}\label{ex7p6}
+$G$ acts faithfully on $A$ if and only if...
+\begin{align*}
+\forall g,h\in G: \phi(g) = \phi(h) &\implies g=h & \mbox{Definition of faithfulness, contrapos}\\
+\iff \phi & \mbox{is injective} & \mbox{Definition of injectivity}\\
+\iff \ker\phi &= \id & \mbox{\ref{ex6p14}}\\
+\iff \ker\sigma &= \id & \mbox{\ref{ex7p5}}\\
+\end{align*}
+\subsubsection{}\label{ex7p7}
+Let $\alpha\in\reals$ and suppose $\phi(\alpha) = \id$. Then
+\begin{align*}
+\forall(r_1,\ldots,r_n)\in\reals^n: \phi(\alpha)(r_1,\ldots,r_n) &= \id(r_1,\ldots,r_n)\\
+\implies \forall(r_1,\ldots,r_n)\in\reals^n: (\alpha r_1,\ldots,\alpha r_n) &= (r_1,\ldots,r_n)\\
+\end{align*}
+Which yields the equations 
+\begin{equation}
+\alpha r_i = r_i, i=1,\ldots n
+\end{equation}
+But left cancellation, we obtain $\alpha = 1$. Hence, the permutation representation $\phi$ is injective, i.e. the action $\sigma$ is faithful
+\subsubsection{}\label{ex7p8}
+\begin{enumerate}
+\item 
+\begin{itemize}
+\item Assocativity:
+\begin{align*}
+\delta(\sigma\set{a_1,\ldots,a_k}) &= \delta\set{\sigma(a_1),\ldots,\sigma(a_k)}\\
+&= \set{\delta(\sigma(a_1)),\ldots,\delta(\sigma(a_k))}\\
+&= \set{\delta\comp\sigma(a_1),\ldots,\delta\comp\sigma(a_k)}\\
+&= (\delta\comp\sigma)\set{a_1,\ldots,a_k}\\
+\end{align*}
+\item Identity: $\id\set{a_1,\ldots,a_k} = \set{\id(a_1),\ldots,\id(a_k)} = \set{a_1,\ldots,a_k}$
+\end{itemize}
+\item
+\begin{align*}
+(1\ 2)\set{1,2} &= \set{1,2}\\
+(1\ 2)\set{1,3} &= \set{2,3}\\
+(1\ 2)\set{1,4} &= \set{2,4}\\
+(1\ 2)\set{2,3} &= \set{1,3}\\
+(1\ 2)\set{2,4} &= \set{1,4}\\
+(1\ 2)\set{3,4} &= \set{3,4}\\
+\end{align*}
+\begin{align*}
+(1\ 2\ 3)\set{1,2} &= \set{2,3}\\
+(1\ 2\ 3)\set{1,3} &= \set{1,2}\\
+(1\ 2\ 3)\set{1,4} &= \set{2,4}\\
+(1\ 2\ 3)\set{2,3} &= \set{1,3}\\
+(1\ 2\ 3)\set{2,4} &= \set{3,4}\\
+(1\ 2\ 3)\set{3,4} &= \set{1,4}\\
+\end{align*}
+\end{enumerate}
+\subsubsection{}\label{ex7p9}
+\subsubsection{}\label{ex7p10}
+\subsubsection{}\label{ex7p11}
+\begin{align*}
+i &= 1 & \mbox{the identity}\\
+r &= (1\ 2\ 3\ 4)\\
+r^2 &= (1\ 3) (2\ 4)\\
+r^3 &= (1\ 4\ 3\ 2)\\
+s &= (2\ 4)
+rs &= (1\ 2)(3\ 4)\\
+r^2s &= (1\ 3)(2\ 4)\\
+r^3s &= (1\ 4)(2\ 3)\\
+\end{align*}
+\subsubsection{}\label{ex7p12}
+We take $D_{2n}$ to be a subgroup of $S_n$. Let $O$ denote the set of pairs of opposite vertices. Then by \ref{ex7p8}, we have an action $\sigma$ on the set $A$ of doubletons. We just have to show that the action is closed on $O \subset A$. We have $\sigma\set{a,b} = \set{\sigma(a),\sigma(b)}$. But note that any rotation or reflection preserves opposite vertices, and thus any sequence of rotations and reflections do as well, so $\sigma(a),\sigma(b)$ are guaranteed to be opposite to each other. Thus the action is closed.\\
+It's clear that the kernel consists of symmetries that maintain opposite vertices in their original positions, except possibly swapped. The symmetries that do this are the trivial symmetry, the reflection, the halfway rotation, and the composition of the latter two, so $\ker\sigma = \set{r^{\frac{n}{2}}, s, r^{\frac{n}{2}}s, i}$
+\subsubsection{}\label{ex7p13}
+Given $g\in G$,
+\begin{align*}
+\phi(g) &= \id\\
+\implies a\in G: \phi(g)(a) &= \id(a)\\
+\implies a\in G: ga &= a\\
+\implies a\in G: g&= 1\\
+\implies g &= 1
+\end{align*}
+Hence $\phi$ is injective (the action is faithful), and so the kernel is trivial.
+\subsubsection{}\label{ex7p14}
+Since $G$ is non-abelian, let $a,b \in G$ such that $ab \neq ba$. Then\\
+$a\cdot(b\cdot 1) = a\cdot(1b) = 1ba = ba$, but\\
+$(ab)\cdot 1 = 1ab = ab$\\
+So associativity isn't satisfied.
+\subsubsection{}\label{ex7p15}
+\begin{itemize}
+\item Identity: $1\cdot a = a\inv{1} = a1 = a$
+\item Associativity: $g\cdot(h\cdot a) = g\cdot(a\inv{h})=a\inv{h}\inv{g} = a\inv{gh} = (gh)\cdot a$
+\end{itemize}
+\subsubsection{}\label{ex7p16}
+\item Identity: $1\cdot a = 1a\inv{1} = a$
+\item Associativity: $h\cdot(g\cdot a) = h\cdot (ga\inv{g}) = hga\inv{g}\inv{h} = hga\inv{hg} = (hg)\cdot a$
+\subsubsection{}\label{ex7p17}
+Denote the conjugation by $g$ map as $\phi$. Then\\
+$\phi(xy)=gxy\inv{g}=gx\inv{g}gy\inv{g}=\phi(x)\phi(y)$\\
+so $\phi$ is a homomorphism. It also has the obvious two-sided inverse $x \mapsto \inv{g}xg$, so $\phi$ is an isomorphism. The deductions are trivial.
+\subsubsection{}\label{ex7p18}
+\begin{itemize}
+\item Reflexivity: $a = 1a \implies a \sim a$
+\item Symmetry: If $a \sim b$, there is $h \in H$ such that $a=hb$, but then $b=\inv{h}a$, so $b \sim a$
+\item Transitivity: Suppose $a\sim b$ and $b\sim c$, so there are $g,h\in H$ such that $a=gb$ and $b=hc$. Then $a=(gh)c$, so $a \sim c$
+\end{itemize}
+\subsubsection{}\label{ex7p19}
+Denote this map by $\phi$. 
+\begin{itemize}
+\item Injectivity $\phi(g)=\phi(h)\implies gx=hx \implies g=h$
+\item Surjectivity Let $o \in \sheaf$. Then $o=hx$ for some $h\in H$. But then clearly $\phi(h) = hx = o$.
+\end{itemize}
+Lagrange's theorem follows from the fact that the orbits partition $G$ (last exercise), so their orders must add up to $|G|$, and then noting that they are all the same order (this exercise)
+\subsubsection{}\label{ex7p20}
+\subsubsection{}\label{ex7p21}
+\subsubsection{}\label{ex7p22}
+\subsubsection{}\label{ex7p23}
 \end{document}
