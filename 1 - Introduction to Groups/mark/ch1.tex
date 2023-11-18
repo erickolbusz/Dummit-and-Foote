@@ -1329,7 +1329,7 @@ To prove that $\phi$ is a homomorphism, we need to show that it is well-defined 
 \phi(j^4) &= I
 \end{align*}
 The fact that $i^4,j^4 \mapsto I$ confirms that this map is well defined and therefore a homomorphism. Furthermore, the image of any element under $\phi$ will be one of the first 4 matrices times one of the last 4 matrices. It's clear that this only amounts to $1$ in the case of $\phi(i^2)\phi(j^2)$ or $\phi(i^4)\phi(j^4)$, which means the map is injective since $i^2j^2,i^4j^4=1$.
-\subsection*{1.7}
+\subsection{}
 IN GENERAL, ACTIONS WILL BE DENOTED AS $\sigma$ AND PERMUTATION REPRESENTATIONS WILL BE DENOTED AS $\phi$
 \subsubsection{}\label{ex7p1}
 Follows directly from multiplicative associativity and identity
@@ -1432,7 +1432,40 @@ But left cancellation, we obtain $\alpha = 1$. Hence, the permutation representa
 \end{align*}
 \end{enumerate}
 \subsubsection{}\label{ex7p9}
+\begin{align*}
+(1\ 2)(1,2) &= (2,1)\\
+(1\ 2)(1,3) &= (2,3)\\
+(1\ 2)(1,4) &= (2,4)\\
+(1\ 2)(2,3) &= (1,3)\\
+(1\ 2)(2,4) &= (1,4)\\
+(1\ 2)(3,4) &= (3,4)\\
+(1\ 2)(2,1) &= (1,2)\\
+(1\ 2)(3,1) &= (3,2)\\
+(1\ 2)(4,1) &= (4,2)\\
+(1\ 2)(3,1) &= (3,2)\\
+(1\ 2)(4,1) &= (4,2)\\
+(1\ 2)(4,3) &= (4,3)\\
+\end{align*}
+\begin{align*}
+(1\ 2\ 3)(1,2) &= (2,3)\\
+(1\ 2\ 3)(1,3) &= (2,1)\\
+(1\ 2\ 3)(1,4) &= (2,4)\\
+(1\ 2\ 3)(2,3) &= (3,1)\\
+(1\ 2\ 3)(2,4) &= (3,4)\\
+(1\ 2\ 3)(3,4) &= (1,4)\\
+(1\ 2\ 3)(2,1) &= (3,2)\\
+(1\ 2\ 3)(3,1) &= (1,2)\\
+(1\ 2\ 3)(4,1) &= (4,2)\\
+(1\ 2\ 3)(3,1) &= (1,2)\\
+(1\ 2\ 3)(4,1) &= (4,2)\\
+(1\ 2\ 3)(4,3) &= (4,1)\\
+\end{align*}
 \subsubsection{}\label{ex7p10}
+\begin{enumerate}
+\item If $k \leq n$, Then given $\set{a_1,\ldots,a_k}$, we can apply the nontrivial permutation $(a_1,\ldots,a_k)(a_{k+1},\ldots,a_n)$ on the set, which just shuffles the set, thus keeping it the same, so the action is not faithful.\\
+If $k>n$, then given $\set{a_1,\ldots, a_k}$, Then every permutation must contain some elements 
+\item
+\end{enumerate}
 \subsubsection{}\label{ex7p11}
 \begin{align*}
 i &= 1 & \mbox{the identity}\\
@@ -1468,8 +1501,10 @@ So associativity isn't satisfied.
 \item Associativity: $g\cdot(h\cdot a) = g\cdot(a\inv{h})=a\inv{h}\inv{g} = a\inv{gh} = (gh)\cdot a$
 \end{itemize}
 \subsubsection{}\label{ex7p16}
+\begin{itemize}
 \item Identity: $1\cdot a = 1a\inv{1} = a$
 \item Associativity: $h\cdot(g\cdot a) = h\cdot (ga\inv{g}) = hga\inv{g}\inv{h} = hga\inv{hg} = (hg)\cdot a$
+\end{itemize}
 \subsubsection{}\label{ex7p17}
 Denote the conjugation by $g$ map as $\phi$. Then\\
 $\phi(xy)=gxy\inv{g}=gx\inv{g}gy\inv{g}=\phi(x)\phi(y)$\\
