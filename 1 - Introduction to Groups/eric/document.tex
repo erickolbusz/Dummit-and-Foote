@@ -1485,7 +1485,11 @@ then the argument for bijectivity is the same as the previous exercise; the prei
 \item \underline{Identity}: Again, from exercise 1, $\phi(1_G) = 1_H$.
 \item \underline{Inverse}: Using the above, $1_H = \phi(1_G) = \phi(x\cdot x^{-1}) = \phi(x)\phi(x^{-1})$ for any $x \in G$, so if $\phi(x) = 1_H$ then we find that $\phi(x^{-1}) = 1_H$ as well.
 \end{enumerate}
-
+If $\phi$ is injective then, if $\phi(g) = \phi(1_G) = 1_H$ for some $g\in G$, then $g=1_G$. For the other direction we show the contrapositive: if there exist $g\neq h \in G$ such that $\phi(g) = \phi(h)$, then $\ker\phi \neq \{1_G\}$. Since $g\neq h$, $hg^{-1} \neq 1_G$, and
+\begin{equation}
+\phi(h) = \phi(hg^{-1}g) = \phi(hg^{-1})\phi(g) \implies 1_H = \phi(hg^{-1})
+\end{equation}
+by canceling $\phi(h)$ and $\phi(g)$ in $H$. We see that $hg^{-1} \in \ker\phi$.
 
 \item I'm assuming the groups in question are $(\bbr^2, +)$ and $(\bbr, +)$. Given two elements $(a,b)$ and $(c,d)$ of $\bbr^2$,
 \begin{equation}
@@ -1646,9 +1650,282 @@ To show that $\phi$ is injective we can just bash out all eight matrices and obs
 \end{enumerate}
 
 
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\addcontentsline{toc}{section}{1.7: Group Actions}
+\section*{\underline{1.7: Group Actions}}
+
+
+
+
+\addcontentsline{toc}{subsection}{Page 43-44 -- }
+\subsection*{\underline{Page 43-44 -- }}
+{\color{red} future}
+
+
+\addcontentsline{toc}{subsection}{Exercises}
+\subsection*{\underline{Exercises}}
+\begin{enumerate}
+
+\item For a group $G$ acting on a set $A$, we want to show that the action is associative and $1_G$ is the trivial map. For $(F^\times,\times)$ acting on $F$ with $g\cdot a = ga$, 
+\begin{enumerate}
+\item \underline{Associativity}: $g_1\cdot (g_2\cdot a) = g_1\cdot (g_2a) = g_1(g_2a) = (g_1g_2)a = (g_1g_2)\cdot a$ where the third equation uses associativity of multiplication in $F$.
+\item \underline{Identity}: The identity in the group	 $(F^\times,\times)$ is the multiplicative identity in $F$ so $1\cdot a = 1a = a$ by definition.
+\end{enumerate}
+
+
+\item For $(\bbz,+)$ acting on $\bbz$ with $z\cdot a = z+a$:
+\begin{enumerate} 
+\item \underline{Associativity}: $z_1\cdot (z_2\cdot a) = z_1\cdot (z_2+a) = z_1+(z_2+a) = (z_1+z_2)+a = (z_1+z_2)\cdot a$ where the third equation uses associativity of addition.
+\item \underline{Identity}: The identity of $(\bbz, +)$ is $0$, and $0\cdot a = 0+a = a$.
+\end{enumerate}
+
+
+\item For $(\bbr,+)$ acting on $\bbr^2$ with $r\cdot(x,y) = (x+ry,y)$:
+\begin{enumerate} 
+\item \underline{Associativity}: $r_1\cdot (r_2\cdot (x,y)) = r_1\cdot (x+r_2y,y) = ((x+r_2y)+r_1y,y) = (x+(r_1+r_2)y,y) = (r_1+r_2)\cdot (x,y)$ where the third equation uses associativity of addition, distribution of multiplication over addition, and commutativity of addition.
+\item \underline{Identity}: The identity of $(\bbr, +)$ is $0$, and $0\cdot (x,y) = (x+0y,y) = (x,y)$.
+\end{enumerate}
+
+
+\item From exercise 1.1.26 we just want to show that these sets are closed under the group operation and inverse. For a group $G$ acting on a set $A$,
+\begin{enumerate}
+\item the kernel of the action:
+\begin{enumerate}
+\item \underline{Closure}: If $g_1, g_2$ are in the kernel of the action, then $g_1 \cdot a = g_2 \cdot a = a$ for all $a\in A$. Then \begin{equation}
+(g_1g_2)\cdot a = g_1\cdot (g_2\cdot a) = g_1\cdot a = a
+\end{equation} 
+so $g_1g_2$ is also in the kernel.
+\item \underline{Inverse}: If $g$ is in the kernel then
+\begin{equation}
+a = 1_G\cdot a = (g^{-1}g)\cdot a = g^{-1}\cdot (g\cdot a) = g^{-1}\cdot a
+\end{equation}
+so $g^{-1}$ is also in the kernel.
+\end{enumerate}
+\item The above argument doesn't use anything about multiple elements of $A$, so the proof is the same for a specific element $a \in A$. 
+\end{enumerate}
+
+
+\item The permutation representation is given as $\phi_g(a) = g\cdot a$. If $g \in G$ is in the kernel of the action, then $g\cdot a = a$ for all $a\in A$, so $\phi_g(a) = a$ and the corresponding permutation is trivial. In the other direction, if the associated permutation is trivial with $\phi_g(a) = a$ for all $a$, then $a = \phi_g(a) = g\cdot a$ so $g$ is in the kernal of the action.
+
+
+\item The definition of a faithful group action that was given is that $G$ acts faithfully on $A$ if the homomorphism $\phi: G\to S_A$ sends the elements of $G$ to distinct permutations in $S_A$. Mathematically, that says if $g\neq h$ are two elements of $G$, then $\phi(g) \neq \phi(h)$, i.e. $\phi$ is injective. From exercise 1.6.14 we know that $\phi$ is an injective homomorphism if and only if $\ker\phi = \{1_G\}$.
+
+
+\item From the previous exercise we know that we just have to show that the kernel of the action is trivial. Here we have $\bbr^\times$ acting on $\bbr^n$ with the action
+\begin{equation}
+\alpha\cdot (r_1,r_2,\ldots,r_n) = (\alpha r_1,\alpha r_2,\ldots,\alpha r_n)\ .
+\end{equation}
+If $\alpha$ acts trivially then $\alpha r_i = r_i$, which means that $\alpha = 1$. Therefore the kernel is $\{1\}$.
+
+
+\item This is basically just $S_A$ acting on itself but with some extremely wordy constraints to make sure the size of the set stays the same.
+\begin{enumerate}
+\item Same checks as before:
+\begin{enumerate}
+\item \underline{Associativity}: For $\sigma_1, \sigma_2 \in S_A$, and any $\{a_1,\ldots,a_k\} \in B$, 
+\begin{equation}
+\sigma_1\cdot (\sigma_2 \cdot \{a_1,\ldots,a_k\}) = \sigma_1\cdot \{\sigma_2(a_1),\ldots,\sigma_2(a_k)\} = \{\sigma_1(\sigma_2(a_1)),\ldots,\sigma_1(\sigma_2(a_k))\} = (\sigma_1\circ \sigma_2) \cdot \{a_1,\ldots,a_k\}
+\end{equation}
+and the sets have the same cardinality because each $\sigma$ is injective.
+\item \underline{Identity}: The identity of $S_A$ has $\phi_I(x) = x$ for all $x$, and 
+\begin{equation}
+\sigma_I \cdot \{a_1,\ldots,a_k\} = \{\sigma_I(a_1),\ldots,\sigma_I(a_k)\} = \{a_1,\ldots,a_k\}
+\end{equation}
+\end{enumerate}
+\item The action of $\cycle{1,2}$ is:
+\begin{enumerate}
+\item $\{1,2\} \mapsto \{2,1\} = \{1,2\}$
+\item $\{1,3\} \mapsto \{2,3\}$
+\item $\{1,4\} \mapsto \{2,4\}$
+\item $\{2,3\} \mapsto \{1,3\}$
+\item $\{2,4\} \mapsto \{1,4\}$
+\item $\{3,4\} \mapsto \{3,4\}$
+\end{enumerate}
+The action of $\cycle{1,2,3}$ is:
+\begin{enumerate}
+\item $\{1,2\} \mapsto \{2,3\}$
+\item $\{1,3\} \mapsto \{2,1\} = \{1,2\}$
+\item $\{1,4\} \mapsto \{2,4\}$
+\item $\{2,3\} \mapsto \{3,1\} = \{1,3\}$
+\item $\{2,4\} \mapsto \{3,4\}$
+\item $\{3,4\} \mapsto \{1,4\}$
+\end{enumerate}
+\end{enumerate}
+
+
+\item The proof of the group action is identical other than the $\{\cdot\} \to (\cdot)$ notation change, and closure being trivial. For the second part, they really decided that it was fun to write out 64 ordered pairs. The action of $\cycle{1,2}$ is
+\begin{enumerate}
+\item $(1,1) \mapsto (2,2)$
+\item $(1,2) \mapsto (2,1)$
+\item $(1,3) \mapsto (2,3)$
+\item $(1,4) \mapsto (2,4)$
+\item $(2,1) \mapsto (1,2)$
+\item $(2,2) \mapsto (1,1)$
+\item $(2,3) \mapsto (1,3)$
+\item $(2,4) \mapsto (1,4)$
+\item $(3,1) \mapsto (3,2)$
+\item $(3,2) \mapsto (3,1)$
+\item $(3,3) \mapsto (3,3)$
+\item $(3,4) \mapsto (3,4)$
+\item $(4,1) \mapsto (4,2)$
+\item $(4,2) \mapsto (4,1)$
+\item $(4,3) \mapsto (4,3)$
+\item $(4,4) \mapsto (4,4)$
+\end{enumerate}
+and the action of $\cycle{1,2,3}$ is
+\begin{enumerate}
+\item $(1,1) \mapsto (2,2)$
+\item $(1,2) \mapsto (2,3)$
+\item $(1,3) \mapsto (2,1)$
+\item $(1,4) \mapsto (2,4)$
+\item $(2,1) \mapsto (3,2)$
+\item $(2,2) \mapsto (3,3)$
+\item $(2,3) \mapsto (3,1)$
+\item $(2,4) \mapsto (3,4)$
+\item $(3,1) \mapsto (1,2)$
+\item $(3,2) \mapsto (1,3)$
+\item $(3,3) \mapsto (1,1)$
+\item $(3,4) \mapsto (1,4)$
+\item $(4,1) \mapsto (4,2)$
+\item $(4,2) \mapsto (4,3)$
+\item $(4,3) \mapsto (4,1)$
+\item $(4,4) \mapsto (4,4)$
+\end{enumerate}
+
+
+
+\item {\color{red} TODO}
+
+
+\item From the labeling in section 1.2, $r$ sends vertex $i$ to $(i+1)\!\mod n$, and $s$ keeps vertices 1 and 3 static while swapping 2 and 4. Therefore
+\begin{enumerate}
+\item $r \mapsto \cycle{1,2,3,4}$
+\item $s \mapsto \cycle{2,4}$
+\end{enumerate}
+and the other elements of $D_8$ can be built using these:
+\begin{enumerate}
+\item $r^2 \mapsto \cycle{1,3}\cycle{2,4}$
+\item $r^3 \mapsto \cycle{1,4,3,2}$
+\item $sr \mapsto \cycle{1,4}\cycle{2,3}$
+\item $sr^2 \mapsto \cycle{1,3}$
+\item $sr^3 \mapsto \cycle{1,2}\cycle{3,4}$
+\end{enumerate}
+and obviously the identity maps to the trivial cycle $\cycle{}$.
+
+
+\item We have $D_{2n}$ acting on the set $A = \{ \{1,\frac{n}{2}+1\}, \{2,\frac{n}{2}+2\}, \ldots, \{\frac{n}{2},n\} \}$ where opposite vertices are paired up. Associativity of the group action is the same exact proof again, and the identity is the identity in $D_{2n}$ since that corresponds to the identity permutation. The nontrivial part is checking that this is well-defined and that the image of any action is still $A$. \\
+The intuitive argument is that $D_{2n}$ is the symmetry group of the rigid n-gon so it cannot change which vertices are opposite from each other. The formal argument is to consider the generators. First, $r$ sends $A$ to $A$ since $\sigma_r: \{i,\frac{n}{2}+i\} \mapsto \{i+1,\frac{n}{2}+i+1\}$ (modulo $n$). The more wordy one is that $s$ sends each $i$ to $(n+2)-i$ (again, modulo $n$), unless $i=1$ or its opposite, which are fixed. The map $i \mapsto (2-i)\!\!\!\mod n$ on opposite vertices looks like
+\begin{equation}
+\left\{i,\frac{n}{2}+i\right\} \mapsto \left\{(2-i)\!\!\!\!\mod n,2-\left(\frac{n}{2}+i\right)\md n\right\} = \left\{(2-i)\!\!\!\!\mod n,\frac{n}{2} + \left( 2-i \right)\!\md n\right\}
+\end{equation}
+since $-\frac{n}{2} = \frac{n}{2}$ when considered modulo $n$. We see that both $r$ and $s$ send $A$ to $A$. These generate $D_{2n}$, so all elements of the group will respect the set structure.
+
+
+\item For the action of $G$ on itself given by $g\cdot a = ga$, if $g$ is in the kernel of the group action, then $g\cdot a = a$ for all $a \in G$. That means that $ga = a$ for arbitary $a$, so $g = 1_G$. The kernel is trivial.
+
+
+\item For nonabelian $G$ acting on itself with $g\cdot a = ag$, and $a, g_1, g_2 \in G$,
+\begin{equation}
+g_1\cdot (g_2\cdot a) = g_1\cdot ag_2 = (ag_2)g_1 = ag_2g_1
+\end{equation}
+but
+\begin{equation}
+(g_1g_2)\cdot a = a(g_1g_2) = ag_1g_2
+\end{equation}
+so the two are not equal in general and the proposed action is not associative.
+
+
+\item Closure is obvious since everything happens inside the group $G$, which is closed under the group operation.
+\begin{enumerate}
+\item \underline{Associativity}: For $a, g_1, g_2 \in G$,
+\begin{equation}
+g_1\cdot (g_2\cdot a) = g_1\cdot(ag_2^{-1}) = (ag_2^{-1})g_1^{-1} = ag_2^{-1}g_1^{-1} = a(g_1g_2)^{-1} = (g_1g_2)\cdot a
+\end{equation}
+\item \underline{Identity}: The identity of $G$ has $1_G\cdot a = a1_G = a$ for all $a\in G$.
+\end{enumerate}
+
+
+\item Closure is obvious for the same reason as above.
+\begin{enumerate}
+\item \underline{Associativity}: For $a, g_1, g_2 \in G$,
+\begin{equation}
+g_1\cdot (g_2\cdot a) = g_1\cdot(g_2ag_2^{-1}) = g_1(g_2ag_2^{-1})g_1^{-1} = g_1g_2ag_2^{-1}g_1^{-1} = (g_1g_2)a(g_1g_2)^{-1} = (g_1g_2)\cdot a
+\end{equation}
+\item \underline{Identity}: The identity of $G$ has $1_G\cdot a = 1_Ga1_G = a$ for all $a\in G$.
+\end{enumerate}
+
+
+\item We want to show that the map $\phi_g: x \to gxg^{-1}$ (for some fixed $g\in G$) is an automorphism of $G$:
+\begin{enumerate}
+\item \underline{Homomorphism}: For $x_1,x_2 \in G$,
+\begin{equation}
+\phi_g(x_1)\phi_g(x_2) = (gx_1g^{-1})(gx_2g^{-1}) = gx_1g^{-1}gx_2g^{-1} = gx_11_Gx_2g^{-1} = g(x_1x_2)g^{-1} = \phi_g(x_1x_2)
+\end{equation}
+\item \underline{Injective}: If $\phi(x_1) = \phi(x_2)$ for some $x_1,x_2\in G$, then, left-canceling $g$ and right-canceling $g^{-1}$, we see that $x_1 = x_2$.
+\item \underline{Surjective}: Every $y\in G$ can be written in the form $gxg^{-1}$ for some $x\in G$, since we just invert the relation to find $x = g^{-1}yg$.
+\end{enumerate}
+From exercise 1.6.2, we know that $\abs{x} = \abs{gxg^{-1}}$ for all $x\in G$. Since the map $\phi_g$ is injective, $\abs{\phi_g(A)} = \abs{A}$ for any subset $A$ of $G$.
+
+
+\item The group $H$ acts on the set $A$ with action $\cdot$
+\begin{enumerate}
+\item \underline{Reflexive}: For all $a \in A$, $a = 1_H \cdot a$ so $a \sim a$.
+\item \underline{Symmetric}: For all $a,b \in A$, if $a\sim b$ then $a = h \cdot b$ for some $h\in H$ and
+\begin{equation}
+b = 1_H \cdot b = (h^{-1}h)\cdot b = h^{-1} \cdot (h \cdot b) = h^{-1}\cdot a
+\end{equation}
+so $b \sim a$ as well.
+\item \underline{Transitive}: For all $a,b,c \in A$, if $a\sim b$ with $a = h_1 \cdot b$ and $b\sim c$ with $b = h_2 \cdot c$, then
+\begin{equation}
+a = h_1\cdot b = h_1\cdot (h_2\cdot c) = (h_1h_2)\cdot c
+\end{equation}
+so $a \sim c$.
+\end{enumerate}
+
+
+\item For the map $H \to \mathcal{O}$ with $h \mapsto hx$ where $x$ is an arbitary element of $G$,
+\begin{enumerate}
+\item \underline{Injective}: If $h_1x = h_2x$ for some $h_1,h_2\in H$, then right-canceling $x$ gives us $h_1 = h_2$
+\item \underline{Surjective}: Every $y \in \mathcal{O}$ can be written in the form $y = hx$ for some $h\in H$ by definition of the orbit.
+\end{enumerate}
+The previous example showed that we can partition $G$ with the equivalence relation $x\sim y$ iff $y$ is in the orbit of $x$. In this case all of these equivalence classes have size $\abs{H}$. Since they partition $G$, we must have $\abs{G} = n\abs{H}$ where $n$ is the number of distinct equivalence classes.
+
+
+\item 
+
+
+\item 
+
+
+\item 
+
+
+\item 
 
 
 \end{enumerate}
-
 
 \end{document}
