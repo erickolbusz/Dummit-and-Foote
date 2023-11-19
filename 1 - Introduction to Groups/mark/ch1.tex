@@ -11,7 +11,7 @@
 \usepackage{bm} 
 %\setcounter{section}{-1}
 
-\newcommand{\ints}{\mathbb{Z}} 
+\newcommand{\ints}{\mathbb{Z}}  
 \newcommand{\reals}{\mathbb{R}}
 \newcommand{\rats}{\mathbb{Q}} 
 \newcommand{\comps}{\mathbb{C}}
@@ -1239,7 +1239,7 @@ Let $s\in\rats$, with $s=a/b$. Then define $t=\frac{a}{kb}$ ($k\neq 0$, so this 
 Let $\phi$ denote the map. Then 
 \begin{align*}
 \phi(ab) &= (ab)^k\\
-&= a^kb^k & \mbox{($A$ abelian)}
+&= a^kb^k & \mbox{($A$ abelian)}\\
 &= \phi(a)\phi(b)
 \end{align*}
 so $\phi$ is a homomorphism.
@@ -1462,9 +1462,49 @@ But left cancellation, we obtain $\alpha = 1$. Hence, the permutation representa
 \end{align*}
 \subsubsection{}\label{ex7p10}
 \begin{enumerate}
-\item If $k \leq n$, Then given $\set{a_1,\ldots,a_k}$, we can apply the nontrivial permutation $(a_1,\ldots,a_k)(a_{k+1},\ldots,a_n)$ on the set, which just shuffles the set, thus keeping it the same, so the action is not faithful.\\
-If $k>n$, then given $\set{a_1,\ldots, a_k}$, Then every permutation must contain some elements 
+\item 
+\begin{itemize}
+
+\item The action is faithful when $k<n$. Here's the proof:\\
+Suppose $\sigma b = b$ for all $b \in B$. We wish to show that $\sigma$ is trivial.\\
+Suppose $\sigma$ is NON-trivial. Fix $C=\set{a_1,\ldots,a_k}\in B$ where the action nontrivially shuffles the set (i.e. we don't have $\sigma(a_i)=a_i$ for all $1\leq i\leq k$. Then  
+\begin{align*}
+\sigma\set{a_1,\ldots,a_k} &= \set{a_1,\ldots,a_k}\\
+\implies\set{\sigma{a_1},\ldots,\sigma{a_k}} &= \set{a_1,\ldots,a_k}\\
+\implies \sigma{a_i} &\in C & i=1,\ldots,k
+\end{align*}
+Since $k<n$, let $b \in B - C$, and assume without loss of generality (since $\sigma$ nontrivially shuffles the set) that
+\begin{equation}
+\sigma\set{a_1,\ldots,a_{k-1}} = \set{a_2,\ldots,a_k}
+\end{equation}
+Then we have
+\begin{equation}
+\sigma\set{a_1,\ldots,a_{k-1},b} = \set{a_2,\ldots,a_k,\sigma(b)}
+\end{equation}
+In order for $\sigma$ to preserve the set, we must have $\sigma(b)=a_1$. Then $b$ and $a_1$ begin a cycle in $\sigma$ like so:
+\begin{equation}
+(b, a_1, \ldots)
+\end{equation}
+Now proceed iteratively. Suppose we have filled a cycle in a in $\sigma$ as such:
+\begin{equation}
+(b, a_1,\ldots,a_i,\ldots)
+\end{equation}
+In the case that the cycle ends here (at $a_i$), we have that $\sigma(a_i) = b$, contradicting that $\sigma(a_i)\in C$. If $i=k$, then we can go no further. Otherwise, we have $\sigma(a_i) \in C$, and we can assume without loss of generality that $\sigma(a_i)=a_{i+1}$, thus expanding the cycle again.
+\begin{equation}
+(b, a_1,\ldots,a_i,a_{i+1},\ldots)
+\end{equation}
+Iterate again. We must terminate at $i=k$, forcing a contradiction\\
+Hence, $\sigma$ maps an element in $C$ to an element outside of $C$. It cannot simply shuffle $C$ when it is nontrivial. So $\sigma$ must be trivial, and the action is faithful.
+\item When $k=n$, the action is not faithful. $\sigma = (a_1,\ldots,a_n)$ is a nontrivial permutation that merely shuffles every set. (the exception is the case $n=1$, which is the trivial group).
+\end{itemize}
 \item
+Given a permutation on tuples $\sigma$, 
+\begin{align*}
+\sigma(a_1,\ldots,a_k) &= (a_1,\ldots,a_k)\\
+\implies (\sigma(a_1),\ldots,\sigma(a_k)) &= (a_1,\ldots,a_k)\\
+\implies \sigma(a_1) &= a_1
+\end{align*}
+Assign each element in $A$ to $a_1$ in the above equality and we obtain that $\sigma$ is trivial. So the action is always faithful on tuples.
 \end{enumerate}
 \subsubsection{}\label{ex7p11}
 \begin{align*}
