@@ -1,0 +1,185 @@
+\documentclass{article}
+
+\usepackage[letterpaper, margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{hhline}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amsthm}
+\usepackage{bm} 
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage[bookmarks,hypertexnames=false,debug,linktocpage=true,hidelinks]{hyperref}
+
+\hypersetup{
+    colorlinks,
+    linktoc=all,
+    linkcolor={blue},
+    citecolor={blue},
+    urlcolor={blue}
+}
+%\setcounter{section}{-1}
+
+\newcommand{\ints}{\mathbb{Z}} 
+\newcommand{\reals}{\mathbb{R}} 
+\newcommand{\rats}{\mathbb{Q}} 
+\newcommand{\comps}{\mathbb{C}}
+\newcommand{\set}[1]{ \{ #1 \} }
+\newcommand{\mult}{\star}
+\newcommand{\abs}[1]{| #1 |}
+\newcommand{\inv}[1]{ {#1}^{-1} }
+\newcommand{\id}{ \bm{1} }
+\newcommand{\iso}{ \equiv }
+\newcommand{\comp}{ \circ }
+\newcommand{\Aut}{ \textrm{Aut}, }
+\newcommand{\Stab}{ \textrm{Stab}, }
+\newcommand{\sheaf}{ \mathcal{O} }
+\newcommand{\md}{\,\text{mod}\,}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\renewcommand{\bar}{\overline}
+\DeclareMathOperator*{\argmin}{\arg\!\min}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma} 
+
+\setlength\parindent{0pt}
+%\allowdisplaybreaks
+
+\title{TITLE}
+\begin{document}
+\tableofcontents 
+\setcounter{section}{1} 
+\section{Subgroups}  
+
+\subsection{Definition and Examples}
+Throughout these exercises, I will denote subgroups by $H$ unless otherwise specified.
+\subsubsection{}\label{ex1p1}
+\begin{enumerate}[(a)]
+\item Let $a+ai,b+bi \in H$. Then $a+ai-(b+bi) = (a-b) + (a-b)i \in H$
+\item Let $z,y \in H$. Then $|z\inv{y}| = |z||\inv{y}| = |z|\inv{|y|} = 1\cdot \inv{1} = 1$, so $z\inv{y} \in H$
+\item IDK %Let $\frac{a}{b}, \frac{c}{d} \in H$. So 
+\item Let $\frac{a}{b}, \frac{c}{d} \in H$, so $(b,n),(d,n)=1$.\\
+Suppose $(bd,n) > 1$, so there is an integer $s>1$ such that $s|bd$ and $s|n$. Let $p$ be a prime factor of $s$, so we have $p|n$ and $p|bd$. The latter implies that $p|b$ or $p|d$. Assume without loss of generality the former. Then $p|n$ and $p|d$, but $(b,n)=1$, a contradiction. Hence $(bd,n)=1$, and $\frac{a}{b}-\frac{c}{d} = \frac{ad-bc}{bd} \in H$.
+\item Let $x,y \in H$. Then $x^2=\frac{a}{b}, y^2=\frac{c}{d}$, for $a,b,c,d \in \ints$. Then $(x\inv{y})^2 = x^2y^{-2}=\frac{ad}{bc}$. So $x\inv{y}\in H$.
+\end{enumerate}
+\subsubsection{}\label{ex1p2}
+We will show that closure is not satisfied in all these exercises
+\begin{enumerate}[(a)]
+\item $(3\ 1)\comp(1\ 2) = (1\ 2\ 3) \notin H$
+\newcommand{\lereflect}{r^{\floor{\frac{n}{2}}}s}
+\item $\lereflect$ is a reflection, but $(\lereflect)s = \lereflect \notin H$
+\item Since $n$ is composite, $n=ab$ for $0<a,b<n$.\\
+Let $x\in G$ with $|x|=n$. If $H$ is a subgroup, note that $x$ times itself $a$ times must be in $H$ by closure, i.e. $x^a \in H$. But $(x^a)^b = x^n = 1$, so $|x^a| \leq b < n$, so $x^a \notin H$ by definition, a contradiction.
+\item $1+1=2$
+\item Note that $\sqrt{2},\sqrt{3}\in H$. But $(\sqrt{2}+\sqrt{3})^2  = 5 + 2\sqrt{6}$ which is irrational, so $\sqrt{2}+\sqrt{3} \notin H$.
+\end{enumerate}
+\subsubsection{}\label{ex1p3}
+\begin{enumerate}[(a)]
+\item Each element is its own inverse, so we verify the operation is closed on the rest of the elements:
+\begin{align*}
+(r^2)(s) &= sr^{-2} = sr^2 \in H\\
+(r^2)(sr^2) &= sr^{-2}r^2 = s \in H\\
+(s)(r^2) &= sr^2 \in H\\
+(s)(sr^2) &= s^2r^2 = r^2 \in H\\
+(sr^2)(r^2) &= sr^4 = s \in H\\
+(sr^2)(s) &= ssr^{-2} =s^2r^2 = r^2 \in H
+\end{align*}
+\item Again, each element is its own inverse, so we verify closure:
+\begin{align*}
+(r^2)(sr) &= sr^{-2}r = s\inv{r} = sr^3 \in H\\
+(r^2)(sr^3) &= sr^{-2}r^3 = sr \in H
+(sr)(sr^3) &= srsr^3 = s^2\inv{r}r^3 = s^2r^2 = r^2 \in H\\
+(sr)(r^2) &= sr^3 \in H\\
+(sr^3)(r^2) &= sr^5 = sr \in H\\
+(sr^3)(sr) &= sr^3sr = s^2r^{-3}r = r^{-2} = r^2 \in H
+\end{align*}
+\end{enumerate}
+
+\subsubsection{}\label{ex1p4}
+Let $G=\ints$, and $H$ be the positive even integers.
+
+\subsubsection{}\label{ex1p5}
+Let $G=\set{a_1,\ldots,a_2,\ldots,a_n=1}$ (the elements listed are distinct), and assume without loss of generality that\\
+$H = \set{a_2,\ldots,a_n=1}$.\\
+Note that we can't have $a_1a_2=a_1$ or $a_1a_2=a_2$, or else by cancelation we will have $a_2=1$ or $a_1=1$ respectively, both contradictions.\\
+So assume without loss of generality that $a_1a_2=a_3$ 
+(it's okay if $n=3$ and $a_3=1$), yielding
+\begin{equation}
+a_1 = a_3\inv{a_2}
+\end{equation}
+\begin{itemize}
+\item Case: $\inv{a_2} = a_1$.\\
+Then $a_2\in H$, but $\inv{a_2} \notin H$, so inverses are not in $H$
+\item Case: $\inv{a_2} \neq a_1$\\
+Then $\inv{a_2} \in H$. But $a_3\inv{a_2} = a_1 \notin H$, so closure is not satisfied.
+\end{itemize}
+\subsubsection{}\label{ex1p6}
+Let $G$ be abelian and $g,h \in H$. Then $|g|=n,|h|=m$, with $n,m<\infty$.\\
+Then $(g\inv{h})^{nm} = (g^n)^m(h^m)^{-n} = 1$. (The first equality follows from the fact that $G$ is abelian). Hence, $|g\inv{h}| \leq nm \leq \infty$.\\
+Now suppose $H=S_{\infty}$ a non-abelian group. Consider the permutations
+\begin{equation}
+\sigma = (1\ 2)(3\ 4)(5\ 6)\cdots\\
+\tau = (2\ 3)(4\ 5)(6\ 7)\cdots
+\end{equation}
+Individually, they just swap elements, so $|\sigma|,|\tau| = 2$, but $|\tau\comp\sigma| = \infty$. 
+\subsubsection{}\label{ex1p7}
+The torsion subgroup is clearly $H= 0\times \ints/n\ints$\\
+Let $I = (G-H)\cup\set{0}$\\
+Then $(2,1),(2,0)\in I$. But $(2,1)-(2,0) = (0,1)$, is not in $I$ (It is a nonzer element in $H$)
+\subsubsection{}\label{ex1p8}
+\begin{itemize}
+\item Only if: Suppose $H\cup K$ is a subgroup\\
+Suppose $K\not\subset H$, so there exists $k\in K$ such that $k\notin H$\\
+Then let $h \in H$.\\
+Then $h,k\in H\cup K$, so $hk\in H\cup K$ (since $H\cup K$ is a subgroup).\\
+If $hk \in H$, then $\inv{h}(hk) \in H$, so $k\in H$, a contradiction.\\
+So we must have $hk \in K$. But then $(hk)\inv{k} \in K$, so $h\in K$.\\
+Since $h\in H$ was arbitrary, $H \subset K$
+\item If: Assume without loss of generality that $H \subset K$\\
+Let $x,y \in H\cup K$. Then $x,y\in K$ (since $H\subset K$), so $x\inv{y} \in K = H\cup K$
+\end{itemize}
+\subsubsection{}\label{ex1p9}
+Let $A,B\in \textrm{SL}_nF$, so $\det A, \det B =1$. Then $\det A\inv{B} = \det A \det \inv{B} = 1$
+\subsubsection{}\label{ex1p10}
+\begin{enumerate}[(a)]
+\item See next part
+\item
+Let $\set{H_i}_{i\in I}$ be a collection of subgroups of $G$
+and let $H = \bigcap_{i\in I}H_i$.\\
+Then let $x,y \in H$. So for arbitrary $i$. $x \in H_i$ If $y\in H_i$ for all $i$, then $\inv{y}\in H_i$. Then $x\inv{y} \in H_i$. Since $i$ was arbitrary $x\inv{y} \in H=\bigcap H_i$
+\end{enumerate}
+\subsubsection{}\label{ex1p11}
+\begin{enumerate}[(a)]
+\item Let $(a,1),(k,1)\in H$. Then $(a,1)\inv{(k,1)} = (a,1)(\inv{k},1) = (a\inv{k},1) \in H$
+\item Analogous to above
+\item Let $(a,a),(b,b) \in H$. Then $(a,a)\inv{(b,b)} = (a,a)(\inv{b},\inv{b}) = (a\inv{b},a\inv{b}) \in H$
+\end{enumerate}
+\subsubsection{}\label{ex1p12}
+
+\begin{enumerate}[(a)]
+\item Let $x,y\in H$, with $x=a^n, y=b^n$. Then $x\inv{y} = a^nb^{-n} = (a\inv{b})^n \in H$ (note we used that $A$ is abelian here)
+\item Let $x,y\in H$, so $x^n,y^n=1$. Then $(x\inv{y})^n = x^n\inv{(y^n)} = 1$, so $x\inv{y} \in H$.
+\end{enumerate}
+\subsubsection{}\label{ex1p13}
+\subsubsection{}\label{ex1p14}
+\subsubsection{}\label{ex1p15}
+Let $H = \bigcup_{i=1}^{\infty}H_i$, and let $x,y\in H$. So $x \in H_i, y\in H_j$ for some $i,j$. Assume without loss of generality that $i \geq j$. Then $y \in H_i$, since $H_j \subset H_i$. So $x\inv{y} \in H_i \subset H$
+\subsubsection{}\label{ex1p16}
+The inverse of an upper triangular matrix is upper triangular (because the adjoint is upper triangular), and they are closed under multiplication
+\subsubsection{}\label{ex1p17}
+The same logic as above, with the additional note that diagonals of $1$s are preserved after matrix multiplication. Diagonals of $1$s are preserved by taking inverses too (the adjoint is the transpose of the cofactor matrix, and the minors along the diagonal are all clearly just $1$)
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
