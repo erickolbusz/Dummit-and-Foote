@@ -10,7 +10,7 @@
 \usepackage{amsthm}
 \usepackage{bm}  
 \usepackage{color}   %May be necessary if you want to color links
-\usepackage[bookmarks,hypertexnames=false,debug,linktocpage=true,hidelinks]{hyperref}
+\usepackage[bookmarks,hypertexnames=false,debug,linktocpage=true,hidelinks]{hyperref} 
 
 \hypersetup{
     colorlinks,
@@ -60,7 +60,24 @@ Throughout these exercises, I will denote subgroups by $H$ unless otherwise spec
 \begin{enumerate}[(a)]
 \item Let $a+ai,b+bi \in H$. Then $a+ai-(b+bi) = (a-b) + (a-b)i \in H$
 \item Let $z,y \in H$. Then $|z\inv{y}| = |z||\inv{y}| = |z|\inv{|y|} = 1\cdot \inv{1} = 1$, so $z\inv{y} \in H$
-\item IDK %Let $\frac{a}{b}, \frac{c}{d} \in H$. So 
+\item Let $\frac{a}{b}, \frac{c}{d} \in H$. So $b,d|n$, so $xb=n,yd=n$ for ints $x,y$. Let $g = (b,d)$, and $l=(b,d)$.\\
+(Recall from Chapter 0 that $gl = bd$, and also $g=rb+sd$ for some ints $r,s$).\\
+Then $\frac{a}{b}-\frac{c}{d} = \frac{ad-bc}{bd} = \frac{\frac{1}{g}(ad-bc)}{\frac{1}{g}bd} = \frac{\frac{1}{g}(ad-bc)}{l}$. (Note that the numerator is an integer, since $g|ad-bc$).\\
+We need to show that $l|n$.\\
+Note that $m=\frac{gy}{b}$ is an integer, because
+\begin{align*}
+\frac{gy}{b} &= \frac{rby+sdy}{b}\\
+&= ry + \frac{sdy}{b}\\
+&= ry + \frac{sn}{b}\\
+&= ry + sx
+\end{align*}
+and note that $l=\frac{bd}{g}$, so
+\begin{align*}
+lm &= \frac{bd}{g}\cdot\frac{gy}{b}\\
+&= yd\\
+&= n
+\end{align*}
+Hence $l|n$ as needed.
 \item Let $\frac{a}{b}, \frac{c}{d} \in H$, so $(b,n),(d,n)=1$.\\
 Suppose $(bd,n) > 1$, so there is an integer $s>1$ such that $s|bd$ and $s|n$. Let $p$ be a prime factor of $s$, so we have $p|n$ and $p|bd$. The latter implies that $p|b$ or $p|d$. Assume without loss of generality the former. Then $p|n$ and $p|d$, but $(b,n)=1$, a contradiction. Hence $(bd,n)=1$, and $\frac{a}{b}-\frac{c}{d} = \frac{ad-bc}{bd} \in H$.
 \item Let $x,y \in H$. Then $x^2=\frac{a}{b}, y^2=\frac{c}{d}$, for $a,b,c,d \in \ints$. Then $(x\inv{y})^2 = x^2y^{-2}=\frac{ad}{bc}$. So $x\inv{y}\in H$.
