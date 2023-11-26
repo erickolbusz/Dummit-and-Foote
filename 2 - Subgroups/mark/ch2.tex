@@ -8,7 +8,7 @@
 \usepackage{hhline}
 \usepackage[shortlabels]{enumitem}
 \usepackage{amsthm}
-\usepackage{bm}  
+\usepackage{bm}   
 \usepackage{color}   %May be necessary if you want to color links
 \usepackage[bookmarks,hypertexnames=false,debug,linktocpage=true,hidelinks]{hyperref} 
 
@@ -37,6 +37,7 @@
 \newcommand{\sheaf}{ \mathcal{O} }
 \newcommand{\md}{\,\text{mod}\,}
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
 \renewcommand{\bar}{\overline}
 \DeclareMathOperator*{\argmin}{\arg\!\min}
 
@@ -85,9 +86,9 @@ Suppose $(bd,n) > 1$, so there is an integer $s>1$ such that $s|bd$ and $s|n$. L
 \subsubsection{}\label{ex1p2}
 We will show that closure is not satisfied in all these exercises
 \begin{enumerate}[(a)]
-\item $(3\ 1)\comp(1\ 2) = (1\ 2\ 3) \notin H$
-\newcommand{\lereflect}{r^{\floor{\frac{n}{2}}}s}
-\item $\lereflect$ is a reflection, but $(\lereflect)s = \lereflect \notin H$
+\item $(3\ 1)\comp(1\ 2) = (1\ 2\ 3) \notin H$ \label{ex1p2pa}
+\newcommand{\lereflect}{r^{\ceil{\frac{n}{2}}}s}
+\item $\lereflect$ is a reflection (across the line passing through the second vertex and origin), but $(\lereflect)s = r^{\ceil{\frac{n}{2}}}$ which is a rotation \label{ex1p2pb}
 \item Since $n$ is composite, $n=ab$ for $0<a,b<n$.\\
 Let $x\in G$ with $|x|=n$. If $H$ is a subgroup, note that $x$ times itself $a$ times must be in $H$ by closure, i.e. $x^a \in H$. But $(x^a)^b = x^n = 1$, so $|x^a| \leq b < n$, so $x^a \notin H$ by definition, a contradiction.
 \item $1+1=2$
@@ -182,9 +183,11 @@ Then let $x,y \in H$. So for arbitrary $i$. $x \in H_i$ If $y\in H_i$ for all $i
 \end{enumerate}
 \subsubsection{}\label{ex1p13}
 \subsubsection{}\label{ex1p14}
+\newcommand{\lereflect}{r^{\ceil{\frac{n}{2}}}s}
+See \ref{ex1p2pb}. $\lereflect$ is a reflection, but $(\lereflect)s = r^{\ceil{\frac{n}{2}}}$ which does not have order $2$ in general. For the case $n=4$ consider the reflection $sr$ across the line $y=0$, and note that $s(sr) = r$ which has order $4$
 \subsubsection{}\label{ex1p15}
 Let $H = \bigcup_{i=1}^{\infty}H_i$, and let $x,y\in H$. So $x \in H_i, y\in H_j$ for some $i,j$. Assume without loss of generality that $i \geq j$. Then $y \in H_i$, since $H_j \subset H_i$. So $x\inv{y} \in H_i \subset H$
-\subsubsection{}\label{ex1p16}
+\subsubsection{}\label{ex1p16} 
 The inverse of an upper triangular matrix is upper triangular (because the adjoint is upper triangular), and they are closed under multiplication
 \subsubsection{}\label{ex1p17}
 The same logic as above, with the additional note that diagonals of $1$s are preserved after matrix multiplication. Diagonals of $1$s are preserved by taking inverses too (the adjoint is the transpose of the cofactor matrix, and the minors along the diagonal are all clearly just $1$)
