@@ -38,7 +38,12 @@
 \newcommand{\md}{\,\text{mod}\,}
 \newcommand{\floor}[1]{\lfloor #1 \rfloor}
 \newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\cent}{Z}
+\newcommand{\central}{C}
+\newcommand{\nor}{N}
 \renewcommand{\bar}{\overline}
+\newcommand{\norm}[1]{|#1|}
+\newcommand{\divides}{\vert}
 \DeclareMathOperator*{\argmin}{\arg\!\min}
 
 \newtheorem{theorem}{Theorem}[section]
@@ -191,6 +196,112 @@ Let $H = \bigcup_{i=1}^{\infty}H_i$, and let $x,y\in H$. So $x \in H_i, y\in H_j
 The inverse of an upper triangular matrix is upper triangular (because the adjoint is upper triangular), and they are closed under multiplication
 \subsubsection{}\label{ex1p17}
 The same logic as above, with the additional note that diagonals of $1$s are preserved after matrix multiplication. Diagonals of $1$s are preserved by taking inverses too (the adjoint is the transpose of the cofactor matrix, and the minors along the diagonal are all clearly just $1$)
+\subsection{Centralizers and Normalizers. Stabilizers and Kernels}
+\subsubsection{}\label{ex2p1}
+Follows from 
+\begin{align*}
+ga\inv{g} &= a\\
+\iff ga &= ag\\
+iff a &= \inv{g}ag
+\end{align*}
+we will take these equivalences for granted moving forward
+\subsubsection{}\label{ex2p2}
+Let $x \in G$. And note that given $g \in Z(G)$, we have $gx=xg$. This is because by definition of $Z(G)$, $x$ commutes with all elements of $G$, including $g$. But this also says that $g$ commutes with all elements of $x$ of $Z(G)$, so $g \in C_G(Z(G))$.\\
+Since $g\in G$ was arbitrary, $G \subset C_G(Z(G))$ and since the reverse inclusion trivially holds, $C_G(Z(G)) = G$.\\
+We already know from the section that the centralizer is contained in the normalizer, i.e. $G = C_G(Z(G)) \subset N_G(Z(G))$, so again the trivial reverse inclusion yields $G = N_G(Z(G))$.
+\subsubsection{}\label{ex2p3}
+If $g \in C_G(B)$, then given $a\in A$, we have $a \in B$, so $ga=ag$ holds. Hence $g \in C_G(A)$ (since $a\in A$ was arbitrary). And since $g \in C_G(B)$ was arbitrary, $C_G(B) \leq C_G(A)$.
+\subsubsection{}\label{ex2p4}
+\begin{itemize}
+\item $S_3$\\
+Recall that
+\begin{equation}
+S_3 = \set{1,(1\ 2),(2\ 3),(1\ 3),(1\ 2\ 3),(1\ 3\ 2)}
+\end{equation}
+of course $|S_3| = 6$, so all the centralizers must divide $6$ (by Lagrange's theorem). \\
+Trivially, $C(1) = S_3$\\
+Now we note from the example in the text that, where $A=\set{1, (1\ 2)}$,  $C_{S_3}(A) = A$. For now, denote $C=C(1,2)$ for convenience\\
+By the previous exercises,
+\begin{align*}
+\set{(1,2)} &\subset A\\
+\implies C(A) &\leq C((1,2))\\
+\implies \norm{C(A)} &\vert \norm{C}\\
+\implies 2 &\vert \norm{C}
+\end{align*}
+So we have $2\vert\norm{C}\vert 6$, which means we must have $\norm{C}=2$ or $\norm{C}=6$. But $(1\ 2)$ does not commute with $(1\ 2\ 3)$, so $\norm{C}=2$, and $C(A) \leq C$ implies that $C = C(A)$. I.e. we conclude that $C( (1\ 2) ) = \set{1, (1\ 2)}$. With entirely analogous arguments for the other "swapping" permutations, we obtain
+\begin{align*}
+C( (1\ 2) ) &= \set{1, (1\ 2)}\\
+C( (1\ 3) ) &= \set{1, (1\ 3)}\\
+C( (2\ 3) ) &= \set{1, (2\ 3)}\\
+\end{align*}
+Now denote $C = C( (1\ 2\ 3) )$. We have $1, (1\ 2\ 3) \in C$ automatically. And since $C$ is a subgroup, we must have $\inv{(1\ 2\ 3)} = (1\ 3\ 2) \in C$. Now $\norm{C} \leq 3$, but by $\norm{C} \divides 6$, this narrows it down to $\norm{C} = 3$ or $\norm{C} = 6$. But since $(1\ 2)$ doesn't commute with $(1\ 2\ 3)$, we must have $\norm{C} = 3$. Hence, $C( (1\ 2\ 3) ) = \set{1, (1\ 2\ 3), (1\ 3\ 2)}$. An analagous argument applies for $C( (1\ 3\ 2) )$, yielding the same set. So, in total, we have
+\begin{align*}
+C(1) &= S_3\\
+C( (1\ 2) ) &= \set{1, (1\ 2)}\\
+C( (1\ 3) ) &= \set{1, (1\ 3)}\\
+C( (2\ 3) ) &= \set{1, (2\ 3)}\\
+C( (1\ 2\ 3) ) &= \set{1, (1\ 2\ 3), (1\ 3\ 2)}\\
+C( (1\ 3\ 2) ) &= \set{1, (1\ 2\ 3), (1\ 3\ 2)}
+\end{align*}
+Finally, since all the centralizers are missing elements except for $1$, we have $Z(S_3) = 1$
+\item $D_8$\\
+We have
+\begin{equation}
+D_8 = \set{1, r, r^2, r^3, s, sr, sr^2, sr^3}
+\end{equation}
+So all centralizers must divide $8$.\\
+The examples give us the following info. Where $A = \set{1,r,r^2,r^3}$,
+\begin{align*}
+Z(D_8) &= \set{1, r^2}\\
+C(A) &= A
+\end{align*}
+So the center has already been computed, and of course $C(1) = D_8$.\\
+Next, we have
+\begin{align*}
+\set{r} &\subset A\\
+\implies C(A) &\leq C(r)\\
+\implies 4 &\divides \norm{C(r)}
+\end{align*}
+Combined with the fact $\norm{C(r)}\divides 8$, we must have $\norm{C(r)}=4$ or $\norm{C(r)}=8$. However, $s$ and $r$ don't commute ($rs = s\inv{r} \neq sr$), so $s \notin C(r)$ and we must hae $\norm{C(r)} = 4$. Since $C(A) \leq C(r)$, this means that $C(r) = C(A)$.\\
+Analagously, $\set{r^3} \subset A$ implies $\norm{C(r^3)}=4$ or $\norm{C(r^3)}=8$, but $s$ and $r^3$ don't commute, yielding $C(r^3) = C(A)$.\\
+Next, since $r^2 \in Z(D_8)$, we have $C(r^2) = D_8$. Thus, we have so far concluded that
+\begin{align*}
+C(1) &= D_8\\
+C(r) &= \set{1,r,r^2,r^3}\\
+C(r^2) &= D_8\\
+C(r^3) &= \set{1,r,r^2,r^3}
+\end{align*}
+Now consider the element $sr^k$ ($k=0,1,2,3$). Automatically, we have $1,r^2,sr^k\in C(sr^k)$. So $\norm{C(sr^k)} \geq 3$. But $\norm{C(sr^k)} \divides 8$, so we must have $\norm{C(sr^k)} = 4$ or $\norm{C(sr^k)} = 8$.\\
+Now note that 
+\begin{align*}
+(sr^k)r &= sr^{k+1}\\
+r(sr^k) &= sr^{k-1}
+\end{align*}
+Which are equal if and only if
+\begin{align*}
+sr^{k+1} &= sr^{k-1}\\
+\iff r^kr &= r^k\inv{r}\\
+\iff r &= \inv{r}
+\end{align*}
+which is impossible in $D_8$. Hence $r \notin C(sr^k)$, and we must conclude $\norm{C(sr^k)} = 4$. Hence, we can conclude that
+\begin{equation}
+C(sr^k) = \set{1,r^2,sr^k,x_k}
+\end{equation}
+where $x_k$ is another element in $D_8$ that commutes with $sr^k$.\\
+We note that $sr$ and $sr^3$ are inverses, and hence commute, so that covers the case $k=1,3$. Also, $sr^2$ commutes with $s$, covering the cases $k=0,2$. Hence, we can now list the centralizers for every element in $D_8$:
+\begin{align*}
+C(1) &= D_8\\
+C(r) &= \set{1,r,r^2,r^3}\\
+C(r^2) &= D_8\\
+C(r^3) &= \set{1,r,r^2,r^3}\\
+C(s) &= \set{1,r^2,s,sr^2}\\
+C(sr) &= \set{1,r^2,sr,sr^3}\\
+C(sr^2) &= \set{1,r^2,s,sr^2}\\
+C(sr^3) &= \set{1,r^2,sr,sr^3}
+\end{align*}
+\item $Q_8$\\
+lol
+\end{itemize}
 \end{document}
 
 
