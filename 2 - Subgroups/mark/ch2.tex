@@ -16,7 +16,7 @@
     colorlinks,
     linktoc=all,
     linkcolor={blue},
-    citecolor={blue},
+    citecolor={blue}, 
     urlcolor={blue}
 }
 %\setcounter{section}{-1}
@@ -300,8 +300,182 @@ C(sr^2) &= \set{1,r^2,s,sr^2}\\
 C(sr^3) &= \set{1,r^2,sr,sr^3}
 \end{align*}
 \item $Q_8$\\
-lol
+man suckmndick
 \end{itemize}
+\subsubsection{}\label{ex2p5}
+\begin{enumerate}[(a)]
+\item $G=S_3, A=\set{\id, (1\ 2\ 3), (1\ 3\ 2)}$.\\
+In the previous exercise, we computed that $C( (1\ 2\ 3) ) = A$
+\begin{align*}
+\set{(1\ 2\ 3)} & A\\
+\implies C(A) &\leq C( (1\ 2\ 3) )\\
+\implies C(A) &\leq A\\
+\implies \norm{C(A)} &\divides 3
+\end{align*}
+\begin{itemize}
+\item $C(A)=A$\\
+So we must have $\norm{C(A)}=1$ or $\norm{C(A)} = 3$. The latter corresponds to $C(A) = A$, since $C(A) \leq A$. And since $C(A) \leq A$, we're checking if the lements of $A$ commute with each other. But each element in $A$ commutes with $1$ and each element in $A$ commutes with itself. So all that's left to check is if $(1\ 2\ 3)$ and $(1\ 3\ 2)$ commute, which they do, since $(1\ 3\ 2) \in A = C( (1\ 2\ 3) )$. Hence $C(A) = A$.
+\item $N(A)=G$\\
+Note that $A=C(A) \leq N(A)$, so $3 \divides \norm{N(A)}$. since $\norm{S_3} = 6$, we must have $N(A)=A$ or $N(A)=G$. But
+\begin{align*}
+(1\ 2)\id\inv{(1\ 2)} &= \id\\
+&\in A
+\end{align*}
+and
+\begin{align*}
+(1\ 2)(1\ 2\ 3)\inv{(1\ 2)} &= (1\ 2)(1\ 2\ 3)(1\ 2)\\
+&= (1\ 2)(1\ 3)\\
+&= (1\ 3\ 2)\\
+&\in A
+\end{align*}
+and
+\begin{align*}
+(1\ 2)(1\ 3\ 2)\inv{(1\ 2)} &= (1\ 2)(1\ 3\ 2)(1\ 2)\\
+&= (1\ 2)(2\ 3)\\
+&= (1\ 2\ 3)\\
+&\in A
+\end{align*}
+Hence $(1\ 2) \in N(A)$, so $N(A) \neq A$ and we must have $N(A) = G$
+\end{itemize}
+\item $G=D_8, A=\set{1,s,r^2,sr^2}$\\
+\begin{itemize}
+\item $C(A) = A$\\
+From the previous exercise, we know that $C(s) = A$. Then
+\begin{align*}
+\set{s} &\subset A\\
+\implies C(A) &\leq C(s)\\
+\implies C(A) &\leq A\\
+\implies \norm{C(A)} &\divides 4
+\end{align*}
+So we must have $\norm{C(A)}=1,2,$ or $4$\\
+Now $1\in C(A)$ trivially. And
+\begin{align*}
+sr^2 &= r^{-2}s =r^2s\\
+s(sr^2) &= s^2r^2 = sr^{-2}s = (sr^2)s
+\end{align*}
+so $s \in C(A)$. And $r^2(sr^2) = sr^{-2}r^2 = s = sr^4 = (sr^2)r^2$,\\
+so $r^2 \in C(A)$\\
+Hence, $\norm{C(A)} \geq 3$, so we must have $\norm{C(A)} = 4$, i.e. $C(A)=A$.
+\item $N(A)=G$\\
+We have that $C(A) \leq N(A) \leq D_8$, so $4 \divides \norm{N(A)} \divides 8$, hence we must have $N(A)=A$ or $N(A)=D_8$\\
+But
+\begin{align*}
+rs\inv{r} &= sr^{-2} = sr^2 \in A\\
+rr^r\inv{r} &= r^2 \in A\\
+r(sr^2)\inv{r} &= rsr = s \in A
+\end{align*}
+so $r \in N(A)$, and we must have $N(A)=G$
+\end{itemize}
+\item $G=D_{10},A=\set{1,r,r^2,r^3,r^4}$\\
+\begin{itemize}
+\item $C(A)=A$\\
+$C(A) \leq D_{10}$, so $\norm{C(A)} \divides 10$. So we must have,\\
+$\norm{C(A)} = 1,2,5,$ or $10$.\\
+The elements of $A$ clearly commute with each other, so $A \leq C(A)$, leaving us with\\
+$\norm{C(A)}=5$ or $10$\\
+But $rs=s\inv{r} \neq sr$, so $s \notin C(A)$ and we must have $\norm{C(A)} = 5$, i.e. $C(A) = A$.
+\item $N(A) = G$\\
+As usual $C(A) \leq N(A) \leq D_{10}$, so\\
+$5 \divides \norm{N(A)} \divides 10$,\\
+so we must have $\norm{N(A)} = 5$ or $10$\\
+Bute for $k=0,\ldots,4$, we have $sr^k\inv{s} = sr^ks=s^2r^{-k} = r^{-k} = r^{5-k} \in A$\\
+so $s\in A$, which means we must have $\norm{N(A)} = 10$, i.e. $N(A) = G$
+\end{itemize}
+\end{enumerate}
+\subsubsection{}\label{ex2p6}
+\begin{enumerate}[(a)]
+\item $H \leq N_G(H)$:\\
+If $h \in H$, then take arbitrary $g \in H$. Then $hg\inv{g} \in H$ (since $H$ is a subgroup). Since $g$ was arbitrary, $hH\inv{h} \subset H$, and the reverse inclusion is trivial (set $h=1$, which we can do because $H$ is a subgroup). Hence $hH\inv{h} = H$, and $h \in N(H)$. Since $h$ was arbitrary, $H \subset N(H)$ i.e. $H \leq N(H)$\\
+For a counterexample when $H$ is not a subgroups, let $G=S_3$ and $H = \set{(1\ 2), (1\ 2\ 3)}$. But $(1\ 2)(1\ 2\ 3)(1\ 2) = (1\ 3\ 2) \notin H$. So $(1\ 2) \notin N(H)$
+\item $H \leq C_G(H)$ iff $H$ abelian\\ 
+If $H$ is abelian, let $h \in H$ and $g \in H$. Then $g,h$ commute (since $H$ abelian). Since $g \in H$ was arbitrary, $h \in C(H)$, and since $h\in H$ was arbitrary, $H \leq C(H)$\\
+If $H \leq C(H)$, let $h,g\in H$. Since $h\in H$ and $g\in C(H)$, $g,h$ commute. Since $g,h \in H$ were arbitrary, $H$ is abelian
+\end{enumerate}
+\subsubsection{}\label{ex2p7}
+We will do both parts in one\\
+Suppose $r^i \in Z(D_{2n})$, ($i=0,\ldots,n-1$).\\
+Suppose $r^i\in Z(D_{2n})$. Then
+\begin{align*}
+sr^i &= r^is\\
+\implies sr^i &= sr^{-i}\\
+\implies r^i &= r^{-i}\\
+\implies r^{2i} &= 1
+\end{align*}
+\textbf{This is only possible when $i=0$ (the case $r^i = 1$), or when $n$ is even and $i = n/2$}\\
+Suppose $sr^i \in Z(D_{2n})$, ($i=0,\ldots,n-1$). Then
+\begin{align*}
+sr^ir &= rsr^i\\
+\implies sr^{i+1} &= sr^{i-1}\\
+\implies r^{i+1} &= r^{i-1}\\
+\implies r&= \inv{r}
+\end{align*}
+which never occurs for $n \geq 3$
+\subsubsection{}\label{ex2p8}
+The text already stated that the stabilizer is a subgroup\\
+$G_i$ can be easily identified with $S_{n-1}$, so $\norm{G_i} = \norm{S_{n-1}} = (n-1)!$
+\subsubsection{}\label{ex2p9}
+$N_H(A) \subset N_G(A)$ and $N_H(A) \subset H$ are trivial, so $N_H(A) \subset N_G(A) \cap H$.\\
+Now let $h \in N_G(A) \cap H$. Then by definition of $N_G(A)$, $hA\inv{h} = A$, so $h \in N_H(A)$. 
+\subsubsection{}\label{ex2p10}
+$\norm{H} = 2$\\
+\begin{itemize}
+\item $N_G(H) = C_G(H)$:\\
+If $\norm{H} = 2$, then $H=\set{1,h}$, for some $h \neq 1$ ($h = \inv{h}$).\\
+$C(H) \leq N(H)$ as always. So we prove the reverse inclusion. Let $g \in N(H)$. It trivially commutes with $1$, so we have to show that it commutes with $h$ as well.\\
+We do know that $gh\inv{g} \in H$ (since $g \in N(H)$). In the case $gh\inv{g} = 1$, we'd have $gh = g \implies h=1$, a contradiction. So we must have $gh\inv{g} = h \implies gh=hg$ as needed.
+\item $N_G(H) = G \implies H \leq Z(G)$:
+If $N(H) = G$, then $C(H) = G$, as we have just shown. $C_G(H) = G$ means that the elements of $H$ commute with all the elements of $G$. i.e. $H \subset Z(G)$.
+\end{itemize}
+\subsubsection{}\label{ex2p11}
+Let $g \in Z(G)$. Then let $a\in A$. Then since $g$ is in the center, $ga=ag\implies ga\inv{g} = a \implies ga\inv{g} \in A$. Since $a \in A$ was arbitrary, $gA\inv{g} \subset A$, and the reverse inclusion is trivial by $g=1$, so $g\in N_G(A)$. Since $g\in G$ was arbitrary, $Z(G) \subset N_G(A)$
+\subsubsection{}\label{ex2p12}
+\begin{enumerate}[(a)]
+\item
+We have 
+\begin{align*}
+p&=12x_1^5x_2^7x_4 - 18x_2^3x_3 + 11x_1^6x_2x_3^3x_4^{23}\\
+\sigma &= (1\ 2\ 3\ 4)\\
+\tau &= (1\ 2\ 3)
+\end{align*}
+And thus
+\begin{align*}
+\sigma \cdot p &= 12x_2^5x_3^7x_1 - 18x_3^3x_4 + 11x_2^6x_3x_4^3x_1^{23}\\
+\tau\cdot(\sigma \cdot p) &= 12x_3^5x_1^7x_2 - 18x_1^3x_4 + 11x_3^6x_1x_4^3x_2^{23}\\
+(\tau\comp\sigma)\cdot p &= \tau\cdot(\sigma \cdot p) & \mbox{(since this is an action, by the next part)}\\
+(\sigma\comp\tau)\cdot p &= (1\ 3\ 2\ 4)p\\
+&= 12x_3^5x_4^7x_1 - 18x_4^3x_2 + 11x_3^6x_4x_2^3x_1^{23}
+\end{align*}
+\item We verify the axioms \label{ex2p12b} 
+\begin{itemize}
+\item Identity: $\id\cdot p(x_1,x_2,x_3,x_4) = p(x_{\id{1}},x_{\id{2}},x_{\id{3}},x_{\id{4}}) = p(x_1,x_2,x_3,x_4)$ as needed
+\item Associativity: $\tau\cdot(\sigma\cdot p(x_1,x_2,x_3,x_4)) = \tau\cdot p(x_{\sigma(1)},x_{\sigma(2)},x_{\sigma(3)},x_{\sigma(4)}) = p(x_{\tau(\sigma(1))},x_{\tau(\sigma(2))},x_{\tau(\sigma(3))},x_{\tau(\sigma(4))}) = p(x_{\tau\comp\sigma(1)},x_{\tau\comp\sigma(2)},x_{\tau\comp\sigma(3)},x_{\tau\comp\sigma(4)}) = (\tau\comp\sigma)\cdot p(x_1,x_2,x_3,x_4)$
+\end{itemize}
+\item $\Stab x_4 = \set{\id,(1\ 2),(2\ 3),(1\ 3),(1\ 2\ 3),(1\ 3\ 2)}$, which is clearly isomorphic to $S_3$
+\item $\Stab(x_1+x_2) = \set{\id,(1\ 2),(3\ 4),(1\ 2)(3\ 4)}$
+\item $\Stab(x_1x_2 + x_3x_4) = \set{\id,(1\ 2),(3\ 4),(1\ 2)(3\ 4),(1\ 3)(2\ 4),(1\ 4)(2\ 3),(1\ 3\ 2\ 4),(1\ 4\ 2\ 3)}$. This is clearly isomorphic to $D_8$, if you label the vertices clockwise as $1, 3, 2, 4$.
+\item Trivial
+\end{enumerate}
+\subsubsection{}\label{ex2p13}
+Identical proof to \ref{ex2p12b}
+\subsubsection{}\label{ex2p14}
+Let $A = \begin{pmatrix}1 & a & b\\ 0 & 1 & c\\ 0 & 0 & 1\end{pmatrix}$ and suppose $A \in Z(H(F))$ Then given $B = \begin{pmatrix}1 & e & f\\
+0 & 1 & g\\
+0 & 0 & 1\end{pmatrix}$, we must have
+\begin{align*}
+AB &= BA\\
+\implies \begin{pmatrix}1 & a & b\\0 & 1 & c\\0 & 0 & 1\end{pmatrix}\begin{pmatrix}1 & e & f\\0 & 1 & g\\0 & 0 & 1\end{pmatrix} &= \begin{pmatrix}1 & e & f\\0 & 1 & g\\0 & 0 & 1\end{pmatrix}\begin{pmatrix}1 & a & b\\0 & 1 & c\\0 & 0 & 1\end{pmatrix}
+\end{align*}
+which yields the equation
+\begin{align*}
+f+ag+b&=b+ce+f\\
+\implies ag&=ce
+\end{align*}
+Setting $g,e=1$ gives $a=c$. And setting $g=1,e=0$ gives $a=0$, so also $c=0$\\
+Hence
+\begin{equation}
+Z(H(F)) = \set{ \begin{pmatrix}1 & 0 & b\\0 & 1 & 0\\0 & 0 & 1\end{pmatrix} | b \in F }
+\end{equation}
+which can clearly be identified with $F$
 \end{document}
 
 
