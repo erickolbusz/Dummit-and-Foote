@@ -17,8 +17,8 @@
     linktoc=all,
     linkcolor={blue},
     citecolor={blue}, 
-    urlcolor={blue} 
-}
+    urlcolor={blue}  
+} 
 %\setcounter{section}{-1}
 
 \newcommand{\ints}{\mathbb{Z}} 
@@ -556,19 +556,33 @@ The contrapositive yields that the $gx^k\inv{g}$ are distinct for $k=0,\ldots,n-
 \end{enumerate}
 \subsubsection{}\label{ex3p25}
 \begin{itemize} \label{ex3p25a}
-\item We assume $G = \cyclic{x}$ is cyclic with order $n$\\
-We have $(k,n)=1$. For $0\leq i \leq j \leq n-1$, suppose $(x^i)^k = (x^j)^k$. Then
+\item Let $|G| = n$ and $G=\cyclic{x}$\\
+We have $(k,n)=1$. Select $i,j$ such that $0\leq i \leq j \leq n-1$, and suppose $(x^i)^k = (x^j)^k$. Then
 \begin{align*}
 x^{ik} &= x^{jk}\\
 \implies x^{jk - ik} &= 1\\
 \implies x^{k(j - i)} &= 1\\
-\implies n &\divides k(j-i)\\
+\implies n &\divides k(j-i) & \mbox{(since $\norm{x}=n$)}\\
 \implies n &\divides j-i & \mbox{(since $(k,n)=1$)}\\
 \implies j-i &= 0 & \mbox{(since $0\leq i \leq j \leq n-1$)}\\
 \implies j &= i
 \end{align*}
 Hence the powers by the residues are all distinct, so the image has order $n$ and hence comprises all of $G$, so the map is surjective.
-\item
+\item We prove the following lemma:
+\begin{lemma} \label{lemma1}
+Let $\norm{G} = n < \infty$, $(k,n)=1$. Then $x^k = 1 \implies x = 1$ (so nonidentity elements taken to the $k$th power are never the identity) 
+\end{lemma}
+\begin{proof}
+Let $m = \norm{x^k}$. Note that $\norm{x^k}=\norm{\cyclic{x^k}}$, and hence by Lagrange's theorem, $m \divides n$. Suppose $m=1$. Then $\norm{x^k}=1$ so $x^k=1$, and $\norm{x} \divides k$. But $\norm{x} = \norm{\cyclic{x}} \divides n$ by Lagrange's theorem, so $(k,n) \geq \norm{x}$. But $(k,n)=1$, so $\norm{x} =1$, i.e. $x=1$
+\end{proof}
+$1^k =1$, of course. Now take $x \in G, x\neq 1$. Then by the lemma, $x^k = y$ for some $y \neq 1$. Now suppose we also have $z \in G$ with $z^k = y$. Denote $z\inv{x} = a$. Then
+\begin{align*}
+z^k &= y\\
+\implies z^k &= x^k\\
+\implies z^k(\inv{x})^k = 1\\
+\implies a^k &= 1
+\end{align*}
+By the lemma, we would have $a=1$, so $z\inv{x}=1$ i.e. $z=x$. Hence the map is injective, and an injective map to itself must be surjective.
 \end{itemize}
 \subsubsection{}\label{ex3p26}
 Let $Z_n = \cyclic{x}$
