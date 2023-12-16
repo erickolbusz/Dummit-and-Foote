@@ -17,7 +17,7 @@
     linktoc=all,
     linkcolor={blue},
     citecolor={blue}, 
-    urlcolor={blue}
+    urlcolor={blue} 
 }
 %\setcounter{section}{-1}
 
@@ -30,8 +30,9 @@
 \newcommand{\abs}[1]{| #1 |}
 \newcommand{\inv}[1]{ {#1}^{-1} }
 \newcommand{\id}{ \bm{1} }
-\newcommand{\iso}{ \equiv }
+\newcommand{\iso}{ \cong }
 \newcommand{\comp}{ \circ }
+\newcommand{\lcm}{ \textrm{lcm}, }
 \newcommand{\Aut}{ \textrm{Aut}, }
 \newcommand{\Stab}{ \textrm{Stab}, }
 \newcommand{\sheaf}{ \mathcal{O} }
@@ -44,6 +45,7 @@
 \renewcommand{\bar}{\overline}
 \newcommand{\norm}[1]{|#1|}
 \newcommand{\divides}{\vert}
+\newcommand{\cyclic}[1]{<#1>}
 \DeclareMathOperator*{\argmin}{\arg\!\min}
 
 \newtheorem{theorem}{Theorem}[section]
@@ -476,6 +478,125 @@ Hence
 Z(H(F)) = \set{ \begin{pmatrix}1 & 0 & b\\0 & 1 & 0\\0 & 0 & 1\end{pmatrix} | b \in F }
 \end{equation}
 which can clearly be identified with $F$
+\subsection{Cyclic Groups and Cyclic Subgroups}\label{sec2p3}
+\subsubsection{}\label{ex3p1}
+\subsubsection{}\label{ex3p2}
+\subsubsection{}\label{ex3p3}
+\subsubsection{}\label{ex3p4}
+\subsubsection{}\label{ex3p5}
+\subsubsection{}\label{ex3p6}
+\subsubsection{}\label{ex3p7}
+\subsubsection{}\label{ex3p8}
+\subsubsection{}\label{ex3p9}
+\subsubsection{}\label{ex3p10}
+\subsubsection{}\label{ex3p11}
+\subsubsection{}\label{ex3p12}
+\begin{enumerate}[(a)]
+\item $Z_2\times Z_2 = \set{(0,0), (0,1), (1,0), (1,1)}$,
+And all cyclic subgroups take the form $\cyclic{x}=\set{(0,0), x}$, so $\norm{\cyclic{x}} < \norm{Z_2\times Z_2}$ in all cases.\\
+\item Given $a,b \in \ints$
+\begin{align*}
+(1,0) &\notin \cyclic{(0,a)}\\
+(0,1) &\notin \cyclic{(1,b)}\\
+\end{align*}
+So no cyclic subgroup generates all of $Z_2 \times \ints$
+\item The cyclic subgroups $\cyclic{(0,y)}, \cyclic{(x,0)}$ are always $0$ in one coordinate and hence do not generate $\ints\times\ints$. The cyclic subgroup $\cyclic{(x,y)}$ comprises only the line through the origin with a slope of $y/x$, not the entire $\ints\times\ints$ plane.
+\end{enumerate}
+\subsubsection{}\label{ex3p13}
+\begin{enumerate}[(a)]
+\item $\ints$ is cyclic but $\ints\times Z_2$ is not
+\item Consider a homomorphism $\rats \to \rats\times Z_2$. If $a \mapsto (x,0)$, then there is no way to reach $(0,1)$. If $a \mapsto (y,1)$, there is no way to reach $(1,0)$. 
+\end{enumerate}
+\subsubsection{}\label{ex3p14}
+\subsubsection{}\label{ex3p15}
+If $\rats\times\rats$ was cyclic, then we'd have an isomorphism $\ints \to \rats\times\rats$. But if $1 \mapsto (b,c)$, that determines the rest of the map as $k \mapsto (kb,kc)$, which is obviously not surjective.
+\subsubsection{}\label{ex3p16}
+\begin{itemize}
+\item Let $l = \lcm(m,n)$ and write $l=am=bn$. Then
+\begin{align*}
+(xy)^l &= x^ly^l & \mbox{($x,y$ commute)}\\
+&= (x^n)^b(y^m)^a\\
+&= 1\cdot 1\\
+&= 1
+\end{align*}
+Hence by proposition 3 in the text, $\norm{xy} \divides l$
+\item If $x,y$ do not commute, see my \ref{ex1p6} for a counterexample
+\item Note that in $D_{12}$, $\norm{r^2} = 3, \norm{s}=2$, so the lcm of the orders is $6$. But $(sr^2)^2 = sr^2sr^2 = ssr^{-2}r^2 = s^2r^0 = 1\cdot 1 = 1$, so $\norm{sr^2} = 2 < 6$
+\end{itemize}
+\subsubsection{}\label{ex3p17}
+$Z_n = \cyclic{x | x^n=1 }$
+\subsubsection{}\label{ex3p18}
+Let $\phi: Z_n \to H$ with $x \mapsto h$. Then if $\phi$ is a homomorphism, we must have $x^k \mapsto h^k$, uniquely determining $\phi$ if it exists.\\
+If $x^a = x^b$, then $x^{a-b}=1$, so $a-b=cn$ for some $c$. Then $\phi(x^a)=h^a$ and $\phi(x^b)=h^b$. But 
+\begin{align*}
+h^{a-b} &= (h^n)^c\\
+\implies h^{a-b} &= 1\\
+\implies h^a &= h^b\\
+\implies \phi(x^a) &= \phi(x^b)
+\end{align*}
+So $\phi$ is well-defined and thus exists.
+\subsubsection{}\label{ex3p19}
+Let $\phi: \ints \to H$ with $1\mapsto h$. Then if $\phi$ is a homomorphism we must have $\phi(k)=k\phi(1)=h^k$, uniquely determining $\phi$.
+\subsubsection{}\label{ex3p20}
+Suppose $x^{p^n} = 1$. Let $o=\norm{x}$. We know from prop 3 that $o \divides p^n$, so $ao = p^n$ for some $a \in \ints$ (assume wlg $a$ positive). But the prime factorization is unique, so $ao$ must factor into $p^n$, Hence $o=p^m$ for some $m\leq n$
+\subsubsection{}\label{ex3p21}
+\subsubsection{}\label{ex3p22}
+\subsubsection{}\label{ex3p23}
+\subsubsection{}\label{ex3p24}
+\begin{enumerate}[(a)]
+\item Trivial
+\item The proof is traced out. $gx^k\inv{g}=(gx\inv{g})^k = (x^a)^k = x^k \in \cyclic{x}$, so $g\cyclic{x}\inv{g} \leq \cyclic{x}$ indeed. Now let $n=\norm{x}$. Given $0 \leq i \leq k \leq n-1$, suppose $gx^k\inv{g} = gx^i\inv{g}$. Then by right multiplying by $g$ and left multiplying by $\inv{g}$ on both sides,
+\begin{align*}
+x^k &= x^i\\
+\implies x^{k-i} &= 1\\
+\implies k-i &= 0 & \mbox{(since $0\leq i\leq k\leq n-1$)}\\
+\implies k &= i
+\end{align*}
+The contrapositive yields that the $gx^k\inv{g}$ are distinct for $k=0,\ldots,n-1$. Hence $\norm{g\cyclic{x}\inv{g}} = n = \norm{\cyclic{x}}$, so $\norm{g\cyclic{x}\inv{g}} = \cyclic{x}$.
+\end{enumerate}
+\subsubsection{}\label{ex3p25}
+\begin{itemize} \label{ex3p25a}
+\item We assume $G = \cyclic{x}$ is cyclic with order $n$\\
+We have $(k,n)=1$. For $0\leq i \leq j \leq n-1$, suppose $(x^i)^k = (x^j)^k$. Then
+\begin{align*}
+x^{ik} &= x^{jk}\\
+\implies x^{jk - ik} &= 1\\
+\implies x^{k(j - i)} &= 1\\
+\implies n &\divides k(j-i)\\
+\implies n &\divides j-i & \mbox{(since $(k,n)=1$)}\\
+\implies j-i &= 0 & \mbox{(since $0\leq i \leq j \leq n-1$)}\\
+\implies j &= i
+\end{align*}
+Hence the powers by the residues are all distinct, so the image has order $n$ and hence comprises all of $G$, so the map is surjective.
+\item
+\end{itemize}
+\subsubsection{}\label{ex3p26}
+Let $Z_n = \cyclic{x}$
+\begin{enumerate}[(a)]
+\item As shown in the first part of the previous exercise \ref{exp3p25a}, $\sigma_a$ is injective and surjective.
+\item 
+\begin{align*}
+\sigma_a &= \sigma_b\\
+\iff \sigma_a(x) &= \sigma_b(x) & \mbox{(The value on $x$ determines the whole map)}\\
+\iff x^a &= x^b\\
+\iff x^{a-b} &= 1\\
+\iff n &\divides a-b\\
+\iff a &\equiv b \pmod{n}
+\end{align*}
+\item
+Let $\sigma \in \Aut(Z_n)$. Then $\sigma(x) = x^a$ for some $a \in \ints$\\
+If $\sigma$ is an automorphism, then
+\begin{equation}
+x^0, x^a, x^{2a},\ldots, x^{(n-1)a} \label{eq2p26}
+\end{equation}
+are all distinct. Suppose $(a,n)=k$. Write $a=kb,n=km$. Note that $0<m\leq n$. Then\\
+\begin{equation}
+x^{am} = x^{kbm} = x^{kmb} = x^{nb} = 1
+\end{equation}
+In order to not contradict the distinctness of the \ref{eq2p26}, we must have $m=n$. But then $n=km \implies k=1$. I.e. $(a,n)=1$, as needed.
+\item
+$\sigma_a\comp\sigma_b(x) = \sigma_a(x^b) = (x^b)^a = x^{ab} = \sigma_{ab}(x)$
+\end{enumerate}
 \end{document}
 
 
