@@ -582,7 +582,7 @@ z^k &= y\\
 \implies z^k(\inv{x})^k &= 1\\
 \implies a^k &= 1
 \end{align*}
-By the lemma, we would have $a=1$, so $z\inv{x}=1$ i.e. $z=x$. Hence the map is injective, and an injective map to itself must be surjective.
+By the lemma, we would have $a=1$, so $z\inv{x}=1$ i.e. $z=x$. Hence the map is injective, and an injective map between a finite set to itself must be surjective.
 \end{itemize}
 \subsubsection{}\label{ex3p26}
 Let $Z_n = \cyclic{x}$
@@ -611,6 +611,149 @@ In order to not contradict the distinctness of the \ref{eq2p26}, we must have $m
 \item
 $\sigma_a\comp\sigma_b(x) = \sigma_a(x^b) = (x^b)^a = x^{ab} = \sigma_{ab}(x)$
 \end{enumerate}
+\subsection{}
+\subsubsection{}\label{ex4p1}
+$H$ is the smallest subgroup containing $H$
+\subsubsection{}\label{ex4p2}
+\begin{itemize}
+\item
+	\begin{align*}
+	\cyclic{A} &= \bigcap_{A\subset H\subset G}\\
+	&\subset \bigcap_{B\subset H\subset G} & \mbox{since $A\subset B$}\\
+	&= \cyclic{B}
+	\end{align*}
+\item
+	In $D_{2n}, \set{r,s} \subsetneq \set{r,s,sr}$, but both generate $D_{2n}$
+\end{itemize}
+\subsubsection{}\label{ex4p3}
+
+\begin{itemize}
+\item
+Suppose $s,t \in \cyclic{H,Z(G)}$.\\
+Then we can write $s=xg$ for $x\in H, g\in Z(G)$ (since we can collect all the elements of $Z(G)$ to the right by commutativity). Similarly, we can write $t=yh$ for $t\in H, h\in Z(G)$. Hence,
+\begin{align*}
+st &= xgyh\\
+&= xyhg & \mbox{using $g\in Z(G)$}\\
+&= yxhg & \mbox{using $x,y\in H$}\\
+&= yhxg & \mbox{using $g\in Z(G)$}\\
+&= ts
+\end{align*}
+\item
+Consider $G= S_5$, and the subgroup $H=\set{\id, (1\ 2)}$\\
+Then clearly $(3\ 4), (4\ 5) \in C_G(H) \subset \cyclic{H,C_G(H)}$\\
+But they do not commute.
+\end{itemize}
+\subsubsection{}\label{ex4p4}
+In order to make $H-\subset{1}$ into a subgroup, we must at least add the identity. But this makes it a subgroup containing $H-\subset{1}$, so the smallest subgroup containing it is $H$.
+\subsubsection{}\label{ex4p5}
+The order $2$ elements of $S_3$ are $(1\ 2),(2\ 3),(1\ 3)$. we show that the subset $A=\set{(1\ 2), (2\ 3)}$ generates $S_3$, and the proof is analagous for the other pairs.\\
+First, $\id, (1\ 2), (2\ 3) \in \cyclic{A}$ is trivial, and we have\\
+\begin{align*}
+(1\ 2\ 3) &= (1\ 2)\comp (2\ 3) \in \cyclic{A}\\
+(1\ 3\ 2) &= (2\ 3)\comp (1\ 2) \in \cyclic{A}
+(1\ 3) &= (1\ 2) \comp (1\ 3\ 2) \in \cyclic{A}
+\end{align*}
+\subsubsection{}\label{ex4p6}
+Denote $a=(1\ 2), b=(1\ 2)(3\ 4)$. Note that $a,b$ commute so $\cyclic{a,b}$ is abelian. Hence, the order is $|a||b| = 2\cdot 2 = 4$. Also note that $(3\ 4) = ab \in \cyclic{a,b}$, and adding this element to $\set{\id,a,b}$ yields a subgroup, hence
+\begin{equation}
+\cyclic{a,b} = \set{\id,(1\ 2),(1\ 2)(3\ 4),(3\ 4)}
+\end{equation}
+But the orders of all the elements here are $\leq 2$, so no single element can generate $\cyclic{a,b}$
+\subsubsection{}\label{ex4p7}
+Label the vertices clockwise $3,2,4,1$. We can identify $(1\ 2)$ with $s$ and $(1\ 3)(2\ 4)$ with $s\inv{r}$. Note that $s \in \cyclic{s,s\inv{r}}$ and $s\inv{r}s = rs^2 = r$, also $r\in \cyclic{s,s\inv{r}}$. But a subgroup containing both $s$ and $r$ must contain all of $D_8$
+\subsubsection{}\label{ex4p8}
+man fuckmnall
+\subsubsection{}\label{ex4p9}
+man fuckmnall
+\subsubsection{}\label{ex4p10}
+man fuckmnall
+\subsubsection{}\label{ex4p11}
+man fuckmnall
+\subsubsection{}\label{ex4p12}
+man fuckmnall
+\subsubsection{}\label{ex4p13}
+Denote $Q = \rats^+$. Let $1/b \in Q$ for some $b\in\ints-0$.\\
+Let $b=p_1^{\alpha_1}\cdots p_n^{\alpha_n}$ be the prime factorization of $b$. Then $1/b = (\frac{1}{p_1})^{\alpha_1}\cdots(\frac{1}{p_n})^{\alpha_n} \in \cyclic{A}$.\\
+Hence we have shown that $a\in \ints-0 \implies 1/a\in\cyclic{A}$, which also means in fact that $a \in \cyclic{A}$ (because $\cyclic{A}$ is a subgroup).\\
+Finally, given arbitrary $a/b \in Q$, with $a,b\in\ints-0$,\\
+$\frac{a}{b} = a\cdot\frac{1}{b}\in\cyclic{A}$.\\
+Hence, $\cyclic{A} = Q$
+\subsubsection{}\label{ex4p14}
+\begin{enumerate}[(a)]
+\item $H=\cyclic{H}$
+\item $\ints = \cyclic{1}$
+\item man FUCKmnall
+\item If $\rats$ were finitely generated, then it would be cyclic by part c (which I didn't do lol), so we'd have $\rats=\cyclic{a/b}$ ($a,b\in \ints-0$), But $\cyclic{a/b} = \set{c\cdot\frac{a}{b} | c\in \ints}$, which is obviously a proper subgroup of $\rats$
+\end{enumerate}
+\subsubsection{}\label{ex4p15}
+Let $A=\set{1/p | p \mbox{ prime}}$, and let $H=\cyclic{A}$.\\
+If $H$ were cyclic, then we'd have $H=\cyclic{a/b}$ for some $a,b \in\ints-0$.\\
+Now let $b = p_1^{c_1}\cdots p_n^{c_n}$ be a prime factorization of $b$. Let $p$ be a prime number greater than $b$. Then if $\cyclic{a/b} = A$, we must have $c\cdot \frac{a}{b} = \frac{1}{p}$ for some $c \in \ints$. I.e.
+\begin{equation}
+\frac{ca}{p_1^{c_1}\cdots p_n^{c_n}} = \frac{1}{p}
+\end{equation}
+which is clearly impossible
+\subsubsection{}\label{ex4p16}
+\begin{enumerate}[(a)]
+\item 
+Let $\norm{G}=n$. If $H$ is maximal, we're done. Otherwise, there is a subgroup $H'$ such that $H \subsetneq H' \subsetneq G$. I.e. with the property $\norm{H}<\norm{H'}<\norm{G}$. Repeat by setting $H=H'$. The process must terminate because the order cannot keep strictly increasing (since the order of $G$ is finite)
+\item Let $H=\set{r^0=1,r^1,r^2,\ldots,r^{n-1}}$\\
+Suppose $H$ is a proper subgroup of $H'$. Then $H'$ must contain an element of the form $sr^k$ ($0\leq k\leq n-1$). But then $s=(sr^k)(r^{n-k}) \in H'$, so $r,s\in H'$, which means $H'=G$.
+\item man FRUCKMNTAL
+\end{enumerate}
+\subsubsection{}\label{ex4p17}
+\newcommand{\chain}{\mathcal{C}}
+\begin{enumerate}[(a)]
+\item
+	We can write $H=\bigcup_{B\in\chain} B$. Let $h,g\in H$. Then $h\in B,g\in B'$ for some $B,B'\in\chain$. Assume without loss of generality that $B\subset B'$ (since $\chain$ is a chain). Then $h\in B'$, so $h\inv{g} \in B' \subset H$, making $H$ a subgroup.
+\item
+	Suppose $H=G$. Then each $g_i \in B_i$ for some $B_i\in\chain$. Since $\chain$ is a chain, we can assume wlg that $B_1 \supset B_i$ for $i=1,\ldots,n$, so
+
+\begin{align*}
+g_1,\ldots,g_n &\in B_1\\
+\implies \cyclic{g_1,\ldots,g_n} &\subset B_1\\
+\implies G &\subset B_1\\
+\implies G &= B_1
+\end{align*}
+But $B_1 \in \mathcal{S}$ is a proper subgroup of $G$, a contradiction.
+\item
+	The "$H$" as defined in part a for any given chain $\chain$ in $\mathcal{S}$ is an upper bound for $\chain$. Hence, Zorn's lemma yields a maximal element of $\mathcal{S}$.
+\end{enumerate}
+\subsubsection{}\label{ex4p18}
+\begin{enumerate}[(a)]
+\item
+\begin{itemize}
+	\item $\impliedby$:\\
+	If $k\leq m$, then 
+	\begin{align*}
+	z &\in H_k\\
+	\implies z^{p^k} &=1\\
+	\implies (z^{p^k})^{p^{m-k}} &= 1\\
+	\implies z^{p^kp^{m-k}} &= 1\\
+	\implies z^{p^m} &= 1\\
+	\implies z &\in H_m
+	\end{align*}
+	Hence, $H_k \subset H_m$\\
+	\item $\implies$:\\
+	Now suppose $H_k \subset H_m$. For the sake of contradiction, suppose $m < k$. Then our previous work, we'd have $H_m \subset H_k$, so $H_m=H_k$, and $\norm{H_m}=\norm{H_k}$. But $z^{p^m}$ has $p^m$ solutions and $z^{p^k}$ has $p^k$ solutions, yielding $\norm{H_m}<\norm{H_k}$, a contradiction.
+\end{itemize}
+\item Clearly $\cyclic{e^{2\pi i/n}} = \set{e^{2\pi it/n} | t=0,1,\ldots,n-1}$, and this of course still applies when $n=p^k$
+\item man fuckmnall
+\item man fuckmnall
+\end{enumerate} 
+\subsubsection{}\label{ex4p19}
+\begin{enumerate}[(a)]
+\item Let $\frac{a}{b}\in\rats$ ($a,b\in\ints$) and let $k$ be a nonzero integer. Then $k\cdot \frac{a}{bk} = \frac{a}{b}$, so $\rats$ is divisible.
+\item
+If $\norm{G}=n$, then the orders of all the elements divide $n$, so any element to the $n$th power is $1$. No element has an $n$th root.
+\end{enumerate}
+\subsubsection{}\label{ex4p20}
+\begin{itemize}
+\item $\impliedby$:\\
+Suppose $A,B$ divisible. Then let $(a,b)\in A\times B$ and let $k \in \ints-0$. Then let $c^k=a, d^k=b$. Then $(c,d)^k = (c^k,d^k) = (a,b)$, so $A\times B$ is divisible.
+\item $\implies$:\\
+Suppose $A\times B$ divisible. Then let $a, b \in A, B$ and let $k \in \ints-0$. Then there is $(c,d) \in A\times B$ such that $(c,d)^k = (a,b) \implies (c^k, d^k) =(a,b) \implies c^k=a$ and $d^k=b$, so $A$ and $B$ are both divisible
+\end{itemize}
 \end{document}
 
 
