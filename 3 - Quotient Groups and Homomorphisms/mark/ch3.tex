@@ -1,0 +1,323 @@
+\documentclass{article}
+
+\usepackage[letterpaper, margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{xcolor}
+\usepackage{hhline}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amsthm}
+\usepackage{bm}   
+\usepackage{color}   %May be necessary if you want to color links
+\usepackage[bookmarks,hypertexnames=false,debug,linktocpage=true,hidelinks]{hyperref}  
+
+\hypersetup{
+    colorlinks,
+    linktoc=all,
+    linkcolor={blue},
+    citecolor={blue}, 
+    urlcolor={blue}  
+} 
+%\setcounter{section}{-1}
+
+\newcommand{\ints}{\mathbb{Z}}  
+\newcommand{\reals}{\mathbb{R}} 
+\newcommand{\rats}{\mathbb{Q}} 
+\newcommand{\comps}{\mathbb{C}}
+\newcommand{\set}[1]{ \{ #1 \} }
+\newcommand{\mult}{\star}
+\newcommand{\abs}[1]{| #1 |} 
+\newcommand{\inv}[1]{ {#1}^{-1} }
+\newcommand{\id}{ \bm{1} }
+\newcommand{\iso}{ \cong }
+\newcommand{\comp}{ \circ }
+\newcommand{\lcm}{ \textrm{lcm}, }
+\newcommand{\Aut}{ \textrm{Aut}, }
+\newcommand{\Stab}{ \textrm{Stab}, }
+\newcommand{\sheaf}{ \mathcal{O} }
+\newcommand{\md}{\,\text{mod}\,}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\cent}{Z}
+\newcommand{\central}{C}
+\newcommand{\nor}{N}
+\renewcommand{\bar}{\overline}
+\newcommand{\norm}[1]{|#1|}
+\newcommand{\divides}{\big\vert}
+\newcommand{\cyclic}[1]{\langle#1\rangle}
+\newcommand{\normal}{\unlhd}
+\newcommand{\nml}{\normal}
+\newcommand{\phiinv}{\phi^{-1}}
+\newcommand{\vbar}{\vert}
+\DeclareMathOperator*{\argmin}{\arg\!\min}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma} 
+
+\setlength\parindent{0pt}
+%\allowdisplaybreaks
+
+\title{TITLE}
+\begin{document}
+\setcounter{tocdepth}{2}
+\tableofcontents 
+\setcounter{section}{2} 
+\section{Quotient Groups and Homomorphisms}  
+
+\subsection{Definitions and Examples}
+\subsubsection{}\label{ex1p1}
+\begin{itemize}
+\item $\phiinv(E) \leq G$
+We're given $E \leq H$\\
+Let $g,h \in \phiinv(E)$, so $\phi(g)=e,\phi(h)=f$, for $e,f\in E$.\\
+Note that
+\begin{align*}
+\phi(g\inv{h}) &= \phi(g)\phi(h)^{-1}\\
+&= e\inv{f}\\
+&\in E\\
+\implies g\inv{h} &\in \phiinv(E)
+\end{align*}
+Hence, by the subgroup criterion, $\phiinv(E)$ is a subgroup.
+\item $\phiinv(E) \nml G$
+We're given $E \nml H$\\
+Let $g\in G$, $n\in \phiinv(E)$ with $\phi(n) = e$\\
+\begin{align*}
+\phi(gn\inv{g}) &= \phi(g)e\phi(g)^{-1}\\
+&\in E & \mbox{(since $E \nml H$)}\\
+\implies gn\inv{g} &\in \phiinv(E)
+\end{align*}
+Since $n\in \phiinv(E)$ was arbitrary, we have $g\phiinv(E)\inv{g} \subset \phiinv(E)$, making $\phiinv(E)$ normal.\\
+Setting $E=1$ makes $\ker\phi$ normal.
+\end{itemize}
+\subsubsection{}\label{ex1p2}
+We're given $w \in Z$, i.e. $w \in XY$, sp $w=rs$ for $r\in X, s\in Y$.\\
+So
+\begin{align*}
+\phi(\inv{u}w) &= \phi(u)^{-1}\phi(r)\phi(s)\\
+&= \inv{a}ab\\
+&= b
+\end{align*}
+So $\inv{u}w \in Y$, i.e. $\inv{u}w = v$ for some $v \in Y$, i.e. $w=uv$.
+\subsubsection{}\label{ex1p3}
+Let $A$ be abelian, let $aB,bB \in A/B$, so
+\begin{align*}
+(aB)(bB) &= (ab)B\\
+&= (ba)B\\
+&= (bB)(aB)
+\end{align*}
+so $A/B$ is abelian.\\
+Following the example in the text, $G=D_8$ is not abelian, but $D_8/Z(D_8) = V_4$ is.
+\subsubsection{}\label{ex1p4}
+$(gN)^0 = N$ (since $N$ is the identity)\\
+But $g^0N = 1N =N$.\\
+Hence, $(gN)^0 = g^0N$\\
+Now suppose that $(gN)^k = g^kN$ for $k=1,\ldots,n$. Then
+\begin{align*}
+(gN)^{n+1} &= (gN)^n(gN)\\
+&= g^nNgN\\
+&= (g^ng)N\\
+&= g^{n+1}N
+\end{align*}
+We have proved the statement for all nonnegative integers by induction. We prove it for negative integers by showing that they are appropriate inverses. For $k\in\ints^{+}$,
+\begin{align*}
+(g^{-k}N)(gN)^k &= g^{-k}Ng^kN\\
+&= (g^{-k}g^k)N\\
+&= 1N\\
+&= N
+\end{align*}
+Hence,
+\begin{align*}
+g^{-k}N &= ((gN)^k)^{-1}\\
+&= (gN)^{-k}
+\end{align*}
+\subsubsection{}\label{ex1p5}
+Suppose $(gN)^k = N$. Then $g^kN = N$, and since $1\in N$, $g^k\cdot 1 \in N$, i.e. $g^k \in N$. The converse is also true, so the order of $gN$ must be the smallest int $k$ for which this holds.\\
+Let $G=D_8$, $N=\set{1,r^2}$. Then $\abs{r} = 8$, but $r^2 \in N$ so $\abs{rN} =2$
+\subsubsection{}\label{ex1p6}
+$\phiinv(1)$ are the positive reals, $\phiinv(-1)$ are the negative reals.\\
+Let $a,b\in \reals^{\times}$. Then $\phi(ab) = \frac{ab}{\abs{ab}} = \frac{a}{\abs{a}}\frac{b}{\abs{b}} = \phi(a)\phi(b)$
+\subsubsection{}\label{ex1p7}
+Let $(x,y),(a,b)\in\reals^{2}$. then $\pi((x,y)+(a,b))=\pi(x+a,y+b)=x+a+y+b=x+y+a+b = \pi(x,y)+\pi(a,b)$, making $\pi$ into a homomorphism. Also, given $a\in\reals$, $\pi(a,0) = a+0 = a$, so $\pi$ is surjective.\\
+Note, $(x,y)\in\ker\pi \iff x+y=0 \iff y=-x$. So the kernel is the line $y=-x$. The fibers are simply translations of the line: The fiber of $b$ is the line $y=-x+b$.
+\subsubsection{}\label{ex1p8}
+Let $x,y\in\reals^{\times}$.\\
+Then $\phi(xy) = \abs{xy} = \abs{x}\abs{y} = \phi(x)\phi(y)$, making it into a homomorphism. The image of $\phi$ is the positive reals.\\
+We have 
+\begin{align*}
+x&\in\ker\phi \\
+\iff \abs{x} &= 1\\
+\iff x=1 &\mbox{or} x=-1
+\end{align*}
+So $\ker\phi=\set{-1,1}$.\\
+The fibers take the form $x\ker\phi=x\set{-1,1}=\set{-x,x}$
+\subsubsection{}\label{ex1p9}
+This map just takes the square of the "modulus" or "norm" or "absolute value" of a complex number, so it is definitely a homorphism, and the image is the positive reals.\\
+The kernel is the unit circle in the complex plainand the fiber of $x \in \reals^{\times}$ is the circle of radius $\sqrt{x}$
+\subsubsection{}\label{ex1p10}
+Suppose $\bar{a} = \bar{b}$ in $\ints/8\ints$.\\
+Then $8\divides(b-a)$. I.e. $\exists d \in \ints$ such that $8d=b-a$.\\
+But then $4(2d) = b-a$, so $4\divides b-a$, so in fact $\bar{a}=\bar{b}$ in $\ints/\ints$, making the map well-defined. The map is clearly a homomorphism and surjective.\\
+We have $\bar{a} \in \ker\phi \iff \phi(\bar{a})=0 \iff \bar{a}=0 \iff 4\divides a$, so $\ker\phi=\set{\bar{0},\bar{4}}$. and the fibers take the form $\set{\bar{a},\bar{a+4}}$
+\subsubsection{}\label{ex1p11}
+\begin{enumerate}[(a)]
+\item 
+We have $\phi(\begin{pmatrix}a & b\\ 0 & c\end{pmatrix}\begin{pmatrix}e & f\\ 0 & g\end{pmatrix}) = \phi(\begin{pmatrix}ae & af+bg\\ 0 & cg\end{pmatrix}) = ae = \phi(\begin{pmatrix}a & b\\ 0 & c\end{pmatrix})\phi(\begin{pmatrix}e & f\\ 0 & g\end{pmatrix})$, so $\phi$ is a homomorphism. And it is clearly surjective because $\begin{pmatrix}a & 1\\ 0 & 1\end{pmatrix} \mapsto a$ for any $a \in F^{\times}$.\\
+The kernel is
+\begin{equation}
+\ker\phi = \set{\begin{pmatrix}1 & b\\0 & c\end{pmatrix} \in G \vert c \neq 0}
+\end{equation}
+and fibers take the form
+\begin{equation}
+\begin{pmatrix}e & f\\0 & g\end{pmatrix}\ker\phi =
+\set{\begin{pmatrix}e & f+bg\\0 & cg\end{pmatrix} \in G \vert c,e,g \neq 0}
+\end{equation}
+\item We have $\phi(\begin{pmatrix}a & b\\ 0 & c\end{pmatrix}\begin{pmatrix}e & f\\ 0 & g\end{pmatrix}) = \phi(\begin{pmatrix}ae & af+bg\\ 0 & cg\end{pmatrix}) = (ae,cg) = (a,c)(e,g) = \phi(\begin{pmatrix}a & b\\ 0 & c\end{pmatrix})\phi(\begin{pmatrix}e & f\\ 0 & g\end{pmatrix})$ and it's obviously surjective.\\
+The kernel is
+\begin{equation}
+\ker\phi = \set{\begin{pmatrix}1 & b\\0 & 1\end{pmatrix} \in G | c \neq 0}
+\end{equation}
+and fibers take the form
+\begin{equation}
+\begin{pmatrix}e & f\\0 & g\end{pmatrix}\ker\phi =
+\set{\begin{pmatrix}e & f+bg\\0 & g\end{pmatrix} \in G \vert e,g \neq 0}
+\end{equation}
+\item Let the map be given by $\begin{pmatrix}1 & b\\0 & 1\end{pmatrix} \mapsto b$. Note that in $H$, $\begin{pmatrix}1 & b\\0 & 1\end{pmatrix}\begin{pmatrix}1 & c\\0 & 1\end{pmatrix}\begin{pmatrix}1 & b+c\\0 & 1\end{pmatrix}$, so this map is clearly an isomorphism.
+\end{enumerate}
+\subsubsection{}\label{ex1p12}
+\begin{align*}
+\ker\phi &= \ints\\
+\ker\phiinv(i) &= \set{\frac{1+4k}{4} \vbar k \in \ints}\\
+\ker\phiinv(-1) &= \set{\frac{1+2k}{2} \vbar k \in \ints}\\
+\ker\phiinv(e^{4\pi i/3}) &= \set{\frac{2+3k}{3} \vbar k \in \ints}
+\end{align*}
+We obtained $\ker\phiinv(i)$ by solving for $r$ in $2\pi r = \pi/2 + 2\pi k$, etc.
+\subsubsection{}\label{ex1p13}
+Divide out the results of the previous exercise by $2$ to account for the extra factor of $2$, and we obtain
+\begin{align*}
+\ker\phi &= \frac{1}{2}\ints = \set{k/2 \vbar k \in \ints}\\
+\ker\phiinv(i) &= \set{\frac{1+4k}{8} \vbar k \in \ints}\\
+\ker\phiinv(-1) &= \set{\frac{1+2k}{4} \vbar k \in \ints}\\
+\ker\phiinv(e^{4\pi i/3}) &= \set{\frac{2+3k}{6} \vbar k \in \ints}
+\end{align*}
+\subsubsection{}\label{ex1p14}
+\begin{enumerate}[(a)]
+\item This is "obvious" but okay. Suppose $0\leq p,q < 1$ and suppose $p+\ints = q+\ints$. Then $p+0 \in q+\ints$, so $p=q+k$ for some $k\in\ints$. But $0\leq p,q < 1$, so we must have $\abs{k} < 1$, forcing $k=0$, so $p=q$.
+\item Let $x+\ints \in \rats/\ints$, with $x = \frac{p}{q}$. Note that $qx=\frac{pq}{q} = p \in \ints$, so by exercise \ref{ex1p5}, $\abs{x} \leq q$. Hence all elements have finite order.\\
+Euclid's theorem allows us to set the denominator to be an arbitrarily large prime number, so we have elements of arbitrarily large order.\\
+\item Let $T$ be the torsion subgroup. We've just shown that $\rats/\ints \leq T$.  Suppose now that $x\in\reals/\rats$ (so $x$ is irrational). Then suppose $nx \in \ints$ for some int $n$. Then $nx = m$ for some int $m$, yielding $x=m/n$, making $x$ rational, a contradiction. Hence, $x+\ints$ has infinite order, and is note in $T$. Hence $\rats/\ints = T$.
+\item Identify $e^{2\pi ik/n}$ with $k/n$. 
+\end{enumerate}
+\subsubsection{}\label{ex1p15}
+Let $G$ be abelian and divisible.\\
+Let $H \leq G$ be a proper subgroup.\\
+Suppose we are given $aH \in G/H$ and $k \in \ints^{+}$.\\
+We know that $\exists x \in G$ such that $x^k = a$.\\
+But then $(xH)^k = x^kH = aH$.\\
+So $\rats/\ints$ is certainly divisible.\\
+{\large WHY DO I NEED $G$ TO BE ABELIAN AND WHY DOES $H$ HAVE TO BE PROPER}
+\subsubsection{}\label{ex1p16}
+Suppose $G=\cyclic{S}$. Let $xN\in\bar{G}$.\\
+We know that $x=s_1\cdots s_n$ for some $s_1,\ldots,s_n\in S$.\\
+Then $s_1N\cdots s_nN = s_1\cdots s_n N = xN$,\\
+so $xN \in \cyclic{\bar{S}}$.\\
+Since $x$ was arbitrary, we have $\bar{G}=\cyclic{\bar{S}}$.
+\subsubsection{}\label{ex1p17}
+Note that $G = D_{16}$.\\
+\begin{enumerate}[(a)]
+\item
+Taking the left cosets of the (finitely many) elements of $D_8$, we obtain exactly 8 distinct cosets:
+\begin{align*}
+\bar{1} &= \set{1,r^4}\\
+\bar{r} &= \set{r,r^5}\\
+\bar{r^2} &= \set{r^2,r^6}\\
+\bar{r^3} &= \set{r^3,r^7}\\
+\bar{s} &= \set{s,sr^4}\\
+\bar{sr} &= \set{sr,sr^5}\\
+\bar{sr^2} &= \set{sr^2,sr^6}\\
+\bar{sr^3} &= \set{sr^3,sr^7}
+\end{align*}
+NOTE THAT $\bar{G} \iso D_8$.
+\item Listed out in part a
+\item We note that $\bar{G} \iso D_8$, and we've computed these orders before:
+\begin{align*}
+\abs{\bar{1}} &= 1\\
+\abs{\bar{r}} &= 4\\
+\abs{\bar{r^2}} &= 2\\
+\abs{\bar{r^3}} &= 4\\
+\abs{\bar{s}} &= 2\\
+\abs{\bar{sr}} &= 2\\
+\abs{\bar{sr^2}} &= 2\\
+\abs{\bar{sr^3}} &= 2
+\end{align*}
+\item Again, using $\bar{G} \iso D_8$, these calculations are trivial.
+\begin{align*}
+\bar{rs} &= \bar{s\inv{r}}\\
+\bar{sr^{-2}s} &= \bar{r^2}\\
+\bar{\inv{s}\inv{r}sr} &= \bar{r^2}
+\end{align*}
+\item Again we use $\bar{G}\iso D_8$, and note that in exercise 2.4 from chapter 2, we computed the following:
+\begin{align*}
+C(r^2) &= D_8\\
+C(s) &= \set{1, r^2, s, sr^2}
+\end{align*}
+So we have to verify that $r,sr,sr^3$ are in the normalizer of $\cyclic{s,r^2}$ (specifically, when conjugating over $s$, since we already know $C(r^2) = D_8$. But $rs\inv{r} = r^2s, (sr)s(sr)^{-1} = sr^2, (sr^3)s(sr^3)^{-1} = s(r^2)^3$. Hence, $N(\cyclic{s,r^2}) = D_8$, sp $\cyclic{s,r^2}$ is normal.\\
+That $\bar{H} \iso V_4$ is obvious with the identification of $s,r^2,sr^2$ with $a,b,c$ respectively.\\
+Now consider the map $\pi: G \to \bar{G}$, which corresponds to the natural map $\pi: D_{16} \to D_8$. Specifically, it is given by $s \mapsto s$ and $r^a \mapsto r^{a \mod 4}$. Since $a$ is even $\iff a \mod 4$ is even, we can write
+\begin{align*}
+\inv{\pi}(H) &= \set{s^ar^b \vbar a\in\ints, b\in2\ints}\\
+&= \set{1,s,r^2,r^4,r^6,sr^2,sr^4,sr^6}\\
+&\iso D_6
+\end{align*}
+\item Noting again that $\bar{G} \iso D_8$, this was already computed in the examples of the text to be $V_8$.
+\end{enumerate}
+\subsubsection{}\label{ex1p18}
+I will do all of the parts at once. We list out the elements again by taking left cosets\\
+\begin{align*}
+\bar{1} &= \set{1,\sigma^4}\\
+\bar{\sigma} &= \set{\sigma,\sigma^5}\\
+\bar{\sigma^2} &= \set{\sigma^2,\sigma^6}\\
+\bar{\sigma^3} &= \set{\sigma^3,\sigma^7}\\
+\bar{\tau} &= \set{\tau,\tau\sigma^4}\\
+\bar{\tau \sigma} &= \set{\tau \sigma,\tau\sigma^5}\\
+\bar{\tau\sigma^2} &= \set{\tau\sigma^2,\tau\sigma^6}\\
+\bar{\tau\sigma^3} &= \set{\tau\sigma^3,\tau\sigma^7}
+\end{align*}
+Now note that $\bar{\sigma^3}\bar{\sigma} = \bar{\sigma^4} = \bar{1}$. Hence $\bar{\sigma^3}=\bar{\sigma}^{-1} = \bar{\inv{\sigma}}$, making the relation $\bar{\sigma\tau} = \bar{\tau\sigma^3}$ into $\bar{\sigma\tau} =\bar{\tau\inv{\sigma}}$. Hence, we are in the same situation as the last problem. We end up with $\bar{G} = D_8$ and the rest of the parts are straightforward.
+\subsubsection{}\label{ex1p19}
+\begin{enumerate}[(a)]
+\item Same stuff as before, leading to...
+\item $\bar{1},\bar{v},\bar{v}^2,\bar{v}^3,\bar{u},\bar{u}\bar{v},\bar{u}\bar{v}^2,\bar{u}\bar{v}^3$
+\item
+\begin{align*}
+\abs{\bar{1}} &= 1\\
+\abs{\bar{v}} &= 4\\
+\abs{\bar{v^2}} &= 2\\
+\abs{\bar{v^3}} &= 4\\
+\abs{\bar{u}} &= 2\\
+\abs{\bar{uv}} &= 4\\
+\abs{\bar{uv^2}} &= 2\\
+\abs{\bar{uv^3}} &= 4
+\end{align*}
+\item We note now that $\bar{vu} = \bar{uv^5} = \bar{uv}$, making $G$ abelian and the other computations for this part very straightforward. We obtain
+\begin{align*}
+\bar{vu} &= \bar{uv}\\
+\bar{uv^{-2}u} &= \bar{u^2v^2}\\
+\bar{\inv{u}\inv{v}uv} &= \bar{1}
+\end{align*}
+\item The map $\bar{G} \to \ints_2 \times \ints_4$ given by $u^av^b \mapsto (a,b)$ is clearly an isomorphism.
+\end{enumerate}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
