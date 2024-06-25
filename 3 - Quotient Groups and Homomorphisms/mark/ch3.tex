@@ -1,5 +1,5 @@
 \documentclass{article}
-
+ 
 \usepackage[letterpaper, margin=0.75in]{geometry}
 \usepackage{amsmath}
 \usepackage{amssymb}
@@ -308,6 +308,125 @@ Now note that $\bar{\sigma^3}\bar{\sigma} = \bar{\sigma^4} = \bar{1}$. Hence $\b
 \end{align*}
 \item The map $\bar{G} \to \ints_2 \times \ints_4$ given by $u^av^b \mapsto (a,b)$ is clearly an isomorphism.
 \end{enumerate}
+\subsubsection{}\label{ex1p20}
+Obvious.
+\subsubsection{}\label{ex1p21}
+IDK
+\subsubsection{}\label{ex1p22}
+We'll do the general case. We've already shown in a previous chapter that $H=\bigcap_{i\in I} H_i$ is a subgroup of $G$. Now let $h\in H$, and let $g\in G$. For each $i\in I$ we know $H_i$ is normal, and since $h\in H_i$,
+\begin{align*}
+\forall i\in I: gh\inv{g} &\in H_i\\
+\implies gh\inv{g} &\in \bigcap_{i\in I} H_i\\
+&= H
+\end{align*}
+Since $h\in H$ was arbitrary, $gH\inv{g} \subset H$, making $H$ normal.
+\subsubsection{}\label{ex1p23}
+Let $H,K$ be normal. Let $l\in \cyclic{H,K}, g\in G$.\\
+So we can write $l=h_1k_1\cdots h_nk_n$.\\
+For each $i=1,\ldots,n$,
+\begin{align*}
+gh_i &= h_i'g & h_i'\in H\\
+hk_i &= k_i'h & k_i'\in K
+\end{align*}
+And thus
+\begin{align*}
+gl &= gh_1k_1\cdots h_nk_n\\
+&= h_1'k_1'\cdots h_n'k_n'g\\
+&\in \cyclic{H,K}g
+\end{align*}
+Since $l \in \cyclic{H,K}$ was arbitrary, $g\cyclic{H,K} \subset \cyclic{H,K}g$. An analogous proof for the reverse inclusion makes $\cyclic{H,K}$ normal.
+\subsubsection{}\label{ex1p24}
+Let $n\in N\cap H, h\in H$. Since $N$ is normal, $hn=n'h$ for some $n'\in N$. Since $n'=hn\inv{h}$, we have $n'\in H$. So in fact $n'\in N\cap H$. So $hN\cap H \subset N\cap Hh$. The reverse inclusion is analogous and thus $N\cap H$ is normal.
+\subsubsection{}\label{ex1p25}
+\begin{enumerate}[(a)]
+\item \label{ex1p25a}
+\begin{align}
+N &\mbox{normal}\\
+\iff \forall g\in G: gN &= Ng \label{line1}\\ 
+\implies \forall g\in G,n\in N\exists l \in N: gn&=lg\\
+\implies \forall g\in G,n\in N\exists l \in N: gn\inv{g}&=l\\
+\implies \forall g\in G,n\in N: gn\inv{g}&\in N\\
+\implies \forall g\in G: gN\inv{g} &\subset N
+\end{align}
+Following the proof backwards proves the other direction (\eqref{line1} turns into a onesided inclusion, but the reverse inclusion is analagous)
+\item \label{ex1p25b}
+We have $g=\begin{pmatrix}2 & 0\\0 & 1\end{pmatrix}, \inv{g}=\begin{pmatrix}\frac{1}{2} & 0\\0 & 1\end{pmatrix}$. Let $n\in N$, so $n=\begin{pmatrix}1 & a\\0 & 1\end{pmatrix}$. Then 
+\begin{align*}
+gn\inv{g} &= 
+\begin{pmatrix}2 & 0\\0 & 1\end{pmatrix} \begin{pmatrix}1 & a\\0 & 1\end{pmatrix} \begin{pmatrix}\frac{1}{2} & 0\\0 & 1\end{pmatrix}\\
+&=
+\begin{pmatrix}2 & 2a\\0 & 1\end{pmatrix}
+\begin{pmatrix}\frac{1}{2} & 0\\0 & 1\end{pmatrix}\\
+&= 
+\begin{pmatrix}1 & 2a\\0 & 1\end{pmatrix} \label{leeven}\\
+&\in N
+\end{align*}
+Since $n\in N$ was arbitrary, $gN\inv{g} \subset N$, making $N$ normal.\\
+Note from \eqref{leeven} that the top-right position in an element of $gN\inv{g}$ is in the form $2a$. So, for example $\begin{pmatrix}1 & \frac{3}{2}\\0 & 1\end{pmatrix}$
+????????????
+\end{enumerate}
+\subsubsection{}\label{ex1p26}
+\begin{enumerate}[(a)]
+\item \label{ex1p26a}
+$gab\inv{g}=ga\inv{g}gb\inv{g}$.\\
+Let $\norm{a}=n$. Then $(ga\inv{g})^n = ga^n\inv{g} = g\inv{g}=1$, so $\norm{ga\inv{g}} \leq \norm{a}$. Now let $\norm{ga\inv{g}} = m$. Then $(ga\inv{g})^m = 1\implies ga^m\inv{g} = 1\implies a^m = 1$, so $\norm{a} \leq \norm{ga\inv{g}}$.
+\item \label{ex1p26b}
+$(g\inv{a}\inv{g})(ga\inv{g}) = g\inv{a}\inv{g}ga\inv{g} = g\inv{a}a\inv{g} = g\inv{g} = 1$.
+\item \label{ex1p26c}
+Let $n\in N$ be normal. Then $n=s_1\cdots s_m$ for $s_i\in S$. Given $g\in G$, we're given $gS\inv{g} \subset N$, so we have for $i=1,\ldots, m$, we have $gs_i\inv{g} = n_i$ for some $n_i \in N$. Then,
+\begin{align*}
+gn\inv{g} &= gs_1\cdots s_m\inv{g}\\
+&= gs_1\inv{g}\cdots gs_m\inv{g}\\
+&= gn_1\inv{g}\cdots gn_m\inv{g}\\
+&= gn_1\cdots n_m\inv{g}\\
+&\in N
+\end{align*}
+\item \label{ex1p26d}
+Follows immediately from \ref{ex1p26c} by setting $S=\set{x}$
+\item \label{ex1p26e}
+Follows directly from \ref{ex1p26c}
+\end{enumerate}
+\subsubsection{}\label{ex1p27}
+One side is trivial, so suppose $gN\inv{g} \subset N$. Conjugation is injective ($ga\inv{g} = gb\inv{g} \implies a = b$ by left and right multiplication), and an injective map from a finite set to itself is surjective, so $gN\inv{g} = n$. Then it's clear that $N_G(N) = \set{g \in G \vbar gN\inv{g} \subset N}$
+\subsubsection{}\label{ex1p28}
+From the proof of exercise \ref{ex1p26}, part \ref{ex1p26b}, we have $gS\inv{g} \subset N \iff gN\inv{g} \subset N$, then applying \ref{ex1p27} completes the proof.
+\subsubsection{}\label{ex1p29}
+One direction is easy: $g$ normalizes $N \implies gN\inv{g} = N \implies gS\inv{g} \subset N$. Now for the converse.\\
+Suppose $tS\inv{t} \subset N$ for all $t\in T$. By the previous exercise \ref{ex1p28}, $tN\inv{t} = N$ for any $t\in T$\\
+Now $g\in G$ be arbitrary. Since $G=\cyclic{T}, g=t_1\cdots t_n, t_i \in T$. Then
+\begin{align*}
+gN\inv{g} &=  (t_1\cdots t_n)N(t_1\cdots t_n)^{-1}\\
+&=  t_1\cdots t_nN\inv{t_n}\cdots \inv{t_1}\\
+&=  t_1\cdots t_{n-1}(t_nN\inv{t_n})\inv{t_{n-1}}\cdots \inv{t_1}\\
+&=
+t_1\cdots t_{n-1}N\inv{t_{n-1}}\cdots \inv{t_1}\\
+& \mbox{etc...}\\
+&= N
+\end{align*}
+\subsubsection{}\label{ex1p30}
+\begin{align*}
+g &\in N_G(N)\\
+\iff gN\inv{G} &= N\\
+\implies\forall n\in N \exists m\in N: gn\inv{g} &= m\\
+\implies\forall n\in N \exists m\in N: gn &= mg\\
+\implies gN &\subset Ng
+\end{align*}
+Switch $m$ and $n$ in the quantifiers to obtain $gN \supset Ng$, so $gN=Ng$.\\
+For the converse, 
+\begin{align*}
+gN &= Ng\\
+\implies\forall n\in N \exists m\in N: gn\inv{g} &= m\\
+\implies\forall n\in N \exists m\in N: gn &= mg\\
+\implies gN\inv{g} &\subset N
+\end{align*}
+Again, switch $m$ and $n$ to obtain the reverse inclusion.
+\subsubsection{}\label{ex1p31}
+Since $N\lhd H$, we have $hN = Nh$, and the previous exercise \ref{ex1p30} says that $h\in N_G(N)$. Since $h\in H$ was arbitrary, $H\leq N_G(N)$. The deduction is trivial.
+\subsubsection{}\label{ex1p32}
+$1 and Q_8$ are obviously normal, and $\cyclic{-1} = \set{-1,1}$ is obviously normal since the elements commute with all of $Q_8$ ($\cyclic{-1} \subset Z(Q_8)$). Let $N = \cyclic{i}$. From the lattice, we know that $\cyclic{i,j}=Q_8$, so to show $N$ is normal, we use problem \ref{ex1p29} with $T=\set{i,j}, S=\set{i}$. We have $ii\inv{i} = i \in S \subset N$, and $ji\inv{g} =i \in S \subset N$. Hence, $N=\cyclic{S}$ is normal. The proof for $\cyclic{j}$ and $\cyclic{k}$ is analagous.
+\subsubsection{}\label{ex1p33}
+NO THANKS
+\subsubsection{}\label{ex1p34}
 \end{document}
 
 
